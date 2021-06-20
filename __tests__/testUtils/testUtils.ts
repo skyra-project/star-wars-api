@@ -4,20 +4,20 @@ import { graphql, GraphQLSchema } from 'graphql';
 type Maybe<T> = T | null;
 
 interface GCallOptions {
-  source: string;
-  variableValues?: Maybe<Record<string, unknown>>;
+	source: string;
+	variableValues?: Maybe<Record<string, unknown>>;
 }
 
 let schema: GraphQLSchema;
 
 export const gCall = async ({ source, variableValues }: GCallOptions) => {
-  if (!schema) schema = buildGqlSchema();
+	if (!schema) schema = buildGqlSchema();
 
-  return graphql({
-    schema,
-    source,
-    variableValues
-  });
+	return graphql({
+		schema,
+		source,
+		variableValues
+	});
 };
 
 export const formatResponse = (data: unknown) => JSON.parse(JSON.stringify(data));
@@ -29,9 +29,9 @@ export const formatResponse = (data: unknown) => JSON.parse(JSON.stringify(data)
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function gql(...args: any[]): string {
-  return args[0].reduce((acc: string, str: string, idx: number) => {
-    acc += str;
-    if (Reflect.has(args, idx + 1)) acc += args[idx + 1];
-    return acc;
-  }, '');
+	return args[0].reduce((acc: string, str: string, idx: number) => {
+		acc += str;
+		if (Reflect.has(args, idx + 1)) acc += args[idx + 1];
+		return acc;
+	}, '');
 }
