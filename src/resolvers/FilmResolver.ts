@@ -1,0 +1,70 @@
+import FilmArgs from '#arguments/FilmsArgs';
+import FuzzyFilmArgs from '#arguments/FuzzyArgs/FuzzyFilmArgs';
+import FilmService from '#services/FilmService';
+import Film from '#structures/Film';
+import { getRequestedFields } from '#utils/getRequestedFields';
+import GraphQLSet from '#utils/GraphQLSet';
+import { Args, Query, Resolver } from 'type-graphql';
+
+@Resolver(Film)
+export default class FilmResolver {
+	private filmService: FilmService;
+
+	public constructor() {
+		this.filmService = new FilmService();
+	}
+
+	@Query(() => Film, {
+		description: 'Gets details on a Star Wars film, using the episode number of that film'
+	})
+	public getFilm(@Args() args: FilmArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Film>): Film {
+		const filmData = this.filmService.getByEpisodeNumber(args);
+
+		if (!filmData) {
+			throw new Error(`No film found for ${args.film}`);
+		}
+
+		const graphqlObject = this.filmService.mapFilmDataToFilmGraphQL(filmData, requestedFields);
+
+		if (!graphqlObject) {
+			throw new Error(`Failed to get data for film: ${args.film}`);
+		}
+
+		return graphqlObject;
+	}
+
+	@Query(() => Film, {
+		description: [
+			'Gets details on a Star Wars film, using a fuzzy search on title or episode number',
+			'This can be used to find multiple results based on the query',
+			'By default only 1 result is returned. You can provide the arguments "take", "offset", and "reverse" to modify this behaviour.'
+		].join('\n')
+	})
+	public getFuzzyFilm(@Args() args: FuzzyFilmArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Film>): Film {
+		const filmEpisodeId = Number(args.film);
+
+		let data = filmEpisodeId ? this.filmService.getByEpisodeNumber({ film: filmEpisodeId }) : undefined;
+
+		if (!data) {
+			const fuzzyEntry = this.filmService.findByFuzzy(args);
+
+			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
+				throw new Error(`Failed to get data for film: ${args.film}`);
+			}
+
+			data = this.filmService.getByEpisodeNumber({ film: fuzzyEntry[0].item.episodeId });
+
+			if (!data) {
+				throw new Error(`No film found for: ${args.film}`);
+			}
+		}
+
+		const graphqlObject = this.filmService.mapFilmDataToFilmGraphQL(data, requestedFields);
+
+		if (!graphqlObject) {
+			throw new Error(`Failed to get data for film: ${args.film}`);
+		}
+
+		return graphqlObject;
+	}
+}

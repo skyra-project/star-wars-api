@@ -1,6 +1,6 @@
+import Film from '#structures/Film';
+import Person from '#structures/Person';
 import { Field, Int, ObjectType } from 'type-graphql';
-import Film from './Film';
-import Person from './Person';
 
 @ObjectType({ description: 'A planet that appeared in Star Wars' })
 export default class Planet {

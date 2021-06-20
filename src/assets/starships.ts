@@ -1,5 +1,5 @@
 import GraphQLCollection from '#utils/GraphQLCollection';
-import type { StarWarsApi } from '#utils/star-wars';
+import type StarWarsApi from '#utils/star-wars';
 
 /** The Star Wars Starships */
 export default new GraphQLCollection<string, StarWarsApi.Starship>([

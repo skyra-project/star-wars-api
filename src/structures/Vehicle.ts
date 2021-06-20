@@ -1,5 +1,5 @@
-import { Field, ObjectType, Int } from 'type-graphql';
-import Person from './Person';
+import Person from '#structures/Person';
+import { Field, Int, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'A vehicle that appeared in Star Wars' })
 export default class Vehicle {

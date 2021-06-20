@@ -1,14 +1,10 @@
-import { pokemons } from '#arguments/ExactPokemonPaginatedArgs';
-import { items } from '#arguments/ItemPaginatedArgs';
-import { moves } from '#arguments/MovePaginatedArgs';
+import { films } from '#arguments/FilmsArgs';
 import { people } from '#arguments/PersonArgs';
-import { types } from '#arguments/TypeArgs';
-import AbilityResolver from '#resolvers/AbilityResolver';
-import DexResolver from '#resolvers/DexResolver';
-import ItemResolver from '#resolvers/ItemResolver';
-import LearnsetResolver from '#resolvers/LearnsetResolver';
-import MoveResolver from '#resolvers/MoveResolver';
-import TypeResolver from '#resolvers/TypeResolver';
+import { planets } from '#arguments/PlanetArgs';
+import { species } from '#arguments/SpeciesArgs';
+import { starships } from '#arguments/StarshipsArgs';
+import { vehicles } from '#arguments/VehiclesArgs';
+import FilmResolver from '#resolvers/FilmResolver';
 import tabs from '#root/defaultPlaygroundTabs';
 import { ApolloServer } from 'apollo-server-koa';
 import type { GraphQLSchema } from 'graphql';
@@ -16,33 +12,38 @@ import Koa from 'koa';
 import { buildSchemaSync, registerEnumType } from 'type-graphql';
 
 export const buildGqlSchema = (): GraphQLSchema => {
+	registerEnumType(films, {
+		name: 'Films',
+		description: 'The Star Wars films'
+	});
+
 	registerEnumType(people, {
-		name: 'Abilities',
-		description: 'The supported abilities'
+		name: 'People',
+		description: 'The people in Star Wars'
 	});
 
-	registerEnumType(items, {
-		name: 'Items',
-		description: 'The supported items'
+	registerEnumType(planets, {
+		name: 'Planets',
+		description: 'The planets in Star War'
 	});
 
-	registerEnumType(moves, {
-		name: 'Moves',
-		description: 'The supported moves'
+	registerEnumType(species, {
+		name: 'Species',
+		description: 'The species in Star Wars'
 	});
 
-	registerEnumType(pokemons, {
-		name: 'Pokemon',
-		description: 'The supported Pokémon'
+	registerEnumType(starships, {
+		name: 'Starships',
+		description: 'The starships in Star Wars'
 	});
 
-	registerEnumType(types, {
-		name: 'Types',
-		description: 'The types in Pokémon'
+	registerEnumType(vehicles, {
+		name: 'Vehicles',
+		description: 'The vehicles in Star Wars'
 	});
 
 	return buildSchemaSync({
-		resolvers: [DexResolver, AbilityResolver, ItemResolver, MoveResolver, TypeResolver, LearnsetResolver],
+		resolvers: [FilmResolver],
 		dateScalarMode: 'isoDate'
 	});
 };

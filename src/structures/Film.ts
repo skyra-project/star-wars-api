@@ -1,9 +1,9 @@
+import Person from '#structures/Person';
+import Planet from '#structures/Planet';
+import Species from '#structures/Species';
+import Starship from '#structures/Starship';
+import Vehicle from '#structures/Vehicle';
 import { Field, GraphQLISODateTime, ObjectType } from 'type-graphql';
-import Person from './Person';
-import Planet from './Planet';
-import Species from './Species';
-import Starship from './Starship';
-import Vehicle from './Vehicle';
 
 @ObjectType({ description: 'A Star Wars film' })
 export default class Film {

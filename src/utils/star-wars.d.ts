@@ -1,4 +1,4 @@
-export namespace StarWarsApi {
+declare namespace StarWarsApi {
 	export interface Film {
 		characters: string[];
 		director: string;

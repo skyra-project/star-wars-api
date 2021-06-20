@@ -1,10 +1,13 @@
 import filmData from '#assets/films';
-import { ArgsType, Field } from 'type-graphql';
+import { IsIn, IsNumber } from 'class-validator';
+import { ArgsType, Field, Int } from 'type-graphql';
 
 export const films = filmData.enumObject();
 
 @ArgsType()
 export default class FilmArgs {
-	@Field(() => String, { description: 'The film to look up' })
-	public film!: string;
+	@Field(() => Int, { description: 'The film to look up, referenced by episode number' })
+	@IsNumber()
+	@IsIn([1, 2, 3, 4, 5, 6])
+	public film!: number;
 }
