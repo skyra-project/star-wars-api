@@ -1,0 +1,145 @@
+{
+	"name": "@skyra/star-wars-api",
+	"version": "1.0.0",
+	"description": "Star Wars GraphQL API",
+	"author": "@skyra",
+	"license": "MIT",
+	"type": "module",
+	"main": "generated/ts/star-wars-api.cjs",
+	"module": "generated/ts/star-wars-api.mjs",
+	"types": "generated/ts/star-wars-api.d.ts",
+	"exports": {
+		"import": "./generated/ts/star-wars-api.mjs",
+		"require": "./generated/ts/star-wars-api.cjs"
+	},
+	"imports": {
+		"#arguments/*": "./generated/api/arguments/*.js",
+		"#assets/*": "./generated/api/assets/*.js",
+		"#jsonAssets/*": "./generated/api/assets/*",
+		"#resolvers/*": "./generated/api/resolvers/*.js",
+		"#services/*": "./generated/api/services/*.js",
+		"#structures/*": "./generated/api/structures/*.js",
+		"#utils/*": "./generated/api/utils/*.js",
+		"#root/*": "./generated/api/*.js",
+		"#scripts/*": "./scripts/*.mjs"
+	},
+	"homepage": "https://swapi.skyra.pw/",
+	"scripts": {
+		"lint": "eslint src scripts __tests__ --ext ts,mjs --fix",
+		"format": "prettier --write --loglevel=warn {src,scripts}/**/*.{ts,json}",
+		"test": "jest",
+		"start": "node --experimental-json-modules generated/api/index.js",
+		"build": "tsc -b src",
+		"watch": "tsc -b src -w",
+		"clean": "node scripts/clean.mjs",
+		"dev": "yarn build && yarn start",
+		"commit": "git-cz",
+		"cz": "git-cz",
+		"update": "yarn upgrade-interactive --latest",
+		"sversion": "standard-version",
+		"precodegen": "node scripts/clean-generated.mjs",
+		"codegen": "graphql-codegen",
+		"postcodegen": "run-s typescript:*",
+		"typescript:replace-invalid-code": "replace-in-file /}\\;/g } generated/ts/star-wars-api.ts --isRegex",
+		"typescript:use-type-import": "replace-in-file /import/g \"import type\" generated/ts/star-wars-api.ts --isRegex",
+		"typescript:compile": "rollup -c scripts/rollup.config.mjs",
+		"typescript:cleanup": "node scripts/postcodegen.mjs",
+		"prepare": "husky install .github/husky"
+	},
+	"dependencies": {
+		"graphql": "^15.5.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^12.1.4",
+		"@commitlint/config-conventional": "^12.1.4",
+		"@discordjs/collection": "^0.1.6",
+		"@graphql-codegen/cli": "^1.21.5",
+		"@graphql-codegen/schema-ast": "^1.18.3",
+		"@graphql-codegen/typescript": "^1.22.1",
+		"@graphql-codegen/typescript-resolvers": "^1.19.2",
+		"@sapphire/eslint-config": "^3.1.4",
+		"@sapphire/fetch": "^1.0.3",
+		"@sapphire/prettier-config": "^1.1.3",
+		"@sapphire/time-utilities": "^1.3.3",
+		"@sapphire/ts-config": "^2.2.3",
+		"@types/jest": "^26.0.23",
+		"@types/koa": "^2.13.3",
+		"@types/node": "^15.12.2",
+		"@types/node-fetch": "^2.5.10",
+		"apollo-server-koa": "^2.25.1",
+		"class-validator": "^0.13.1",
+		"colorette": "^1.2.2",
+		"cz-conventional-changelog": "^3.3.0",
+		"fuse.js": "^6.4.6",
+		"graphql-parse-resolve-info": "^4.12.0",
+		"graphql-type-json": "^0.3.2",
+		"husky": "^6.0.0",
+		"jest": "^27.0.4",
+		"jest-circus": "^27.0.4",
+		"koa": "^2.13.1",
+		"lint-staged": "^11.0.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.3.1",
+		"pretty-quick": "^3.1.0",
+		"reflect-metadata": "^0.1.13",
+		"replace-in-file": "^6.2.0",
+		"rollup": "^2.52.1",
+		"rollup-plugin-typescript2": "^0.30.0",
+		"standard-version": "^9.3.0",
+		"ts-jest": "^27.0.3",
+		"ts-node": "^10.0.0",
+		"type-graphql": "^1.1.1",
+		"typescript": "^4.3.2",
+		"utility-types": "^3.10.0"
+	},
+	"files": [
+		"generated/ts"
+	],
+	"engines": {
+		"node": ">=16",
+		"npm": ">=6"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skyra-project/star-wars-api.git"
+	},
+	"bugs": {
+		"url": "https://github.com/skyra-project/star-wars-api/issues"
+	},
+	"keywords": [
+		"skyra",
+		"star wars",
+		"star",
+		"wars",
+		"typescript",
+		"ts",
+		"yarn",
+		"graphql"
+	],
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	},
+	"lint-staged": {
+		"*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"resolutions": {
+		"acorn": "^8.4.0",
+		"minimist": "^1.2.5",
+		"kind-of": "^6.0.3",
+		"lodash": "^4.17.21",
+		"dot-prop": "^6.0.1",
+		"node-fetch": "^2.6.1",
+		"trim-newlines": "^3.0.1"
+	},
+	"prettier": "@sapphire/prettier-config"
+}

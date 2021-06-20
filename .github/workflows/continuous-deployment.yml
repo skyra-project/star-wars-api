@@ -1,0 +1,231 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - '.github/workflows/continuous-deployment.yml'
+      - 'README.md'
+      - 'Dockerfile'
+  workflow_dispatch:
+    inputs:
+      skip-publish:
+        description: 'Whether to skip publishing typings to NPM'
+        required: false
+
+jobs:
+  Publish:
+    name: Publish image to container registries
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip docker]')"
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v1.3.0
+      - name: Login to DockerHub
+        uses: docker/login-action@v1.9.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1.9.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        id: docker_build
+        uses: docker/build-push-action@v2.5.0
+        with:
+          push: true
+          context: .
+          tags: |
+            skyrabot/star-wars-api:latest
+            ghcr.io/skyra-project/star-wars-api:latest
+      - name: Update repo description
+        uses: peter-evans/dockerhub-description@v2.4.2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: skyrabot/star-wars-api
+          short-description: GraphQL Star Wars API for Skyra
+
+  GenerateTypings:
+    name: Generate TypeScript, and SDL type information
+    runs-on: ubuntu-latest
+    if: >-
+      !(contains(github.event.head_commit.message, '[skip publish]')
+      ||github.event.inputs.skip-publish == true)
+    needs: Publish
+    services:
+      pokedex:
+        image: ghcr.io/skyra-project/star-wars-api:latest
+        options: >-
+          --health-cmd "nc -z localhost 8293"
+          --health-interval 10s
+          --health-timeout 10s
+          --health-retries 6
+          --health-start-period 5s
+        ports:
+          - 8293:8293
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Add problem matchers
+        run: echo "::add-matcher::.github/problemMatchers/tsc.json"
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Restore CI Cache
+        uses: actions/cache@v2.1.6
+        id: cache-restore
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+        run: yarn --frozen-lockfile
+      - name: Generate GraphQL Schema code
+        run: yarn codegen
+      - name: Upload typescript bundle to artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: typescript_bundle
+          path: generated/ts/
+          if-no-files-found: error
+
+  GithubPublish:
+    name: Publishing release to Github
+    runs-on: ubuntu-latest
+    if: >-
+      !(contains(github.event.head_commit.message, '[skip publish]'))
+    needs: GenerateTypings
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Restore CI Cache
+        uses: actions/cache@v2.1.6
+        id: cache-restore
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+        run: yarn --frozen-lockfile
+      - name: Configure Git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+      - name: Bump semver
+        if: "!contains(github.event.head_commit.message, '[skip bump]')"
+        run: yarn sversion
+      - name: Store bumped package.json
+        uses: actions/upload-artifact@v2
+        with:
+          name: package_bundle
+          path: package.json
+          if-no-files-found: error
+      - name: Store bumped changelog.md
+        uses: actions/upload-artifact@v2
+        with:
+          name: changelog_bundle
+          path: CHANGELOG.md
+          if-no-files-found: error
+      - name: Push changes
+        if: "!contains(github.event.head_commit.message, '[skip bump]')"
+        run: git push --follow-tags origin main
+
+  NPMPublish:
+    name: Publishing release to NPM
+    runs-on: ubuntu-latest
+    if: >-
+      !(contains(github.event.head_commit.message, '[skip publish]'))
+    needs: GithubPublish
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Setup Node for publishing to NPM
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - name: Download generated typings artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: typescript_bundle
+          path: generated/ts/
+      - name: Download stored package.json
+        uses: actions/download-artifact@v2
+        with:
+          name: package_bundle
+      - name: Download stored changelog.md
+        uses: actions/download-artifact@v2
+        with:
+          name: changelog_bundle
+      - name: Restore CI Cache
+        uses: actions/cache@v2.1.6
+        id: cache-restore
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+        run: yarn --frozen-lockfile
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  Github-Package-Registry-Node:
+    name: Publishing release to Github Package Registry
+    runs-on: ubuntu-latest
+    if: >-
+      !(contains(github.event.head_commit.message, '[skip publish]'))
+    needs: GithubPublish
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Setup Node for publishing to Github
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@skyra-project'
+      - name: Download generated typings artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: typescript_bundle
+          path: generated/ts/
+      - name: Download stored package.json
+        uses: actions/download-artifact@v2
+        with:
+          name: package_bundle
+      - name: Download stored changelog.md
+        uses: actions/download-artifact@v2
+        with:
+          name: changelog_bundle
+      - name: Restore CI Cache
+        uses: actions/cache@v2.1.6
+        id: cache-restore
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+        run: yarn --frozen-lockfile
+      - name: Set correct author in package.json
+        run: npx replace-in-file /@skyra/g "@skyra-project" package.json --isRegex
+      - name: Publish to Github
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

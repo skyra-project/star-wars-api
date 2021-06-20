@@ -1,0 +1,17 @@
+overwrite: true
+schema: http://localhost:8293
+generates:
+  ./generated/ts/star-wars-api.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      scalars:
+        JSONObject: 'Record<PropertyKey, any>'
+      constEnums: true
+      immutableTypes: true
+  ./generated/ts/star-wars-api.graphql:
+    plugins:
+      - schema-ast
+    config:
+      commentDescriptions: true

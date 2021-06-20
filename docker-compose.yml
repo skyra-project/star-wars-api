@@ -1,0 +1,14 @@
+version: '2.4'
+services:
+  swapi:
+    build: ./
+    container_name: star-wars-api
+    image: 'skyrabot/star-wars-api:latest'
+    networks:
+      - star-wars-api
+    ports:
+      - '8080:8080'
+    restart: 'no'
+
+networks:
+  star-wars-api:

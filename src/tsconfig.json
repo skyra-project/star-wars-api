@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "../generated/api",
+    "baseUrl": ".",
+    "paths": {
+      "#arguments/*": ["./arguments/*"],
+      "#assets/*": ["./assets/*"],
+      "#jsonAssets/*.json": ["./assets/*.json"],
+      "#dexdata/*": ["./assets/pokedex-data/*"],
+      "#resolvers/*": ["./resolvers/*"],
+      "#services/*": ["./services/*"],
+      "#structures/*": ["./structures/*"],
+      "#utils/*": ["./utils/*"],
+      "#root/*": ["*"]
+    },
+    "composite": true
+  },
+  "include": [".", "./assets/**/*.json"]
+}
