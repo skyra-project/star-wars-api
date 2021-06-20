@@ -4,39 +4,54 @@ import Person from './Person';
 
 @ObjectType({ description: 'A planet that appears in Star Wars' })
 export default class Planet {
-	@Field(() => [String], { description: 'The climates of this planet' })
-	public climates!: string[];
+	@Field(() => [String], { nullable: true, description: 'The climates of this planet' })
+	public climates?: string[];
 
-	@Field(() => Int, { description: 'The diameter of this planet in kilometres' })
-	public diameter!: number;
+	@Field(() => Int, { nullable: true, description: 'The diameter of this planet in kilometres' })
+	public diameter?: number;
 
 	@Field(() => [Film], { description: 'The films in which this planet was featured' })
 	public films!: Film[];
 
 	@Field(() => Int, {
+		nullable: true,
 		description:
-			'A number denoting the gravity of this planet, were "1" is standard gravity, "2" is twice standard gravity and "0.5" is half standard gravity'
+			'A number denoting the gravity of this planet, were "1" is standard gravity, "2" is twice standard gravity and "0.5" is half standard gravity. This is null for planets for which the gravity is unknown.'
 	})
-	public gravity!: number;
+	public gravity?: number;
 
 	@Field(() => String, { description: 'The name of this planet' })
 	public name!: string;
 
-	@Field(() => Int, { description: 'The number of standard hours this planet takes to orbit around the nearest star' })
+	@Field(() => Int, {
+		nullable: true,
+		description:
+			'The number of standard hours this planet takes to orbit around the nearest star. Nullable if the orbital period is unknown for this planet'
+	})
 	public orbitalPeriod!: number;
 
-	@Field(() => Int, { description: 'The average population of sentient beings inhabiting this planet' })
-	public population!: number;
+	@Field(() => Int, {
+		nullable: true,
+		description: 'The average population of sentient beings inhabiting this planet. Null if population is unknown.'
+	})
+	public population?: number;
 
 	@Field(() => [Person], { description: 'The people who inhabit this planet' })
 	public residents!: Person[];
 
-	@Field(() => Int, { description: 'The number of standard hours this planet takes to rotate around its own axis' })
+	@Field(() => Int, {
+		nullable: true,
+		description:
+			'The number of standard hours this planet takes to rotate around its own axis. Nullable if the rotation period is unknown for this planet'
+	})
 	public rotationPeriod!: number;
 
-	@Field(() => Int, { description: 'The percentage of the planet that is naturally occurring water or bodies of water' })
-	public surfaceWater!: number;
+	@Field(() => Int, {
+		nullable: true,
+		description: 'The percentage of the planet that is naturally occurring water or bodies of water. Null if this is unknown for this planet.'
+	})
+	public surfaceWater?: number;
 
-	@Field(() => [String], { description: 'The types of terrain of this planet' })
-	public terrains!: string[];
+	@Field(() => [String], { nullable: true, description: 'The types of terrain of this planet' })
+	public terrains?: string[];
 }

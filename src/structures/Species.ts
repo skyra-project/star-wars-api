@@ -11,8 +11,8 @@ export default class Species {
 	@Field(() => Int, { nullable: true, description: 'The average lifespan of this species, if specified' })
 	public averageLifespan?: number;
 
-	@Field(() => String, { description: 'The classification of this species, such as "mammal" or "reptile"' })
-	public classification!: string;
+	@Field(() => String, { nullable: true, description: 'The classification of this species, such as "mammal" or "reptile"' })
+	public classification?: string;
 
 	@Field(() => String, { description: 'The designation of this species, such as "sentient"' })
 	public designation!: string;
@@ -32,8 +32,8 @@ export default class Species {
 	@Field(() => Planet, { nullable: true, description: 'The planet this species originates from, or null if unknown' })
 	public homeworld?: Planet;
 
-	@Field(() => String, { description: 'The language commonly spoken by this species' })
-	public language!: string;
+	@Field(() => String, { nullable: true, description: 'The language commonly spoken by this species' })
+	public language?: string;
 
 	@Field(() => String, { description: 'The name of this species' })
 	public name!: string;

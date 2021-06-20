@@ -1,61 +1,61 @@
 export namespace StarWarsApi {
 	export interface Film {
-		characters: Person[];
+		characters: string[];
 		director: string;
 		episodeId: number;
 		openingCrawl: string;
-		planets: Planet[];
+		planets: string[];
 		producer: string[];
 		releaseDate: string;
-		species: Species[];
-		starships: Starship[];
+		species: string[];
+		starships: string[];
 		title: string;
-		vehicles: Vehicle[];
+		vehicles: string[];
 	}
 
 	export interface Person {
-		birthYear: string;
-		eyeColor: string;
-		films: Film[];
-		gender: 'male' | 'female' | null;
-		hairColor: string;
-		height: string;
-		homeworld: string;
-		mass: string;
+		birthYear: string | null;
+		eyeColors: string[] | null;
+		films: number[];
+		gender: 'male' | 'female' | 'hermaphrodite' | null;
+		hairColors: string[] | null;
+		height: number | null;
+		homeworld: string | null;
+		mass: number | null;
 		name: string;
-		skinColor: string;
-		species: Species[];
-		starships: Starship[];
-		vehicles: Vehicle[];
+		skinColors: string[] | null;
+		species: string[];
+		starships: string[];
+		vehicles: string[];
 	}
 
 	export interface Planet {
-		climate: string;
-		diameter: string;
-		films: Film[];
-		gravity: string;
+		climate: string[] | null;
+		diameter: number | null;
+		films: number[];
+		gravity: string | null;
 		name: string;
-		orbitalPeriod: string;
-		population: string;
-		residents: Person[];
-		rotationPeriod: string;
-		surfaceWater: string;
-		terrain: string;
+		orbitalPeriod: string | null;
+		population: string | null;
+		residents: string[];
+		rotationPeriod: string | null;
+		surfaceWater: string | null;
+		terrain: string[] | null;
 	}
 
 	export interface Species {
 		averageHeight: number | null;
 		averageLifespan: number | null;
-		classification: string;
+		classification: string | null;
 		designation: 'reptilian' | 'sentient';
-		eyeColors: string;
-		films: Film[];
-		hairColors: string;
-		homeworld: Planet | null;
-		language: string;
+		eyeColors: string[] | null;
+		films: number[];
+		hairColors: string[] | null;
+		homeworld: string | null;
+		language: string | null;
 		name: string;
-		people: Person[];
-		skinColors: string;
+		people: string[];
+		skinColors: string[] | null;
 	}
 
 	export interface Starship {
@@ -63,7 +63,7 @@ export namespace StarWarsApi {
 		consumables: string;
 		costInCredits: number;
 		crew: number;
-		films: Film[];
+		films: string[];
 		hyperdriveRating: number;
 		length: number;
 		manufacturer: string[];
@@ -72,7 +72,7 @@ export namespace StarWarsApi {
 		model: string;
 		name: string;
 		passengers: number;
-		pilots: Person[];
+		pilots: string[];
 		starshipClass: string;
 	}
 
@@ -87,7 +87,7 @@ export namespace StarWarsApi {
 		model: string;
 		name: string;
 		passengers: number;
-		pilots: Person[];
+		pilots: string[];
 		vehicleClass: string;
 	}
 }
