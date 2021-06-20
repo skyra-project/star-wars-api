@@ -15,10 +15,22 @@ export default class FilmService {
 		return films.get(film);
 	}
 
+	// TODO: add parameter to prevent deep-nesting
+	// TODO: ensure requestedFields supports deep-nesting
 	public mapFilmDataToFilmGraphQL(data: StarWarsApi.Film, requestedFields: GraphQLSet<keyof Film>): Film {
 		const film = new Film();
 
+		addPropertyToClass(film, 'characters', data.characters, requestedFields); // TODO: map to actual characters
 		addPropertyToClass(film, 'director', data.director, requestedFields);
+		addPropertyToClass(film, 'episodeId', data.episodeId, requestedFields);
+		addPropertyToClass(film, 'openingCrawl', data.openingCrawl, requestedFields);
+		addPropertyToClass(film, 'planets', data.planets, requestedFields); // TODO: map to actual planets
+		addPropertyToClass(film, 'producers', data.producers, requestedFields);
+		addPropertyToClass(film, 'releaseDate', new Date(data.releaseDate), requestedFields);
+		addPropertyToClass(film, 'species', data.species, requestedFields); // TODO: map to actual species
+		addPropertyToClass(film, 'starships', data.starships, requestedFields); // TODO: map to actual starships
+		addPropertyToClass(film, 'title', data.title, requestedFields);
+		addPropertyToClass(film, 'vehicles', data.vehicles, requestedFields); // TODO: map to actual vehicles
 
 		return film;
 	}

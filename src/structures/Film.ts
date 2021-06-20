@@ -3,7 +3,7 @@ import Planet from '#structures/Planet';
 import Species from '#structures/Species';
 import Starship from '#structures/Starship';
 import Vehicle from '#structures/Vehicle';
-import { Field, GraphQLISODateTime, ObjectType } from 'type-graphql';
+import { Field, GraphQLISODateTime, Int, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'A Star Wars film' })
 export default class Film {
@@ -13,8 +13,8 @@ export default class Film {
 	@Field(() => String, { description: 'The director of this film' })
 	public director!: string;
 
-	@Field(() => String, { description: 'The episode number of this film' })
-	public episodeId!: string;
+	@Field(() => Int, { description: 'The episode number of this film' })
+	public episodeId!: number;
 
 	@Field(() => String, { description: 'The opening crawl text for this film' })
 	public openingCrawl!: string;

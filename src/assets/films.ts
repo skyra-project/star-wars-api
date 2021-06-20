@@ -51,7 +51,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 				'people and restore\n' +
 				'freedom to the galaxy....',
 			planets: ['tatooine', 'alderaan', 'yaviniv'],
-			producer: ['Gary Kurtz', 'Rick McCallum'],
+			producers: ['Gary Kurtz', 'Rick McCallum'],
 			releaseDate: '1977-05-25T00:00:00.000Z',
 			species: ['human', 'droid', 'wookie', 'rodian', 'hutt'],
 			starships: [
@@ -113,7 +113,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 				'thousands of remote probes into\n' +
 				'the far reaches of space....',
 			planets: ['hoth', 'dagobah', 'bespin', 'ordmantell'],
-			producer: ['Gary Kurtz', 'Rick McCallum'],
+			producers: ['Gary Kurtz', 'Rick McCallum'],
 			releaseDate: '1980-05-17T00:00:00.000Z',
 			species: ['human', 'droid', 'wookie', 'yodasspecies', 'trandoshan'],
 			starships: [
@@ -179,7 +179,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 				'struggling to restore freedom\n' +
 				'to the galaxy...',
 			planets: ['tatooine', 'dagobah', 'endor', 'naboo', 'coruscant'],
-			producer: ['Howard G. Kazanjian', 'George Lucas', 'Rick McCallum'],
+			producers: ['Howard G. Kazanjian', 'George Lucas', 'Rick McCallum'],
 			releaseDate: '1983-05-25T00:00:00.000Z',
 			species: ['human', 'droid', 'wookie', 'hutt', 'yodasspecies', 'moncalamari', 'ewok', 'sullustan', 'twilek'],
 			starships: [
@@ -263,7 +263,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 				'peace and justice in the\n' +
 				'galaxy, to settle the conflict....',
 			planets: ['tatooine', 'naboo', 'coruscant'],
-			producer: ['Rick McCallum'],
+			producers: ['Rick McCallum'],
 			releaseDate: '1999-05-19T00:00:00.000Z',
 			species: [
 				'human',
@@ -368,7 +368,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 				'to assist the overwhelmed\n' +
 				'Jedi....',
 			planets: ['tatooine', 'naboo', 'coruscant', 'kamino', 'geonosis'],
-			producer: ['Rick McCallum'],
+			producers: ['Rick McCallum'],
 			releaseDate: '2002-05-16T00:00:00.000Z',
 			species: [
 				'human',
@@ -489,7 +489,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 				'catoneimoidia',
 				'saleucami'
 			],
-			producer: ['Rick McCallum'],
+			producers: ['Rick McCallum'],
 			releaseDate: '2005-05-19T00:00:00.000Z',
 			species: [
 				'human',

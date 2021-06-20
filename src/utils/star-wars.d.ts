@@ -5,7 +5,7 @@ declare namespace StarWarsApi {
 		episodeId: number;
 		openingCrawl: string;
 		planets: string[];
-		producer: string[];
+		producers: string[];
 		releaseDate: string;
 		species: string[];
 		starships: string[];
