@@ -3,7 +3,7 @@ import Film from './Film';
 import Person from './Person';
 import Planet from './Planet';
 
-@ObjectType({ description: 'A species that appears in Star Wars' })
+@ObjectType({ description: 'A species that appeared in Star Wars' })
 export default class Species {
 	@Field(() => Int, { nullable: true, description: 'The average heigh of this species, if specified' })
 	public averageHeight?: number;

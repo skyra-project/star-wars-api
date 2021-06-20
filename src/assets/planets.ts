@@ -1,7 +1,7 @@
 import GraphQLCollection from '#utils/GraphQLCollection';
 import type { StarWarsApi } from '#utils/star-wars';
 
-/** The Star Wars planets */
+/** The Star Wars Planets */
 export default new GraphQLCollection<string, StarWarsApi.Planet>([
 	[
 		'tatooine',

@@ -2,7 +2,7 @@ import { Field, Int, ObjectType } from 'type-graphql';
 import Film from './Film';
 import Person from './Person';
 
-@ObjectType({ description: 'A planet that appears in Star Wars' })
+@ObjectType({ description: 'A planet that appeared in Star Wars' })
 export default class Planet {
 	@Field(() => [String], { nullable: true, description: 'The climates of this planet' })
 	public climates?: string[];

@@ -59,34 +59,35 @@ export namespace StarWarsApi {
 	}
 
 	export interface Starship {
-		cargoCapacity: number;
-		consumables: string;
-		costInCredits: number;
-		crew: number;
-		films: string[];
-		hyperdriveRating: number;
+		cargoCapacity: number | null;
+		consumables: string | null;
+		costInCredits: number | null;
+		crew: string | null;
+		films: number[];
+		hyperdriveRating: number | null;
 		length: number;
-		manufacturer: string[];
-		maxAtmospheringSpeed: number;
-		MGLT: number;
+		manufacturers: string[];
+		maxAtmospheringSpeed: number | null;
+		MGLT: number | null;
 		model: string;
 		name: string;
-		passengers: number;
+		passengers: number | null;
 		pilots: string[];
 		starshipClass: string;
 	}
 
 	export interface Vehicle {
 		cargoCapacity: number | null;
-		consumables: string;
-		costInCredits: number;
+		consumables: string | null;
+		costInCredits: number | null;
 		crew: number;
-		length: number;
-		manufacturer: string[];
+		films: number[];
+		length: number | null;
+		manufacturers: string[] | null;
 		maxAtmospheringSpeed: number | null;
 		model: string;
 		name: string;
-		passengers: number;
+		passengers: number | null;
 		pilots: string[];
 		vehicleClass: string;
 	}

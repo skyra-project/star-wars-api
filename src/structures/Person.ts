@@ -5,7 +5,7 @@ import Species from './Species';
 import Starship from './Starship';
 import Vehicle from './Vehicle';
 
-@ObjectType({ description: 'A character that appears in Star Wars' })
+@ObjectType({ description: 'A character that appeared in Star Wars' })
 export default class Person {
 	@Field(() => String, { nullable: true, description: 'The year this character was released' })
 	public birthYear?: string;
@@ -13,7 +13,7 @@ export default class Person {
 	@Field(() => [String], { nullable: true, description: 'The eye colours of this character' })
 	public eyeColors?: string[];
 
-	@Field(() => [Film], { description: 'The films this character appears in' })
+	@Field(() => [Film], { description: 'The films this character appeared in' })
 	public films!: Film[];
 
 	@Field(() => String, { nullable: true, description: 'The gender of this character, one of "male", "female", "hermaphrodite" or null' })
