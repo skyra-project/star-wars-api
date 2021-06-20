@@ -1,6 +1,6 @@
 <div align="center">
 
-<img height="200" src="https://cdn.favware.tech/img/gqlp.png" alt="ArchAngel"/>
+<!-- <img height="200" src="https://cdn.favware.tech/img/gqlp.png" alt="ArchAngel"/> -->
 
 # Star Wars API
 
@@ -46,13 +46,13 @@
 -   Docker images of the API for private hosting published to
     -   [Dockerhub] as `skyrabot/star-wars-api`
     -   [GitHub Package Registry][ghcr_docker] as `ghcr.io/skyrabot/star-wars-api:latest`
--   Provides information about various assets in Pokémon
-    -   Pokédex
-    -   Items
-    -   Abilities
-    -   Moves
-    -   Learnsets
-    -   Type matchups
+-   Provides information about various assets in Star Wars
+    -   People
+    -   Films
+    -   Starships
+    -   Vehicles
+    -   Species
+    -   Planets
 
 # Installation
 
@@ -81,13 +81,13 @@ _These examples are written as based on TypeScript. For JavaScript simply change
 ## Using `Fetch`
 
 ```ts
-import type { Query } from '@@skyra/star-wars-api';
+import type { Query } from '@skyra/star-wars-api';
 
 interface StarWarsGraphqlApiResponse<K extends keyof Omit<Query, '__typename'>> {
 	data: Record<K, Omit<Query[K], '__typename'>>;
 }
 
-fetch('https://graphqlpokemon.favware.tech/', {
+fetch('https://swapi.skyra.pw/', {
 	method: 'POST',
 	headers: {
 		'Content-Type': 'application/json'
@@ -95,56 +95,54 @@ fetch('https://graphqlpokemon.favware.tech/', {
 	body: JSON.stringify({
 		query: `
       {
-        getPokemonDetails(pokemon: dragonite skip: 0 take: 2 reverse: true) {
-            sprite
-            num
-            species
-            color
+        getPerson(pokemon: lukeskywalker) {
+            name
+            birthYear
+            eyeColor
+            gender
         }
       }
     `
 	})
 })
-	.then((res) => res.json() as Promise<StarWarsGraphqlApiResponse<'getPokemonDetails'>>)
+	.then((res) => res.json() as Promise<StarWarsGraphqlApiResponse<'getPerson'>>)
 	.then((json) => console.log(json.data));
 ```
 
 ## Using `Apollo Boost`
 
-_note: for a working example see [dexa]_
-
 ```ts
-import type { Query, QueryGetPokemonDetailsByFuzzyArgs } from '@@skyra/star-wars-api';
+import type { Query, QueryGetPersonFuzzyArgs } from '@skyra/star-wars-api';
 import ApolloClient from 'apollo-boost';
 import fetch from 'cross-fetch';
 import gql from 'graphql-tag';
 
 type StarWarsGraphqlApiResponse<K extends keyof Omit<Query, '__typename'>> = Record<K, Omit<Query[K], '__typename'>>;
 
-const getPokemonDetailsByFuzzy = gql`
-	query pokemonDetails($pokemon: String!) {
-		getPokemonDetailsByFuzzy(pokemon: $pokemon, skip: 0, take: 1, reverse: true) {
-			sprite
-			num
-			species
-			color
+const getPersonFuzzy = gql`
+	query getPerson($person: String!) {
+		getPersonFuzzy(person: $person, take: 10) {
+			name
+			birthYear
+			eyeColor
+			gender
 		}
 	}
 `;
 
 const apolloClient = new ApolloClient({
-	uri: 'https://graphqlpokemon.favware.tech/',
+	uri: 'https://swapi.skyra.pw/',
 	fetch
 });
 
 const {
-	data: { getPokemonDetailsByFuzzy: pokemonData }
-} = await apolloClient.query<StarWarsGraphqlApiResponse<'getPokemonDetailsByFuzzy'>, QueryGetPokemonDetailsByFuzzyArgs>({
-	query: getPokemonDetailsByFuzzy,
-	variables: { pokemon: 'dragonite' }
+	data: { getPersonFuzzy: peopleData }
+} = await apolloClient.query<StarWarsGraphqlApiResponse<'getPersonFuzzy'>, QueryGetPersonFuzzyArgs>({
+	query: getPersonFuzzy,
+	variables: { person: 'luke' }
 });
 
-console.log(pokemonData);
+console.log(peopleData);
 ```
 
 ## Using `Apollo Client React`
@@ -158,7 +156,7 @@ import { HttpLink } from 'apollo-link-http';
 // Instantiate required constructor fields
 const cache = new InMemoryCache();
 const link = new HttpLink({
-	uri: 'https://graphqlpokemon.favware.tech/'
+	uri: 'https://swapi.skyra.pw/'
 });
 
 export const client = new ApolloClient({
@@ -167,7 +165,7 @@ export const client = new ApolloClient({
 	link: link,
 
 	// Provide some optional constructor fields
-	name: 'graphql-pokemon-client',
+	name: 'graphql-star-wars-api-client',
 	version: '1.0',
 	queryDeduplication: false,
 	defaultOptions: {
@@ -183,26 +181,26 @@ export const client = new ApolloClient({
 import React from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import type { Query } from '@@skyra/star-wars-api';
+import type { Query } from '@skyra/star-wars-api';
 import { client } from './ApolloClient';
 
 interface StarWarsGraphqlApiResponse<K extends keyof Omit<Query, '__typename'>> {
 	data: Record<K, Omit<Query[K], '__typename'>>;
 }
 
-const GET_POKEMON_DETAILS = gql`
+const GET_PERSON_DATA = gql`
 	{
-		getPokemonDetails(pokemon: dragonite, skip: 0, take: 2, reverse: true) {
-			sprite
-			num
-			species
-			color
+		getPerson(person: lukeskywalker) {
+			name
+			birthYear
+			eyeColor
+			gender
 		}
 	}
 `;
 
-export const Pokemon: React.FC = () => {
-	const { loading, error, data } = useQuery<StarWarsGraphqlApiResponse<'getPokemonDetails'>>(GET_POKEMON_DETAILS, {
+export const StarWarsPerson: React.FC = () => {
+	const { loading, error, data } = useQuery<StarWarsGraphqlApiResponse<'getPerson'>>(GET_PERSON_DATA, {
 		client: client
 	});
 
@@ -217,7 +215,7 @@ export const Pokemon: React.FC = () => {
 
 ## License
 
-Copyright © 2021, [Favware](https://github.com/skyra-project).
+Copyright © 2021, [Skyra Project](https://github.com/skyra-project).
 Released under the [MIT License](LICENSE.md).
 
 ## Buy us some doughnuts
