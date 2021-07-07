@@ -1,10 +1,11 @@
+import GraphQLLong from '#scalars/GraphQLLong';
 import Film from '#structures/Film';
 import Person from '#structures/Person';
-import { Field, Int, ObjectType } from 'type-graphql';
+import { Field, Float, Int, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'A starship that appears in Star Wars' })
 export default class Starship {
-	@Field(() => Int, { nullable: true, description: 'The maximum cargo capacity of this starship in kilograms' })
+	@Field(() => GraphQLLong, { nullable: true, description: 'The maximum cargo capacity of this starship in kilograms' })
 	public cargoCapacity?: number | null;
 
 	@Field(() => String, {
@@ -13,7 +14,7 @@ export default class Starship {
 	})
 	public consumables?: string | null;
 
-	@Field(() => Int, { nullable: true, description: 'The cost of this starship, new, in galactic credits' })
+	@Field(() => GraphQLLong, { nullable: true, description: 'The cost of this starship, new, in galactic credits' })
 	public costInCredits?: number | null;
 
 	@Field(() => Int, { nullable: true, description: 'The number of personnel needed to run or pilot this starship' })
@@ -22,10 +23,10 @@ export default class Starship {
 	@Field(() => [Film], { description: 'The films this starship appeared in' })
 	public films!: Film[];
 
-	@Field(() => Int, { nullable: true, description: 'The class of hyperdrive this starship has' })
+	@Field(() => Float, { nullable: true, description: 'The class of hyperdrive this starship has' })
 	public hyperdriveRating?: number | null;
 
-	@Field(() => Int, { description: 'The length of this starship in meters' })
+	@Field(() => Float, { description: 'The length of this starship in meters' })
 	public length!: number;
 
 	@Field(() => [String], { description: 'An array of manufacturers of this starship' })

@@ -6,7 +6,7 @@ export const people = personData.enumObject();
 
 @ArgsType()
 export default class PersonArgs {
-	@Field(() => String, { description: 'The person to look up' })
+	@Field(() => people, { description: 'The person to look up' })
 	@IsString()
 	public person!: string;
 }

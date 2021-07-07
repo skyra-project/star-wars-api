@@ -17,7 +17,7 @@ export default class SpeciesService {
 
 	// TODO: add parameter to prevent deep-nesting
 	// TODO: ensure requestedFields supports deep-nesting
-	public mapSpeciesDataToSpeciesGraphQL(data: StarWarsApi.Species, requestedFields: GraphQLSet<keyof Species>): Species {
+	public mapSpeciesDataToSpeciesGraphQL(data: StarWarsApi.Species, requestedFields: GraphQLSet<keyof Species>, _isReferencedCall = false): Species {
 		const species = new Species();
 
 		addPropertyToClass(species, 'averageHeight', data.averageHeight, requestedFields);
@@ -25,7 +25,7 @@ export default class SpeciesService {
 		addPropertyToClass(species, 'classification', data.classification, requestedFields);
 		addPropertyToClass(species, 'designation', data.designation, requestedFields);
 		addPropertyToClass(species, 'eyeColors', data.eyeColors, requestedFields);
-		addPropertyToClass(species, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
+		// addPropertyToClass(species, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
 		addPropertyToClass(species, 'hairColors', data.hairColors, requestedFields);
 		addPropertyToClass(species, 'homeworld', data.homeworld, requestedFields); // TODO: map to actual GraphQL Class
 		addPropertyToClass(species, 'language', data.language, requestedFields);

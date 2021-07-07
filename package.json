@@ -17,6 +17,7 @@
 		"#assets/*": "./generated/api/assets/*.js",
 		"#jsonAssets/*": "./generated/api/assets/*",
 		"#resolvers/*": "./generated/api/resolvers/*.js",
+		"#scalars/*": "./generated/api/scalars/*.js",
 		"#services/*": "./generated/api/services/*.js",
 		"#structures/*": "./generated/api/structures/*.js",
 		"#utils/*": "./generated/api/utils/*.js",

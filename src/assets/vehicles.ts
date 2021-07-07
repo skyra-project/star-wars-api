@@ -79,7 +79,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'snowspeeder',
 		{
 			cargoCapacity: 10,
-			consumables: 'none',
+			consumables: null,
 			costInCredits: null,
 			crew: 2,
 			films: [5],
@@ -96,7 +96,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 	[
 		'tiebomber',
 		{
-			cargoCapacity: NaN,
+			cargoCapacity: null,
 			consumables: '2 days',
 			costInCredits: null,
 			crew: 1,
@@ -133,7 +133,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'atst',
 		{
 			cargoCapacity: 200,
-			consumables: 'none',
+			consumables: null,
 			costInCredits: null,
 			crew: 2,
 			films: [5, 6],
@@ -241,7 +241,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'vulturedroid',
 		{
 			cargoCapacity: 0,
-			consumables: 'none',
+			consumables: null,
 			costInCredits: null,
 			crew: 0,
 			films: [1, 3],
@@ -294,8 +294,8 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 	[
 		'singletrooperaerialplatform',
 		{
-			cargoCapacity: NaN,
-			consumables: 'none',
+			cargoCapacity: null,
+			consumables: null,
 			costInCredits: 2500,
 			crew: 1,
 			films: [1],
@@ -367,7 +367,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'zephyrgswoopbike',
 		{
 			cargoCapacity: 200,
-			consumables: 'none',
+			consumables: null,
 			costInCredits: 5750,
 			crew: 1,
 			films: [2],
@@ -547,7 +547,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'tsmeu6personalwheelbike',
 		{
 			cargoCapacity: 10,
-			consumables: 'none',
+			consumables: null,
 			costInCredits: 15000,
 			crew: 1,
 			films: [3],
@@ -583,7 +583,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'droidtrifighter',
 		{
 			cargoCapacity: 0,
-			consumables: 'none',
+			consumables: null,
 			costInCredits: 20000,
 			crew: 1,
 			films: [3],
@@ -619,7 +619,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'raddaughgnaspfluttercraft',
 		{
 			cargoCapacity: 20,
-			consumables: 'none',
+			consumables: null,
 			costInCredits: 14750,
 			crew: 2,
 			films: [3],
@@ -654,8 +654,8 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 	[
 		'corporatealliancetankdroid',
 		{
-			cargoCapacity: NaN,
-			consumables: 'none',
+			cargoCapacity: null,
+			consumables: null,
 			costInCredits: 49000,
 			crew: 0,
 			films: [3],
@@ -673,7 +673,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'droidgunship',
 		{
 			cargoCapacity: 0,
-			consumables: 'none',
+			consumables: null,
 			costInCredits: 60000,
 			crew: 0,
 			films: [3],

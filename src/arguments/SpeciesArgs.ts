@@ -6,7 +6,7 @@ export const species = speciesData.enumObject();
 
 @ArgsType()
 export default class SpeciesArgs {
-	@Field(() => String, { description: 'The species to look up' })
+	@Field(() => species, { description: 'The species to look up' })
 	@IsString()
 	public species!: string;
 }

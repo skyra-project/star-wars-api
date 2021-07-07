@@ -17,7 +17,7 @@ export default class VehicleService {
 
 	// TODO: add parameter to prevent deep-nesting
 	// TODO: ensure requestedFields supports deep-nesting
-	public mapVehicleDataToVehicleGraphQL(data: StarWarsApi.Vehicle, requestedFields: GraphQLSet<keyof Vehicle>): Vehicle {
+	public mapVehicleDataToVehicleGraphQL(data: StarWarsApi.Vehicle, requestedFields: GraphQLSet<keyof Vehicle>, _isReferencedCall = false): Vehicle {
 		const vehicle = new Vehicle();
 
 		addPropertyToClass(vehicle, 'cargoCapacity', data.cargoCapacity, requestedFields);

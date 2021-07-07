@@ -33,10 +33,10 @@ declare namespace StarWarsApi {
 		climate: string[] | null;
 		diameter: number | null;
 		films: number[];
-		gravity: string | null;
+		gravity: number | null;
 		name: string;
 		orbitalPeriod: string | null;
-		population: string | null;
+		population: number | null;
 		residents: string[];
 		rotationPeriod: string | null;
 		surfaceWater: string | null;
@@ -62,7 +62,7 @@ declare namespace StarWarsApi {
 		cargoCapacity: number | null;
 		consumables: string | null;
 		costInCredits: number | null;
-		crew: string | null;
+		crew: number | null;
 		films: number[];
 		hyperdriveRating: number | null;
 		length: number;

@@ -16,7 +16,7 @@ export default new GraphQLCollection<string, StarWarsApi.Species>([
 			homeworld: 'Coruscant',
 			language: 'Galactic Basic',
 			name: 'Human',
-			people: ['dorm├®', 'dooku', 'bailprestororgana', 'jocastanu'],
+			people: ['dorme', 'dooku', 'bailprestororgana', 'jocastanu'],
 			skinColors: ['caucasian', 'black', 'asian', 'hispanic']
 		}
 	],

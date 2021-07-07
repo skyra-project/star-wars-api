@@ -1,6 +1,7 @@
+import GraphQLLong from '#scalars/GraphQLLong';
 import Film from '#structures/Film';
 import Person from '#structures/Person';
-import { Field, Int, ObjectType } from 'type-graphql';
+import { Field, Float, Int, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'A planet that appeared in Star Wars' })
 export default class Planet {
@@ -13,7 +14,7 @@ export default class Planet {
 	@Field(() => [Film], { description: 'The films in which this planet was featured' })
 	public films!: Film[];
 
-	@Field(() => Int, {
+	@Field(() => Float, {
 		nullable: true,
 		description:
 			'A number denoting the gravity of this planet, were "1" is standard gravity, "2" is twice standard gravity and "0.5" is half standard gravity. This is null for planets for which the gravity is unknown.'
@@ -30,7 +31,7 @@ export default class Planet {
 	})
 	public orbitalPeriod?: number | null;
 
-	@Field(() => Int, {
+	@Field(() => GraphQLLong, {
 		nullable: true,
 		description: 'The average population of sentient beings inhabiting this planet. Null if population is unknown.'
 	})

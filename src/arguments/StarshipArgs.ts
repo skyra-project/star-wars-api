@@ -6,7 +6,7 @@ export const starships = starshipsData.enumObject();
 
 @ArgsType()
 export default class StarshipArgs {
-	@Field(() => String, { description: 'The starship to look up' })
+	@Field(() => starships, { description: 'The starship to look up' })
 	@IsString()
 	public starship!: string;
 }

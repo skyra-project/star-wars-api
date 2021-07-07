@@ -1,5 +1,5 @@
 import Person from '#structures/Person';
-import { Field, Int, ObjectType } from 'type-graphql';
+import { Field, Float, Int, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'A vehicle that appeared in Star Wars' })
 export default class Vehicle {
@@ -7,9 +7,11 @@ export default class Vehicle {
 	public cargoCapacity!: number;
 
 	@Field(() => String, {
-		description: 'The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply'
+		nullable: true,
+		description:
+			'The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply. Null if unknown or unspecified.'
 	})
-	public consumables?: string;
+	public consumables?: string | null;
 
 	@Field(() => Int, { nullable: true, description: 'The cost of this vehicle, new, in galactic credits' })
 	public costInCredits?: number | null;
@@ -17,7 +19,7 @@ export default class Vehicle {
 	@Field(() => Int, { description: 'The number of personnel needed to run or pilot this vehicle' })
 	public crew!: number;
 
-	@Field(() => Int, { nullable: true, description: 'The length of this vehicle in meters' })
+	@Field(() => Float, { nullable: true, description: 'The length of this vehicle in meters' })
 	public length?: number | null;
 
 	@Field(() => [String], { nullable: true, description: 'An array of manufacturers of this vehicle' })

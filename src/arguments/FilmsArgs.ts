@@ -1,8 +1,5 @@
-import filmData from '#assets/films';
 import { IsIn, IsNumber } from 'class-validator';
 import { ArgsType, Field, Int } from 'type-graphql';
-
-export const films = filmData.enumObject();
 
 @ArgsType()
 export default class FilmArgs {

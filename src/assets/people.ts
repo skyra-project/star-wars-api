@@ -283,7 +283,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			hairColors: null,
 			height: 175,
 			homeworld: 'Nal Hutta',
-			mass: NaN,
+			mass: 1358,
 			name: 'Jabba Desilijic Tiure',
 			skinColors: ['green-tan', 'brown'],
 			species: ['hutt'],
@@ -598,7 +598,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 		}
 	],
 	[
-		'padm├®amidala',
+		'padmeamidala',
 		{
 			birthYear: '46BBY',
 			eyeColors: ['brown'],
@@ -608,7 +608,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			height: 185,
 			homeworld: 'Naboo',
 			mass: 45,
-			name: 'Padm├® Amidala',
+			name: 'Padmé Amidala',
 			skinColors: ['light'],
 			species: [],
 			starships: ['naboofighter', 'htypenubianyacht', 'naboostarskiff'],
@@ -670,7 +670,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 		}
 	],
 	[
-		'ricoli├®',
+		'ricolie',
 		{
 			birthYear: 'unknown',
 			eyeColors: ['blue'],
@@ -680,7 +680,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			height: 183,
 			homeworld: 'Naboo',
 			mass: null,
-			name: 'Ric Oli├®',
+			name: 'Ric Olié',
 			skinColors: ['fair'],
 			species: [],
 			starships: ['nabooroyalstarship'],
@@ -1066,7 +1066,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 		}
 	],
 	[
-		'cord├®',
+		'corde',
 		{
 			birthYear: 'unknown',
 			eyeColors: ['brown'],
@@ -1076,7 +1076,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			height: 157,
 			homeworld: 'Naboo',
 			mass: null,
-			name: 'Cord├®',
+			name: 'Cordé',
 			skinColors: ['light'],
 			species: [],
 			starships: [],
@@ -1156,7 +1156,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 		}
 	],
 	[
-		'dorm├®',
+		'dorme',
 		{
 			birthYear: 'unknown',
 			eyeColors: ['brown'],
@@ -1166,7 +1166,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			height: 165,
 			homeworld: 'Naboo',
 			mass: null,
-			name: 'Dorm├®',
+			name: 'Dormé',
 			skinColors: ['light'],
 			species: ['human'],
 			starships: [],

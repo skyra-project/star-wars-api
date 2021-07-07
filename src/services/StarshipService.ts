@@ -10,21 +10,25 @@ import Util from '#utils/util';
 import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
-export default class SpeciesService {
+export default class StarshipService {
 	public getByStarshipName(@Args(() => StarshipArgs) { starship }: StarshipArgs): StarWarsApi.Starship | undefined {
 		return starships.get(starship);
 	}
 
 	// TODO: add parameter to prevent deep-nesting
 	// TODO: ensure requestedFields supports deep-nesting
-	public mapStarshipDataToStarshipGraphQL(data: StarWarsApi.Starship, requestedFields: GraphQLSet<keyof Starship>): Starship {
+	public mapStarshipDataToStarshipGraphQL(
+		data: StarWarsApi.Starship,
+		requestedFields: GraphQLSet<keyof Starship>,
+		_isReferencedCall = false
+	): Starship {
 		const starship = new Starship();
 
 		addPropertyToClass(starship, 'cargoCapacity', data.cargoCapacity, requestedFields);
 		addPropertyToClass(starship, 'consumables', data.consumables, requestedFields);
 		addPropertyToClass(starship, 'costInCredits', data.costInCredits, requestedFields);
 		addPropertyToClass(starship, 'crew', data.crew, requestedFields);
-		addPropertyToClass(starship, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
+		// addPropertyToClass(starship, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
 		addPropertyToClass(starship, 'hyperdriveRating', data.hyperdriveRating, requestedFields);
 		addPropertyToClass(starship, 'length', data.length, requestedFields);
 		addPropertyToClass(starship, 'manufacturers', data.manufacturers, requestedFields);

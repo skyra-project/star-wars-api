@@ -10,6 +10,7 @@
 			"#jsonAssets/*.json": ["./assets/*.json"],
 			"#dexdata/*": ["./assets/pokedex-data/*"],
 			"#resolvers/*": ["./resolvers/*"],
+			"#scalars/*": ["./scalars/*"],
 			"#services/*": ["./services/*"],
 			"#structures/*": ["./structures/*"],
 			"#utils/*": ["./utils/*"],

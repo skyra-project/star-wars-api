@@ -17,12 +17,12 @@ export default class PlanetService {
 
 	// TODO: add parameter to prevent deep-nesting
 	// TODO: ensure requestedFields supports deep-nesting
-	public mapPlanetDataToPlanetGraphQL(data: StarWarsApi.Planet, requestedFields: GraphQLSet<keyof Planet>): Planet {
+	public mapPlanetDataToPlanetGraphQL(data: StarWarsApi.Planet, requestedFields: GraphQLSet<keyof Planet>, _isReferencedCall = false): Planet {
 		const planet = new Planet();
 
 		addPropertyToClass(planet, 'climates', data.climate, requestedFields);
 		addPropertyToClass(planet, 'diameter', data.diameter, requestedFields);
-		addPropertyToClass(planet, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
+		// addPropertyToClass(planet, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
 		addPropertyToClass(planet, 'gravity', data.gravity, requestedFields);
 		addPropertyToClass(planet, 'name', data.name, requestedFields);
 		addPropertyToClass(planet, 'orbitalPeriod', data.orbitalPeriod, requestedFields);

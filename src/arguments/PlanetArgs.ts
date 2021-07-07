@@ -6,7 +6,7 @@ export const planets = planetData.enumObject();
 
 @ArgsType()
 export default class PlanetArgs {
-	@Field(() => String, { description: 'The planet to look up' })
+	@Field(() => planets, { description: 'The planet to look up' })
 	@IsString()
 	public planet!: string;
 }

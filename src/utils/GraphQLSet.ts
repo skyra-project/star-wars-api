@@ -26,7 +26,7 @@ export default class GraphQLSet<V> extends Set<V> {
 	 * @param fn The function to test with (should return boolean)
 	 * @param [thisArg] Value to use as `this` when executing function
 	 * @returns {GraphQLSet}
-	 * @example graphqlset.filter((v) => v.startsWith('parentKey'));
+	 * @example graphqlSet.filter((v) => v.startsWith('parentKey'));
 	 */
 	public filter(fn: (value: V, set: this) => boolean): this;
 	public filter<R>(fn: (value: V, set: this) => boolean): R;
@@ -38,6 +38,28 @@ export default class GraphQLSet<V> extends Set<V> {
 
 		for (const val of this) {
 			if (fn(val, this)) results.add(val);
+		}
+
+		return results;
+	}
+
+	/**
+	 * Similar to {@link GraphQLSet.filter}, but instead of receiving a predicate callback,
+	 * this instead receives a string that will be checked through a `.startsWith` call.
+	 * If the value starts with the given {@link checkString} then that {@link checkString}
+	 * is removed from the start of the value and the remaining value is added to the result.
+	 *
+	 * @param checkString The string that will be used in the `.startsWith` check
+	 * @returns {GraphQLSet}
+	 * @example graphqlSet.filter('parentKey.');
+	 */
+	public filterStartsWith<R extends GraphQLSet<unknown>>(checkString: string): R {
+		const results = new this.constructor[Symbol.species]<V>() as R;
+
+		for (const val of this) {
+			if (typeof val === 'string' && val.startsWith(checkString)) {
+				results.add(val.replace(checkString, '') as unknown as V);
+			}
 		}
 
 		return results;

@@ -1,10 +1,14 @@
-import { films } from '#arguments/FilmsArgs';
 import { people } from '#arguments/PersonArgs';
 import { planets } from '#arguments/PlanetArgs';
 import { species } from '#arguments/SpeciesArgs';
 import { starships } from '#arguments/StarshipArgs';
 import { vehicles } from '#arguments/VehicleArgs';
 import FilmResolver from '#resolvers/FilmResolver';
+import PersonResolver from '#resolvers/PersonResolver';
+import PlanetResolver from '#resolvers/PlanetResolver';
+import SpeciesResolver from '#resolvers/SpeciesResolver';
+import StarshipResolver from '#resolvers/StarshipResolver';
+import VehicleResolver from '#resolvers/VehicleResolver';
 import tabs from '#root/defaultPlaygroundTabs';
 import { ApolloServer } from 'apollo-server-koa';
 import type { GraphQLSchema } from 'graphql';
@@ -12,38 +16,33 @@ import Koa from 'koa';
 import { buildSchemaSync, registerEnumType } from 'type-graphql';
 
 export const buildGqlSchema = (): GraphQLSchema => {
-	registerEnumType(films, {
-		name: 'Films',
-		description: 'The Star Wars films'
-	});
-
 	registerEnumType(people, {
-		name: 'People',
+		name: 'StarWarsPeople',
 		description: 'The people in Star Wars'
 	});
 
 	registerEnumType(planets, {
-		name: 'Planets',
+		name: 'StarWarsPlanets',
 		description: 'The planets in Star War'
 	});
 
 	registerEnumType(species, {
-		name: 'Species',
+		name: 'StarWarsSpecies',
 		description: 'The species in Star Wars'
 	});
 
 	registerEnumType(starships, {
-		name: 'Starships',
+		name: 'StarWarsStarships',
 		description: 'The starships in Star Wars'
 	});
 
 	registerEnumType(vehicles, {
-		name: 'Vehicles',
+		name: 'StarWarsVehicles',
 		description: 'The vehicles in Star Wars'
 	});
 
 	return buildSchemaSync({
-		resolvers: [FilmResolver],
+		resolvers: [FilmResolver, PersonResolver, PlanetResolver, SpeciesResolver, StarshipResolver, VehicleResolver],
 		dateScalarMode: 'isoDate'
 	});
 };

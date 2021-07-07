@@ -17,13 +17,13 @@ export default class PersonService {
 
 	// TODO: add parameter to prevent deep-nesting
 	// TODO: ensure requestedFields supports deep-nesting
-	public mapPersonDataToPersonGraphQL(data: StarWarsApi.Person, requestedFields: GraphQLSet<keyof Person>): Person {
+	public mapPersonDataToPersonGraphQL(data: StarWarsApi.Person, requestedFields: GraphQLSet<keyof Person>, _isReferencedCall = false): Person {
 		// const film = new Film();
 		const person = new Person();
 
 		addPropertyToClass(person, 'birthYear', data.birthYear, requestedFields);
 		addPropertyToClass(person, 'eyeColors', data.eyeColors, requestedFields);
-		addPropertyToClass(person, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
+		// addPropertyToClass(person, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
 		addPropertyToClass(person, 'gender', data.gender, requestedFields);
 		addPropertyToClass(person, 'hairColors', data.hairColors, requestedFields);
 		addPropertyToClass(person, 'height', data.height, requestedFields);
