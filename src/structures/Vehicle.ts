@@ -12,22 +12,22 @@ export default class Vehicle {
 	public consumables?: string;
 
 	@Field(() => Int, { nullable: true, description: 'The cost of this vehicle, new, in galactic credits' })
-	public costInCredits?: number;
+	public costInCredits?: number | null;
 
 	@Field(() => Int, { description: 'The number of personnel needed to run or pilot this vehicle' })
 	public crew!: number;
 
 	@Field(() => Int, { nullable: true, description: 'The length of this vehicle in meters' })
-	public length?: number;
+	public length?: number | null;
 
 	@Field(() => [String], { nullable: true, description: 'An array of manufacturers of this vehicle' })
-	public manufacturer?: string[];
+	public manufacturers?: string[] | null;
 
 	@Field(() => Int, {
 		nullable: true,
 		description: 'The maximum speed of this vehicle in the atmosphere, or null if this ship is incapable of atmospheric flight'
 	})
-	public maxAtmospheringSpeed?: number;
+	public maxAtmospheringSpeed?: number | null;
 
 	@Field(() => String, { description: 'The model of this vehicle' })
 	public model!: string;
@@ -36,7 +36,7 @@ export default class Vehicle {
 	public name!: string;
 
 	@Field(() => Int, { nullable: true, description: 'The number of non-essential people this vehicle can transport' })
-	public passengers?: number;
+	public passengers?: number | null;
 
 	@Field(() => [Person], { description: 'The people who have piloted this vehicle' })
 	public pilots!: Person[];

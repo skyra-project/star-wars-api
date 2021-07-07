@@ -40,7 +40,7 @@ declare namespace StarWarsApi {
 		residents: string[];
 		rotationPeriod: string | null;
 		surfaceWater: string | null;
-		terrain: string[] | null;
+		terrains: string[] | null;
 	}
 
 	export interface Species {

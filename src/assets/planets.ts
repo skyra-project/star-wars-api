@@ -27,7 +27,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			],
 			rotationPeriod: '23',
 			surfaceWater: '1',
-			terrain: ['desert']
+			terrains: ['desert']
 		}
 	],
 	[
@@ -43,7 +43,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['leiaorgana', 'bailprestororgana', 'raymusantilles'],
 			rotationPeriod: '24',
 			surfaceWater: '40',
-			terrain: ['grasslands', 'mountains']
+			terrains: ['grasslands', 'mountains']
 		}
 	],
 	[
@@ -59,7 +59,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '24',
 			surfaceWater: '8',
-			terrain: ['jungle', 'rainforests']
+			terrains: ['jungle', 'rainforests']
 		}
 	],
 	[
@@ -75,7 +75,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '23',
 			surfaceWater: '100',
-			terrain: ['tundra', 'ice caves', 'mountain ranges']
+			terrains: ['tundra', 'ice caves', 'mountain ranges']
 		}
 	],
 	[
@@ -91,7 +91,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '23',
 			surfaceWater: '8',
-			terrain: ['swamp', 'jungles']
+			terrains: ['swamp', 'jungles']
 		}
 	],
 	[
@@ -107,7 +107,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['lobot'],
 			rotationPeriod: '12',
 			surfaceWater: '0',
-			terrain: ['gas giant']
+			terrains: ['gas giant']
 		}
 	],
 	[
@@ -123,7 +123,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['wicketsystriwarrick'],
 			rotationPeriod: '18',
 			surfaceWater: '8',
-			terrain: ['forests', 'mountains', 'lakes']
+			terrains: ['forests', 'mountains', 'lakes']
 		}
 	],
 	[
@@ -151,7 +151,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			],
 			rotationPeriod: '26',
 			surfaceWater: '12',
-			terrain: ['grassy hills', 'swamps', 'forests', 'mountains']
+			terrains: ['grassy hills', 'swamps', 'forests', 'mountains']
 		}
 	],
 	[
@@ -167,7 +167,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['finisvalorum', 'adigallia', 'jocastanu'],
 			rotationPeriod: '24',
 			surfaceWater: null,
-			terrain: ['cityscape', 'mountains']
+			terrains: ['cityscape', 'mountains']
 		}
 	],
 	[
@@ -183,7 +183,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['bobafett', 'lamasu', 'taunwe'],
 			rotationPeriod: '27',
 			surfaceWater: '100',
-			terrain: ['ocean']
+			terrains: ['ocean']
 		}
 	],
 	[
@@ -199,7 +199,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['pogglethelesser'],
 			rotationPeriod: '30',
 			surfaceWater: '5',
-			terrain: ['rock', 'desert', 'mountain', 'barren']
+			terrains: ['rock', 'desert', 'mountain', 'barren']
 		}
 	],
 	[
@@ -215,7 +215,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['tionmedon'],
 			rotationPeriod: '27',
 			surfaceWater: '0.9',
-			terrain: ['scrublands', 'savanna', 'canyons', 'sinkholes']
+			terrains: ['scrublands', 'savanna', 'canyons', 'sinkholes']
 		}
 	],
 	[
@@ -231,7 +231,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '36',
 			surfaceWater: '0',
-			terrain: ['volcanoes', 'lava rivers', 'mountains', 'caves']
+			terrains: ['volcanoes', 'lava rivers', 'mountains', 'caves']
 		}
 	],
 	[
@@ -247,7 +247,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['chewbacca', 'tarfful'],
 			rotationPeriod: '26',
 			surfaceWater: '60',
-			terrain: ['jungle', 'forests', 'lakes', 'rivers']
+			terrains: ['jungle', 'forests', 'lakes', 'rivers']
 		}
 	],
 	[
@@ -263,7 +263,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '24',
 			surfaceWater: '0',
-			terrain: ['airless asteroid']
+			terrains: ['airless asteroid']
 		}
 	],
 	[
@@ -279,7 +279,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '12',
 			surfaceWater: null,
-			terrain: ['glaciers', 'mountains', 'ice canyons']
+			terrains: ['glaciers', 'mountains', 'ice canyons']
 		}
 	],
 	[
@@ -295,7 +295,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '34',
 			surfaceWater: null,
-			terrain: ['fungus forests']
+			terrains: ['fungus forests']
 		}
 	],
 	[
@@ -311,7 +311,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['nutegunray'],
 			rotationPeriod: '25',
 			surfaceWater: null,
-			terrain: ['mountains', 'fields', 'forests', 'rock arches']
+			terrains: ['mountains', 'fields', 'forests', 'rock arches']
 		}
 	],
 	[
@@ -327,7 +327,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '26',
 			surfaceWater: null,
-			terrain: ['caves', 'desert', 'mountains', 'volcanoes']
+			terrains: ['caves', 'desert', 'mountains', 'volcanoes']
 		}
 	],
 	[
@@ -343,7 +343,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['obiwankenobi'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: ['grass']
+			terrains: ['grass']
 		}
 	],
 	[
@@ -359,7 +359,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['wilhufftarkin'],
 			rotationPeriod: '24',
 			surfaceWater: null,
-			terrain: ['cityscape']
+			terrains: ['cityscape']
 		}
 	],
 	[
@@ -375,7 +375,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['hansolo', 'wedgeantilles'],
 			rotationPeriod: '25',
 			surfaceWater: '70',
-			terrain: ['plains', 'urban', 'hills', 'forests']
+			terrains: ['plains', 'urban', 'hills', 'forests']
 		}
 	],
 	[
@@ -391,7 +391,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['greedo'],
 			rotationPeriod: '29',
 			surfaceWater: '60',
-			terrain: ['jungles', 'oceans', 'urban', 'swamps']
+			terrains: ['jungles', 'oceans', 'urban', 'swamps']
 		}
 	],
 	[
@@ -407,7 +407,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['jabbadesilijictiure'],
 			rotationPeriod: '87',
 			surfaceWater: null,
-			terrain: ['urban', 'oceans', 'swamps', 'bogs']
+			terrains: ['urban', 'oceans', 'swamps', 'bogs']
 		}
 	],
 	[
@@ -423,7 +423,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '25',
 			surfaceWater: null,
-			terrain: ['oceans', 'savannas', 'mountains', 'grasslands']
+			terrains: ['oceans', 'savannas', 'mountains', 'grasslands']
 		}
 	],
 	[
@@ -439,7 +439,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['jektonoporkins'],
 			rotationPeriod: '26',
 			surfaceWater: '98',
-			terrain: ['rocky islands', 'oceans']
+			terrains: ['rocky islands', 'oceans']
 		}
 	],
 	[
@@ -455,7 +455,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: '26',
 			surfaceWater: '10',
-			terrain: ['plains', 'seas', 'mesas']
+			terrains: ['plains', 'seas', 'mesas']
 		}
 	],
 	[
@@ -471,7 +471,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['bossk'],
 			rotationPeriod: '25',
 			surfaceWater: null,
-			terrain: ['mountains', 'seas', 'grasslands', 'deserts']
+			terrains: ['mountains', 'seas', 'grasslands', 'deserts']
 		}
 	],
 	[
@@ -487,7 +487,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['landocalrissian'],
 			rotationPeriod: '20',
 			surfaceWater: null,
-			terrain: ['deserts', 'mountains']
+			terrains: ['deserts', 'mountains']
 		}
 	],
 	[
@@ -503,7 +503,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['ackbar'],
 			rotationPeriod: '21',
 			surfaceWater: '100',
-			terrain: ['oceans', 'reefs', 'islands']
+			terrains: ['oceans', 'reefs', 'islands']
 		}
 	],
 	[
@@ -519,7 +519,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['monmothma'],
 			rotationPeriod: '20',
 			surfaceWater: '40',
-			terrain: ['plains', 'forests']
+			terrains: ['plains', 'forests']
 		}
 	],
 	[
@@ -535,7 +535,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['niennunb'],
 			rotationPeriod: '20',
 			surfaceWater: '5',
-			terrain: ['mountains', 'volcanoes', 'rocky deserts']
+			terrains: ['mountains', 'volcanoes', 'rocky deserts']
 		}
 	],
 	[
@@ -551,7 +551,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['watto'],
 			rotationPeriod: '21',
 			surfaceWater: null,
-			terrain: ['swamps', 'lakes']
+			terrains: ['swamps', 'lakes']
 		}
 	],
 	[
@@ -567,7 +567,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['sebulba'],
 			rotationPeriod: '26',
 			surfaceWater: null,
-			terrain: ['swamps', 'deserts', 'jungles', 'mountains']
+			terrains: ['swamps', 'deserts', 'jungles', 'mountains']
 		}
 	],
 	[
@@ -583,7 +583,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['darthmaul'],
 			rotationPeriod: '24',
 			surfaceWater: null,
-			terrain: ['forests', 'deserts', 'savannas']
+			terrains: ['forests', 'deserts', 'savannas']
 		}
 	],
 	[
@@ -599,7 +599,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['bibfortuna', 'aylasecura'],
 			rotationPeriod: '30',
 			surfaceWater: '5',
-			terrain: ['mountains', 'valleys', 'deserts', 'tundra']
+			terrains: ['mountains', 'valleys', 'deserts', 'tundra']
 		}
 	],
 	[
@@ -615,7 +615,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['rattstyerel'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: null
+			terrains: null
 		}
 	],
 	[
@@ -631,7 +631,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['dudbolt'],
 			rotationPeriod: '22',
 			surfaceWater: null,
-			terrain: ['urban', 'barren']
+			terrains: ['urban', 'barren']
 		}
 	],
 	[
@@ -647,7 +647,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['gasgano'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: ['desert', 'tundra', 'rainforests', 'mountains']
+			terrains: ['desert', 'tundra', 'rainforests', 'mountains']
 		}
 	],
 	[
@@ -663,7 +663,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['benquadinaros'],
 			rotationPeriod: '48',
 			surfaceWater: null,
-			terrain: ['barren', 'ash']
+			terrains: ['barren', 'ash']
 		}
 	],
 	[
@@ -679,7 +679,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['macewindu'],
 			rotationPeriod: '25',
 			surfaceWater: null,
-			terrain: ['toxic cloudsea', 'plateaus', 'volcanoes']
+			terrains: ['toxic cloudsea', 'plateaus', 'volcanoes']
 		}
 	],
 	[
@@ -695,7 +695,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['kiadimundi'],
 			rotationPeriod: '27',
 			surfaceWater: '20',
-			terrain: ['verdant']
+			terrains: ['verdant']
 		}
 	],
 	[
@@ -711,7 +711,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['kitfisto'],
 			rotationPeriod: '33',
 			surfaceWater: '80',
-			terrain: ['lakes', 'islands', 'swamps', 'seas']
+			terrains: ['lakes', 'islands', 'swamps', 'seas']
 		}
 	],
 	[
@@ -727,7 +727,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['eethkoth'],
 			rotationPeriod: '29',
 			surfaceWater: null,
-			terrain: ['rocky canyons', 'acid pools']
+			terrains: ['rocky canyons', 'acid pools']
 		}
 	],
 	[
@@ -743,7 +743,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: null
+			terrains: null
 		}
 	],
 	[
@@ -759,7 +759,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['saeseetiin'],
 			rotationPeriod: '22',
 			surfaceWater: null,
-			terrain: ['rocky']
+			terrains: ['rocky']
 		}
 	],
 	[
@@ -775,7 +775,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['yaraelpoof'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: null
+			terrains: null
 		}
 	],
 	[
@@ -791,7 +791,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['plokoon'],
 			rotationPeriod: '22',
 			surfaceWater: null,
-			terrain: null
+			terrains: null
 		}
 	],
 	[
@@ -807,7 +807,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['masamedda'],
 			rotationPeriod: '27',
 			surfaceWater: null,
-			terrain: ['oceans', 'rainforests', 'plateaus']
+			terrains: ['oceans', 'rainforests', 'plateaus']
 		}
 	],
 	[
@@ -823,7 +823,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['luminaraunduli', 'barrissoffee'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: ['deserts']
+			terrains: ['deserts']
 		}
 	],
 	[
@@ -839,7 +839,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['dooku'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: ['rainforests', 'rivers', 'mountains']
+			terrains: ['rainforests', 'rivers', 'mountains']
 		}
 	],
 	[
@@ -855,7 +855,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['jangofett'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: ['jungles', 'forests', 'deserts']
+			terrains: ['jungles', 'forests', 'deserts']
 		}
 	],
 	[
@@ -871,7 +871,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['zamwesell'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: null
+			terrains: null
 		}
 	],
 	[
@@ -887,7 +887,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['dexterjettster'],
 			rotationPeriod: null,
 			surfaceWater: '100',
-			terrain: ['oceans', 'glaciers']
+			terrains: ['oceans', 'glaciers']
 		}
 	],
 	[
@@ -903,7 +903,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['wattambor'],
 			rotationPeriod: '27',
 			surfaceWater: null,
-			terrain: ['urban', 'vines']
+			terrains: ['urban', 'vines']
 		}
 	],
 	[
@@ -919,7 +919,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['sanhill'],
 			rotationPeriod: '28',
 			surfaceWater: '25',
-			terrain: ['plains', 'forests', 'hills', 'mountains']
+			terrains: ['plains', 'forests', 'hills', 'mountains']
 		}
 	],
 	[
@@ -935,7 +935,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['shaakti'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: ['cities', 'savannahs', 'seas', 'plains']
+			terrains: ['cities', 'savannahs', 'seas', 'plains']
 		}
 	],
 	[
@@ -951,7 +951,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['grievous'],
 			rotationPeriod: '23',
 			surfaceWater: null,
-			terrain: ['rainforests', 'cliffs', 'canyons', 'seas']
+			terrains: ['rainforests', 'cliffs', 'canyons', 'seas']
 		}
 	],
 	[
@@ -967,7 +967,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['slymoore'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrain: null
+			terrains: null
 		}
 	]
 ]);

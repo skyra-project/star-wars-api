@@ -33,14 +33,14 @@ export default class FilmResolver {
 		return graphqlObject;
 	}
 
-	@Query(() => Film, {
+	@Query(() => [Film], {
 		description: [
 			'Gets details on a Star Wars film, using a fuzzy search on title or episode number',
 			'This can be used to find multiple results based on the query',
 			'By default only 1 result is returned. You can provide the arguments "take", "offset", and "reverse" to modify this behaviour.'
 		].join('\n')
 	})
-	public getFuzzyFilm(@Args() args: FuzzyFilmArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Film>): Film {
+	public getFuzzyFilm(@Args() args: FuzzyFilmArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Film>): Film[] {
 		const filmEpisodeId = Number(args.film);
 
 		let data = filmEpisodeId ? this.filmService.getByEpisodeNumber({ film: filmEpisodeId }) : undefined;
@@ -52,6 +52,7 @@ export default class FilmResolver {
 				throw new Error(`Failed to get data for film: ${args.film}`);
 			}
 
+			// TODO: Actually return multiple results by looping over this
 			data = this.filmService.getByEpisodeNumber({ film: fuzzyEntry[0].item.episodeId });
 
 			if (!data) {
@@ -65,6 +66,7 @@ export default class FilmResolver {
 			throw new Error(`Failed to get data for film: ${args.film}`);
 		}
 
-		return graphqlObject;
+		// TODO: Actually return multiple results by looping over this
+		return [graphqlObject];
 	}
 }
