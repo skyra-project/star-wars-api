@@ -1,3 +1,4 @@
+import Film from '#structures/Film';
 import Person from '#structures/Person';
 import { Field, Float, Int, ObjectType } from 'type-graphql';
 
@@ -18,6 +19,9 @@ export default class Vehicle {
 
 	@Field(() => Int, { description: 'The number of personnel needed to run or pilot this vehicle' })
 	public crew!: number;
+
+	@Field(() => [Film], { description: 'The films this vehicle appeared in' })
+	public films!: Film[];
 
 	@Field(() => Float, { nullable: true, description: 'The length of this vehicle in meters' })
 	public length?: number | null;

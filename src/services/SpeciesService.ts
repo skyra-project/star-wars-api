@@ -1,6 +1,12 @@
 import FuzzySpeciesArgs from '#arguments/FuzzyArgs/FuzzySpeciesArgs';
 import SpeciesArgs from '#arguments/SpeciesArgs';
 import speciesData from '#assets/species';
+import FilmService from '#services/FilmService';
+import PersonService from '#services/PersonService';
+import PlanetService from '#services/PlanetService';
+import type Film from '#structures/Film';
+import type Person from '#structures/Person';
+import type Planet from '#structures/Planet';
 import Species from '#structures/Species';
 import { addPropertyToClass } from '#utils/addPropertyToClass';
 import FuzzySearch from '#utils/FuzzySearch';
@@ -11,26 +17,70 @@ import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
 export default class SpeciesService {
+	private filmService: FilmService;
+	private personService: PersonService;
+	private planetService: PlanetService;
+
+	public constructor() {
+		this.filmService = new FilmService();
+		this.personService = new PersonService();
+		this.planetService = new PlanetService();
+	}
+
 	public getBySpeciesName(@Args(() => SpeciesArgs) { species }: SpeciesArgs): StarWarsApi.Species | undefined {
 		return speciesData.get(species);
 	}
 
-	// TODO: add parameter to prevent deep-nesting
-	// TODO: ensure requestedFields supports deep-nesting
-	public mapSpeciesDataToSpeciesGraphQL(data: StarWarsApi.Species, requestedFields: GraphQLSet<keyof Species>, _isReferencedCall = false): Species {
+	public mapSpeciesDataToSpeciesGraphQL(data: StarWarsApi.Species, requestedFields: GraphQLSet<keyof Species>, isReferencedCall = false): Species {
 		const species = new Species();
+
+		const people: Person[] = [];
+		const films: Film[] = [];
+
+		if (!isReferencedCall) {
+			if (requestedFields.has('films')) {
+				const filmFields = requestedFields.filterStartsWith<GraphQLSet<keyof Film>>('films.');
+
+				for (const film of data.films) {
+					const filmData = this.filmService.getByEpisodeNumber({ film })!;
+					films.push(this.filmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+				}
+			}
+
+			if (requestedFields.has('people')) {
+				const characterFields = requestedFields.filterStartsWith<GraphQLSet<keyof Person>>('people.');
+
+				for (const character of data.people) {
+					const personData = this.personService.getByPersonName({ person: character })!;
+					people.push(this.personService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+				}
+			}
+
+			if (requestedFields.has('homeworld')) {
+				const homeworldFields = requestedFields.filterStartsWith<GraphQLSet<keyof Planet>>('homeworld.');
+
+				if (data.homeworld) {
+					const homeworldData = this.planetService.getByPlanetName({ planet: data.homeworld })!;
+					addPropertyToClass(
+						species,
+						'homeworld',
+						this.planetService.mapPlanetDataToPlanetGraphQL(homeworldData, homeworldFields, true),
+						requestedFields
+					);
+				}
+			}
+		}
 
 		addPropertyToClass(species, 'averageHeight', data.averageHeight, requestedFields);
 		addPropertyToClass(species, 'averageLifespan', data.averageLifespan, requestedFields);
 		addPropertyToClass(species, 'classification', data.classification, requestedFields);
 		addPropertyToClass(species, 'designation', data.designation, requestedFields);
 		addPropertyToClass(species, 'eyeColors', data.eyeColors, requestedFields);
-		// addPropertyToClass(species, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
+		addPropertyToClass(species, 'films', films, requestedFields);
 		addPropertyToClass(species, 'hairColors', data.hairColors, requestedFields);
-		addPropertyToClass(species, 'homeworld', data.homeworld, requestedFields); // TODO: map to actual GraphQL Class
 		addPropertyToClass(species, 'language', data.language, requestedFields);
 		addPropertyToClass(species, 'name', data.name, requestedFields);
-		addPropertyToClass(species, 'people', data.people, requestedFields); // TODO: map to actual GraphQL Class
+		addPropertyToClass(species, 'people', people, requestedFields);
 		addPropertyToClass(species, 'skinColors', data.skinColors, requestedFields);
 
 		return species;

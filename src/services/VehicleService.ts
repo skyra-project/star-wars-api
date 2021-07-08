@@ -1,6 +1,10 @@
 import FuzzyVehicleArgs from '#arguments/FuzzyArgs/FuzzyVehicleArgs';
 import VehicleArgs from '#arguments/VehicleArgs';
 import vehicles from '#assets/vehicles';
+import FilmService from '#services/FilmService';
+import PersonService from '#services/PersonService';
+import type Film from '#structures/Film';
+import type Person from '#structures/Person';
 import Vehicle from '#structures/Vehicle';
 import { addPropertyToClass } from '#utils/addPropertyToClass';
 import FuzzySearch from '#utils/FuzzySearch';
@@ -11,26 +15,56 @@ import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
 export default class VehicleService {
+	private filmService: FilmService;
+	private personService: PersonService;
+
+	public constructor() {
+		this.filmService = new FilmService();
+		this.personService = new PersonService();
+	}
+
 	public getByVehicleName(@Args(() => VehicleArgs) { vehicle }: VehicleArgs): StarWarsApi.Vehicle | undefined {
 		return vehicles.get(vehicle);
 	}
 
-	// TODO: add parameter to prevent deep-nesting
-	// TODO: ensure requestedFields supports deep-nesting
-	public mapVehicleDataToVehicleGraphQL(data: StarWarsApi.Vehicle, requestedFields: GraphQLSet<keyof Vehicle>, _isReferencedCall = false): Vehicle {
+	public mapVehicleDataToVehicleGraphQL(data: StarWarsApi.Vehicle, requestedFields: GraphQLSet<keyof Vehicle>, isReferencedCall = false): Vehicle {
 		const vehicle = new Vehicle();
+
+		const pilots: Person[] = [];
+		const films: Film[] = [];
+
+		if (!isReferencedCall) {
+			if (requestedFields.has('films')) {
+				const filmFields = requestedFields.filterStartsWith<GraphQLSet<keyof Film>>('films.');
+
+				for (const film of data.films) {
+					const filmData = this.filmService.getByEpisodeNumber({ film })!;
+					films.push(this.filmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+				}
+			}
+
+			if (requestedFields.has('pilots')) {
+				const characterFields = requestedFields.filterStartsWith<GraphQLSet<keyof Person>>('pilots.');
+
+				for (const character of data.pilots) {
+					const personData = this.personService.getByPersonName({ person: character })!;
+					pilots.push(this.personService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+				}
+			}
+		}
 
 		addPropertyToClass(vehicle, 'cargoCapacity', data.cargoCapacity, requestedFields);
 		addPropertyToClass(vehicle, 'consumables', data.consumables, requestedFields);
 		addPropertyToClass(vehicle, 'costInCredits', data.costInCredits, requestedFields);
 		addPropertyToClass(vehicle, 'crew', data.crew, requestedFields);
+		addPropertyToClass(vehicle, 'films', films, requestedFields);
 		addPropertyToClass(vehicle, 'length', data.length, requestedFields);
 		addPropertyToClass(vehicle, 'manufacturers', data.manufacturers, requestedFields);
 		addPropertyToClass(vehicle, 'maxAtmospheringSpeed', data.maxAtmospheringSpeed, requestedFields);
 		addPropertyToClass(vehicle, 'model', data.model, requestedFields);
 		addPropertyToClass(vehicle, 'name', data.name, requestedFields);
 		addPropertyToClass(vehicle, 'passengers', data.passengers, requestedFields);
-		addPropertyToClass(vehicle, 'pilots', data.pilots, requestedFields); // TODO: map to actual GraphQL Class
+		addPropertyToClass(vehicle, 'pilots', pilots, requestedFields);
 		addPropertyToClass(vehicle, 'vehicleClass', data.vehicleClass, requestedFields);
 
 		return vehicle;

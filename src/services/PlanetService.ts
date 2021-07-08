@@ -1,6 +1,10 @@
 import FuzzyPlanetArgs from '#arguments/FuzzyArgs/FuzzyPlanetArgs';
 import PlanetArgs from '#arguments/PlanetArgs';
 import planets from '#assets/planets';
+import FilmService from '#services/FilmService';
+import PersonService from '#services/PersonService';
+import type Film from '#structures/Film';
+import type Person from '#structures/Person';
 import Planet from '#structures/Planet';
 import { addPropertyToClass } from '#utils/addPropertyToClass';
 import FuzzySearch from '#utils/FuzzySearch';
@@ -11,23 +15,52 @@ import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
 export default class PlanetService {
+	private filmService: FilmService;
+	private personService: PersonService;
+
+	public constructor() {
+		this.filmService = new FilmService();
+		this.personService = new PersonService();
+	}
+
 	public getByPlanetName(@Args(() => PlanetArgs) { planet }: PlanetArgs): StarWarsApi.Planet | undefined {
 		return planets.get(planet);
 	}
 
-	// TODO: add parameter to prevent deep-nesting
-	// TODO: ensure requestedFields supports deep-nesting
-	public mapPlanetDataToPlanetGraphQL(data: StarWarsApi.Planet, requestedFields: GraphQLSet<keyof Planet>, _isReferencedCall = false): Planet {
+	public mapPlanetDataToPlanetGraphQL(data: StarWarsApi.Planet, requestedFields: GraphQLSet<keyof Planet>, isReferencedCall = false): Planet {
 		const planet = new Planet();
+
+		const films: Film[] = [];
+		const residents: Person[] = [];
+
+		if (!isReferencedCall) {
+			if (requestedFields.has('films')) {
+				const filmFields = requestedFields.filterStartsWith<GraphQLSet<keyof Film>>('films.');
+
+				for (const film of data.films) {
+					const filmData = this.filmService.getByEpisodeNumber({ film })!;
+					films.push(this.filmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+				}
+			}
+
+			if (requestedFields.has('residents')) {
+				const characterFields = requestedFields.filterStartsWith<GraphQLSet<keyof Person>>('residents.');
+
+				for (const character of data.residents) {
+					const personData = this.personService.getByPersonName({ person: character })!;
+					residents.push(this.personService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+				}
+			}
+		}
 
 		addPropertyToClass(planet, 'climates', data.climate, requestedFields);
 		addPropertyToClass(planet, 'diameter', data.diameter, requestedFields);
-		// addPropertyToClass(planet, 'films', data.films, requestedFields); // TODO: map to actual GraphQL Class
+		addPropertyToClass(planet, 'films', films, requestedFields);
 		addPropertyToClass(planet, 'gravity', data.gravity, requestedFields);
 		addPropertyToClass(planet, 'name', data.name, requestedFields);
 		addPropertyToClass(planet, 'orbitalPeriod', data.orbitalPeriod, requestedFields);
 		addPropertyToClass(planet, 'population', data.population, requestedFields);
-		addPropertyToClass(planet, 'residents', data.residents, requestedFields); // TODO: map to actual GraphQL Class
+		addPropertyToClass(planet, 'residents', residents, requestedFields);
 		addPropertyToClass(planet, 'rotationPeriod', data.rotationPeriod, requestedFields);
 		addPropertyToClass(planet, 'surfaceWater', data.surfaceWater, requestedFields);
 		addPropertyToClass(planet, 'terrains', data.terrains, requestedFields);
