@@ -32,22 +32,6 @@ jobs:
       - name: Run ESLint
         run: yarn lint --fix=false
 
-  CodeQL:
-    name: Codequality
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      # Initializes the CodeQL tools for scanning.
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: typescript
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
-
   Testing:
     name: Unit Tests
     runs-on: ubuntu-latest
@@ -68,7 +52,12 @@ jobs:
         if: ${{ !steps.cache-restore.outputs.cache-hit }}
         run: yarn --frozen-lockfile
       - name: Run tests
-        run: yarn test
+        run: yarn test --coverage
+      - name: Store code coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage/
 
   Building:
     name: Compile source code
@@ -93,3 +82,24 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Build Code
         run: yarn build
+
+  Upload_Coverage_Report:
+    name: Upload coverage report to codecov
+    needs: [Testing]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Download Coverage report
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+          path: coverage/
+      - name: Codecov Upload
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: coverage/
+          fail_ci_if_error: true
