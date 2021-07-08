@@ -42,6 +42,7 @@ This API was inspired by [swapi.dev](https://swapi.dev), however we noticed that
 
 -   Fully generated client-side TypeScript typings published to
     -   [npm] as `@skyra/star-wars-api`
+    -   [GitHub Package Registry][ghcr_npm] as `@skyra/star-wars-api`
 -   Docker images of the API for private hosting published to
     -   [Dockerhub] as `skyrabot/star-wars-api`
     -   [GitHub Package Registry][ghcr_docker] as `ghcr.io/skyrabot/star-wars-api:latest`
@@ -251,6 +252,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 [ethereum]: ethereum:0xcB5EDB76Bc9E389514F905D9680589004C00190c?amount=0.01&label=Skyra%20Discord%20Bot
 [ethereumimage]: https://cdn.skyra.pw/gh-assets/ethereum.png
 [ghcr_docker]: https://github.com/orgs/skyra-project/packages/container/package/star-wars-api
+[ghcr_npm]: https://github.com/skyra-project/star-wars-api/packages/199047
 [litecoin]: litecoin:MNVT1keYGMfGp7vWmcYjCS8ntU8LNvjnqM?amount=0.01&label=Skyra%20Discord%20Bot
 [litecoinimage]: https://cdn.skyra.pw/gh-assets/litecoin.png
 [npm]: https://www.npmjs.com/package/@skyra/star-wars-api
