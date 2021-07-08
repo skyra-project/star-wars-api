@@ -16,7 +16,7 @@ import { addPropertyToClass } from '#utils/addPropertyToClass';
 import FuzzySearch from '#utils/FuzzySearch';
 import type GraphQLSet from '#utils/GraphQLSet';
 import type StarWarsApi from '#utils/star-wars';
-import Util from '#utils/util';
+import { preParseInput } from '#utils/util';
 import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
@@ -132,7 +132,7 @@ export default class PersonService {
 	public static findByFuzzy(
 		@Args(() => FuzzyPersonArgs) { person, offset, reverse, take }: FuzzyPersonArgs
 	): Fuse.FuseResult<StarWarsApi.Person>[] {
-		person = Util.preParseInput(person);
+		person = preParseInput(person);
 
 		const fuzzyResult = new FuzzySearch(people, ['name'], { threshold: 0.3 }).runFuzzy(person);
 

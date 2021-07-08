@@ -10,7 +10,7 @@ import { addPropertyToClass } from '#utils/addPropertyToClass';
 import FuzzySearch from '#utils/FuzzySearch';
 import type GraphQLSet from '#utils/GraphQLSet';
 import type StarWarsApi from '#utils/star-wars';
-import Util from '#utils/util';
+import { preParseInput } from '#utils/util';
 import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
@@ -81,7 +81,7 @@ export default class VehicleService {
 	public static findByFuzzy(
 		@Args(() => FuzzyVehicleArgs) { vehicle, offset, reverse, take }: FuzzyVehicleArgs
 	): Fuse.FuseResult<StarWarsApi.Vehicle>[] {
-		vehicle = Util.preParseInput(vehicle);
+		vehicle = preParseInput(vehicle);
 
 		const fuzzyResult = new FuzzySearch(vehicles, ['name', 'model'], { threshold: 0.3 }).runFuzzy(vehicle);
 

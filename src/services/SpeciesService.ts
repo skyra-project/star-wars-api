@@ -12,7 +12,7 @@ import { addPropertyToClass } from '#utils/addPropertyToClass';
 import FuzzySearch from '#utils/FuzzySearch';
 import type GraphQLSet from '#utils/GraphQLSet';
 import type StarWarsApi from '#utils/star-wars';
-import Util from '#utils/util';
+import { preParseInput } from '#utils/util';
 import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
@@ -99,7 +99,7 @@ export default class SpeciesService {
 	public static findByFuzzy(
 		@Args(() => FuzzySpeciesArgs) { species, offset, reverse, take }: FuzzySpeciesArgs
 	): Fuse.FuseResult<StarWarsApi.Species>[] {
-		species = Util.preParseInput(species);
+		species = preParseInput(species);
 
 		const fuzzyResult = new FuzzySearch(speciesData, ['name'], { threshold: 0.3 }).runFuzzy(species);
 
