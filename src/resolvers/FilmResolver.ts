@@ -18,7 +18,10 @@ export default class FilmResolver {
 			throw new Error(`No film found for ${args.film}`);
 		}
 
-		const graphqlObject = FilmService.mapFilmDataToFilmGraphQL(filmData, requestedFields);
+		const graphqlObject = FilmService.mapFilmDataToFilmGraphQL({
+			data: filmData,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for film: ${args.film}`);
@@ -54,7 +57,10 @@ export default class FilmResolver {
 			}
 		}
 
-		const graphqlObject = FilmService.mapFilmDataToFilmGraphQL(data, requestedFields);
+		const graphqlObject = FilmService.mapFilmDataToFilmGraphQL({
+			data,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for film: ${args.film}`);

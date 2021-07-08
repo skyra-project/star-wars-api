@@ -18,7 +18,10 @@ export default class VehicleResolver {
 			throw new Error(`No vehicle found for ${args.vehicle}`);
 		}
 
-		const graphqlObject = VehicleService.mapVehicleDataToVehicleGraphQL(vehicleData, requestedFields);
+		const graphqlObject = VehicleService.mapVehicleDataToVehicleGraphQL({
+			data: vehicleData,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for vehicle: ${args.vehicle}`);
@@ -52,7 +55,10 @@ export default class VehicleResolver {
 			}
 		}
 
-		const graphqlObject = VehicleService.mapVehicleDataToVehicleGraphQL(data, requestedFields);
+		const graphqlObject = VehicleService.mapVehicleDataToVehicleGraphQL({
+			data,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for vehicle: ${args.vehicle}`);

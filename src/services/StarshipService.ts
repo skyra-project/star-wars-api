@@ -19,11 +19,11 @@ export default class StarshipService {
 		return starships.get(starship);
 	}
 
-	public static mapStarshipDataToStarshipGraphQL(
-		data: StarWarsApi.Starship,
-		requestedFields: GraphQLSet<keyof Starship>,
+	public static mapStarshipDataToStarshipGraphQL({
+		data,
+		requestedFields,
 		isReferencedCall = false
-	): Starship {
+	}: MapStarshipDataToStarshipGraphQLParameters): Starship {
 		const starship = new Starship();
 
 		const pilots: Person[] = [];
@@ -35,7 +35,13 @@ export default class StarshipService {
 
 				for (const film of data.films) {
 					const filmData = FilmService.getByEpisodeNumber({ film })!;
-					films.push(FilmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+					films.push(
+						FilmService.mapFilmDataToFilmGraphQL({
+							data: filmData,
+							requestedFields: filmFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -44,7 +50,13 @@ export default class StarshipService {
 
 				for (const character of data.pilots) {
 					const personData = PersonService.getByPersonName({ person: character })!;
-					pilots.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					pilots.push(
+						PersonService.mapPersonDataToPersonGraphQL({
+							data: personData,
+							requestedFields: characterFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 		}
@@ -81,4 +93,10 @@ export default class StarshipService {
 
 		return fuzzyResult.slice(offset, offset + take);
 	}
+}
+
+interface MapStarshipDataToStarshipGraphQLParameters {
+	data: StarWarsApi.Starship;
+	requestedFields: GraphQLSet<keyof Starship>;
+	isReferencedCall?: boolean;
 }

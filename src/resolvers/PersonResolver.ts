@@ -18,7 +18,10 @@ export default class PersonResolver {
 			throw new Error(`No person found for ${args.person}`);
 		}
 
-		const graphqlObject = PersonService.mapPersonDataToPersonGraphQL(personData, requestedFields);
+		const graphqlObject = PersonService.mapPersonDataToPersonGraphQL({
+			data: personData,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for person: ${args.person}`);
@@ -52,7 +55,10 @@ export default class PersonResolver {
 			}
 		}
 
-		const graphqlObject = PersonService.mapPersonDataToPersonGraphQL(data, requestedFields);
+		const graphqlObject = PersonService.mapPersonDataToPersonGraphQL({
+			data,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for person: ${args.person}`);

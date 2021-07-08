@@ -18,7 +18,10 @@ export default class PlanetResolver {
 			throw new Error(`No planet found for ${args.planet}`);
 		}
 
-		const graphqlObject = PlanetService.mapPlanetDataToPlanetGraphQL(planetData, requestedFields);
+		const graphqlObject = PlanetService.mapPlanetDataToPlanetGraphQL({
+			data: planetData,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for planet: ${args.planet}`);
@@ -52,7 +55,10 @@ export default class PlanetResolver {
 			}
 		}
 
-		const graphqlObject = PlanetService.mapPlanetDataToPlanetGraphQL(data, requestedFields);
+		const graphqlObject = PlanetService.mapPlanetDataToPlanetGraphQL({
+			data,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for planet: ${args.planet}`);

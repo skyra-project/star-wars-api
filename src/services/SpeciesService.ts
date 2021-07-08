@@ -21,11 +21,11 @@ export default class SpeciesService {
 		return speciesData.get(species);
 	}
 
-	public static mapSpeciesDataToSpeciesGraphQL(
-		data: StarWarsApi.Species,
-		requestedFields: GraphQLSet<keyof Species>,
+	public static mapSpeciesDataToSpeciesGraphQL({
+		data,
+		requestedFields,
 		isReferencedCall = false
-	): Species {
+	}: MapSpeciesDataToSpeciesGraphQLParameters): Species {
 		const species = new Species();
 
 		const people: Person[] = [];
@@ -37,7 +37,13 @@ export default class SpeciesService {
 
 				for (const film of data.films) {
 					const filmData = FilmService.getByEpisodeNumber({ film })!;
-					films.push(FilmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+					films.push(
+						FilmService.mapFilmDataToFilmGraphQL({
+							data: filmData,
+							requestedFields: filmFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -46,7 +52,13 @@ export default class SpeciesService {
 
 				for (const character of data.people) {
 					const personData = PersonService.getByPersonName({ person: character })!;
-					people.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					people.push(
+						PersonService.mapPersonDataToPersonGraphQL({
+							data: personData,
+							requestedFields: characterFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -58,7 +70,11 @@ export default class SpeciesService {
 					addPropertyToClass(
 						species,
 						'homeworld',
-						PlanetService.mapPlanetDataToPlanetGraphQL(homeworldData, homeworldFields, true),
+						PlanetService.mapPlanetDataToPlanetGraphQL({
+							data: homeworldData,
+							requestedFields: homeworldFields,
+							isReferencedCall: true
+						}),
 						requestedFields
 					);
 				}
@@ -93,4 +109,10 @@ export default class SpeciesService {
 
 		return fuzzyResult.slice(offset, offset + take);
 	}
+}
+
+interface MapSpeciesDataToSpeciesGraphQLParameters {
+	data: StarWarsApi.Species;
+	requestedFields: GraphQLSet<keyof Species>;
+	isReferencedCall?: boolean;
 }

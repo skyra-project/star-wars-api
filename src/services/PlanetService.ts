@@ -19,11 +19,7 @@ export default class PlanetService {
 		return planets.get(planet);
 	}
 
-	public static mapPlanetDataToPlanetGraphQL(
-		data: StarWarsApi.Planet,
-		requestedFields: GraphQLSet<keyof Planet>,
-		isReferencedCall = false
-	): Planet {
+	public static mapPlanetDataToPlanetGraphQL({ data, requestedFields, isReferencedCall = false }: MapPlanetDataToPlanetGraphQLParameters): Planet {
 		const planet = new Planet();
 
 		const films: Film[] = [];
@@ -35,7 +31,13 @@ export default class PlanetService {
 
 				for (const film of data.films) {
 					const filmData = FilmService.getByEpisodeNumber({ film })!;
-					films.push(FilmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+					films.push(
+						FilmService.mapFilmDataToFilmGraphQL({
+							data: filmData,
+							requestedFields: filmFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -44,7 +46,13 @@ export default class PlanetService {
 
 				for (const character of data.residents) {
 					const personData = PersonService.getByPersonName({ person: character })!;
-					residents.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					residents.push(
+						PersonService.mapPersonDataToPersonGraphQL({
+							data: personData,
+							requestedFields: characterFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 		}
@@ -77,4 +85,10 @@ export default class PlanetService {
 
 		return fuzzyResult.slice(offset, offset + take);
 	}
+}
+
+interface MapPlanetDataToPlanetGraphQLParameters {
+	data: StarWarsApi.Planet;
+	requestedFields: GraphQLSet<keyof Planet>;
+	isReferencedCall?: boolean;
 }

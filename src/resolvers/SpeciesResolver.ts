@@ -18,7 +18,10 @@ export default class SpeciesResolver {
 			throw new Error(`No species found for ${args.species}`);
 		}
 
-		const graphqlObject = SpeciesService.mapSpeciesDataToSpeciesGraphQL(speciesData, requestedFields);
+		const graphqlObject = SpeciesService.mapSpeciesDataToSpeciesGraphQL({
+			data: speciesData,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for species: ${args.species}`);
@@ -52,7 +55,10 @@ export default class SpeciesResolver {
 			}
 		}
 
-		const graphqlObject = SpeciesService.mapSpeciesDataToSpeciesGraphQL(data, requestedFields);
+		const graphqlObject = SpeciesService.mapSpeciesDataToSpeciesGraphQL({
+			data,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for species: ${args.species}`);

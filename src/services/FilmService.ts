@@ -25,7 +25,7 @@ export default class FilmService {
 		return films.get(film);
 	}
 
-	public static mapFilmDataToFilmGraphQL(data: StarWarsApi.Film, requestedFields: GraphQLSet<keyof Film>, isReferencedCall = false): Film {
+	public static mapFilmDataToFilmGraphQL({ data, requestedFields, isReferencedCall = false }: MapFilmDataToFilmGraphQLParameters): Film {
 		const film = new Film();
 
 		const characters: Person[] = [];
@@ -40,7 +40,13 @@ export default class FilmService {
 
 				for (const character of data.characters) {
 					const personData = PersonService.getByPersonName({ person: character })!;
-					characters.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					characters.push(
+						PersonService.mapPersonDataToPersonGraphQL({
+							data: personData,
+							requestedFields: characterFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -49,7 +55,13 @@ export default class FilmService {
 
 				for (const planet of data.planets) {
 					const planetData = PlanetService.getByPlanetName({ planet })!;
-					planets.push(PlanetService.mapPlanetDataToPlanetGraphQL(planetData, planetFields, true));
+					planets.push(
+						PlanetService.mapPlanetDataToPlanetGraphQL({
+							data: planetData,
+							requestedFields: planetFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -58,7 +70,13 @@ export default class FilmService {
 
 				for (const filmSpecies of data.species) {
 					const speciesData = SpeciesService.getBySpeciesName({ species: filmSpecies })!;
-					species.push(SpeciesService.mapSpeciesDataToSpeciesGraphQL(speciesData, speciesFields, true));
+					species.push(
+						SpeciesService.mapSpeciesDataToSpeciesGraphQL({
+							data: speciesData,
+							requestedFields: speciesFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -67,7 +85,13 @@ export default class FilmService {
 
 				for (const starship of data.starships) {
 					const starshipData = StarshipService.getByStarshipName({ starship })!;
-					starships.push(StarshipService.mapStarshipDataToStarshipGraphQL(starshipData, starshipFields, true));
+					starships.push(
+						StarshipService.mapStarshipDataToStarshipGraphQL({
+							data: starshipData,
+							requestedFields: starshipFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -76,7 +100,13 @@ export default class FilmService {
 
 				for (const vehicle of data.vehicles) {
 					const vehicleData = VehicleService.getByVehicleName({ vehicle })!;
-					vehicles.push(VehicleService.mapVehicleDataToVehicleGraphQL(vehicleData, vehicleFields, true));
+					vehicles.push(
+						VehicleService.mapVehicleDataToVehicleGraphQL({
+							data: vehicleData,
+							requestedFields: vehicleFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 		}
@@ -109,4 +139,10 @@ export default class FilmService {
 
 		return fuzzyResult.slice(offset, offset + take);
 	}
+}
+
+interface MapFilmDataToFilmGraphQLParameters {
+	data: StarWarsApi.Film;
+	requestedFields: GraphQLSet<keyof Film>;
+	isReferencedCall?: boolean;
 }

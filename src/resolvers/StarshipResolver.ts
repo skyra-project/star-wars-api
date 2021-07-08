@@ -18,7 +18,10 @@ export default class StarshipResolver {
 			throw new Error(`No starship found for ${args.starship}`);
 		}
 
-		const graphqlObject = StarshipService.mapStarshipDataToStarshipGraphQL(starshipData, requestedFields);
+		const graphqlObject = StarshipService.mapStarshipDataToStarshipGraphQL({
+			data: starshipData,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for starship: ${args.starship}`);
@@ -52,7 +55,10 @@ export default class StarshipResolver {
 			}
 		}
 
-		const graphqlObject = StarshipService.mapStarshipDataToStarshipGraphQL(data, requestedFields);
+		const graphqlObject = StarshipService.mapStarshipDataToStarshipGraphQL({
+			data,
+			requestedFields
+		});
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for starship: ${args.starship}`);

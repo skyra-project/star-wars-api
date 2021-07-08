@@ -19,11 +19,11 @@ export default class VehicleService {
 		return vehicles.get(vehicle);
 	}
 
-	public static mapVehicleDataToVehicleGraphQL(
-		data: StarWarsApi.Vehicle,
-		requestedFields: GraphQLSet<keyof Vehicle>,
+	public static mapVehicleDataToVehicleGraphQL({
+		data,
+		requestedFields,
 		isReferencedCall = false
-	): Vehicle {
+	}: MapVehicleDataToVehicleGraphQLParameters): Vehicle {
 		const vehicle = new Vehicle();
 
 		const pilots: Person[] = [];
@@ -35,7 +35,13 @@ export default class VehicleService {
 
 				for (const film of data.films) {
 					const filmData = FilmService.getByEpisodeNumber({ film })!;
-					films.push(FilmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+					films.push(
+						FilmService.mapFilmDataToFilmGraphQL({
+							data: filmData,
+							requestedFields: filmFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 
@@ -44,7 +50,13 @@ export default class VehicleService {
 
 				for (const character of data.pilots) {
 					const personData = PersonService.getByPersonName({ person: character })!;
-					pilots.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					pilots.push(
+						PersonService.mapPersonDataToPersonGraphQL({
+							data: personData,
+							requestedFields: characterFields,
+							isReferencedCall: true
+						})
+					);
 				}
 			}
 		}
@@ -79,4 +91,10 @@ export default class VehicleService {
 
 		return fuzzyResult.slice(offset, offset + take);
 	}
+}
+
+interface MapVehicleDataToVehicleGraphQLParameters {
+	data: StarWarsApi.Vehicle;
+	requestedFields: GraphQLSet<keyof Vehicle>;
+	isReferencedCall?: boolean;
 }
