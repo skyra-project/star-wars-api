@@ -8,23 +8,17 @@ import { Args, Query, Resolver } from 'type-graphql';
 
 @Resolver(Starship)
 export default class StarshipResolver {
-	private starshipService: StarshipService;
-
-	public constructor() {
-		this.starshipService = new StarshipService();
-	}
-
 	@Query(() => Starship, {
 		description: 'Gets details on a Star Wars starship, using the name of that starship'
 	})
 	public getStarship(@Args() args: StarshipArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Starship>): Starship {
-		const starshipData = this.starshipService.getByStarshipName(args);
+		const starshipData = StarshipService.getByStarshipName(args);
 
 		if (!starshipData) {
 			throw new Error(`No starship found for ${args.starship}`);
 		}
 
-		const graphqlObject = this.starshipService.mapStarshipDataToStarshipGraphQL(starshipData, requestedFields);
+		const graphqlObject = StarshipService.mapStarshipDataToStarshipGraphQL(starshipData, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for starship: ${args.starship}`);
@@ -41,24 +35,24 @@ export default class StarshipResolver {
 		].join('\n')
 	})
 	public getFuzzyStarship(@Args() args: FuzzyStarshipArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Starship>): Starship[] {
-		let data = this.starshipService.getByStarshipName(args);
+		let data = StarshipService.getByStarshipName(args);
 
 		if (!data) {
-			const fuzzyEntry = this.starshipService.findByFuzzy(args);
+			const fuzzyEntry = StarshipService.findByFuzzy(args);
 
 			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
 				throw new Error(`Failed to get data for starship: ${args.starship}`);
 			}
 
 			// TODO: Actually return multiple results by looping over this
-			data = this.starshipService.getByStarshipName({ starship: fuzzyEntry[0].item.name });
+			data = StarshipService.getByStarshipName({ starship: fuzzyEntry[0].item.name });
 
 			if (!data) {
 				throw new Error(`No starship found for: ${args.starship}`);
 			}
 		}
 
-		const graphqlObject = this.starshipService.mapStarshipDataToStarshipGraphQL(data, requestedFields);
+		const graphqlObject = StarshipService.mapStarshipDataToStarshipGraphQL(data, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for starship: ${args.starship}`);

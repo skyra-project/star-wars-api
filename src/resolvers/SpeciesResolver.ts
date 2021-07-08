@@ -8,23 +8,17 @@ import { Args, Query, Resolver } from 'type-graphql';
 
 @Resolver(Species)
 export default class SpeciesResolver {
-	private speciesService: SpeciesService;
-
-	public constructor() {
-		this.speciesService = new SpeciesService();
-	}
-
 	@Query(() => Species, {
 		description: 'Gets details on a Star Wars species, using the name of that species'
 	})
 	public getSpecies(@Args() args: SpeciesArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Species>): Species {
-		const speciesData = this.speciesService.getBySpeciesName(args);
+		const speciesData = SpeciesService.getBySpeciesName(args);
 
 		if (!speciesData) {
 			throw new Error(`No species found for ${args.species}`);
 		}
 
-		const graphqlObject = this.speciesService.mapSpeciesDataToSpeciesGraphQL(speciesData, requestedFields);
+		const graphqlObject = SpeciesService.mapSpeciesDataToSpeciesGraphQL(speciesData, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for species: ${args.species}`);
@@ -41,24 +35,24 @@ export default class SpeciesResolver {
 		].join('\n')
 	})
 	public getFuzzySpecies(@Args() args: FuzzySpeciesArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Species>): Species[] {
-		let data = this.speciesService.getBySpeciesName(args);
+		let data = SpeciesService.getBySpeciesName(args);
 
 		if (!data) {
-			const fuzzyEntry = this.speciesService.findByFuzzy(args);
+			const fuzzyEntry = SpeciesService.findByFuzzy(args);
 
 			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
 				throw new Error(`Failed to get data for species: ${args.species}`);
 			}
 
 			// TODO: Actually return multiple results by looping over this
-			data = this.speciesService.getBySpeciesName({ species: fuzzyEntry[0].item.name });
+			data = SpeciesService.getBySpeciesName({ species: fuzzyEntry[0].item.name });
 
 			if (!data) {
 				throw new Error(`No species found for: ${args.species}`);
 			}
 		}
 
-		const graphqlObject = this.speciesService.mapSpeciesDataToSpeciesGraphQL(data, requestedFields);
+		const graphqlObject = SpeciesService.mapSpeciesDataToSpeciesGraphQL(data, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for species: ${args.species}`);

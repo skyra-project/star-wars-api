@@ -8,23 +8,17 @@ import { Args, Query, Resolver } from 'type-graphql';
 
 @Resolver(Film)
 export default class FilmResolver {
-	private filmService: FilmService;
-
-	public constructor() {
-		this.filmService = new FilmService();
-	}
-
 	@Query(() => Film, {
 		description: 'Gets details on a Star Wars film, using the episode number of that film'
 	})
 	public getFilm(@Args() args: FilmArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Film>): Film {
-		const filmData = this.filmService.getByEpisodeNumber(args);
+		const filmData = FilmService.getByEpisodeNumber(args);
 
 		if (!filmData) {
 			throw new Error(`No film found for ${args.film}`);
 		}
 
-		const graphqlObject = this.filmService.mapFilmDataToFilmGraphQL(filmData, requestedFields);
+		const graphqlObject = FilmService.mapFilmDataToFilmGraphQL(filmData, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for film: ${args.film}`);
@@ -43,24 +37,24 @@ export default class FilmResolver {
 	public getFuzzyFilm(@Args() args: FuzzyFilmArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Film>): Film[] {
 		const filmEpisodeId = Number(args.film);
 
-		let data = filmEpisodeId ? this.filmService.getByEpisodeNumber({ film: filmEpisodeId }) : undefined;
+		let data = filmEpisodeId ? FilmService.getByEpisodeNumber({ film: filmEpisodeId }) : undefined;
 
 		if (!data) {
-			const fuzzyEntry = this.filmService.findByFuzzy(args);
+			const fuzzyEntry = FilmService.findByFuzzy(args);
 
 			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
 				throw new Error(`Failed to get data for film: ${args.film}`);
 			}
 
 			// TODO: Actually return multiple results by looping over this
-			data = this.filmService.getByEpisodeNumber({ film: fuzzyEntry[0].item.episodeId });
+			data = FilmService.getByEpisodeNumber({ film: fuzzyEntry[0].item.episodeId });
 
 			if (!data) {
 				throw new Error(`No film found for: ${args.film}`);
 			}
 		}
 
-		const graphqlObject = this.filmService.mapFilmDataToFilmGraphQL(data, requestedFields);
+		const graphqlObject = FilmService.mapFilmDataToFilmGraphQL(data, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for film: ${args.film}`);

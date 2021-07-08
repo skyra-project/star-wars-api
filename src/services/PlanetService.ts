@@ -15,19 +15,15 @@ import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
 export default class PlanetService {
-	private filmService: FilmService;
-	private personService: PersonService;
-
-	public constructor() {
-		this.filmService = new FilmService();
-		this.personService = new PersonService();
-	}
-
-	public getByPlanetName(@Args(() => PlanetArgs) { planet }: PlanetArgs): StarWarsApi.Planet | undefined {
+	public static getByPlanetName(@Args(() => PlanetArgs) { planet }: PlanetArgs): StarWarsApi.Planet | undefined {
 		return planets.get(planet);
 	}
 
-	public mapPlanetDataToPlanetGraphQL(data: StarWarsApi.Planet, requestedFields: GraphQLSet<keyof Planet>, isReferencedCall = false): Planet {
+	public static mapPlanetDataToPlanetGraphQL(
+		data: StarWarsApi.Planet,
+		requestedFields: GraphQLSet<keyof Planet>,
+		isReferencedCall = false
+	): Planet {
 		const planet = new Planet();
 
 		const films: Film[] = [];
@@ -38,8 +34,8 @@ export default class PlanetService {
 				const filmFields = requestedFields.filterStartsWith<GraphQLSet<keyof Film>>('films.');
 
 				for (const film of data.films) {
-					const filmData = this.filmService.getByEpisodeNumber({ film })!;
-					films.push(this.filmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+					const filmData = FilmService.getByEpisodeNumber({ film })!;
+					films.push(FilmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
 				}
 			}
 
@@ -47,8 +43,8 @@ export default class PlanetService {
 				const characterFields = requestedFields.filterStartsWith<GraphQLSet<keyof Person>>('residents.');
 
 				for (const character of data.residents) {
-					const personData = this.personService.getByPersonName({ person: character })!;
-					residents.push(this.personService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					const personData = PersonService.getByPersonName({ person: character })!;
+					residents.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
 				}
 			}
 		}
@@ -68,7 +64,9 @@ export default class PlanetService {
 		return planet;
 	}
 
-	public findByFuzzy(@Args(() => FuzzyPlanetArgs) { planet, offset, reverse, take }: FuzzyPlanetArgs): Fuse.FuseResult<StarWarsApi.Planet>[] {
+	public static findByFuzzy(
+		@Args(() => FuzzyPlanetArgs) { planet, offset, reverse, take }: FuzzyPlanetArgs
+	): Fuse.FuseResult<StarWarsApi.Planet>[] {
 		planet = Util.preParseInput(planet);
 
 		const fuzzyResult = new FuzzySearch(planets, ['name'], { threshold: 0.3 }).runFuzzy(planet);

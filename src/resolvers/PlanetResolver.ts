@@ -8,23 +8,17 @@ import { Args, Query, Resolver } from 'type-graphql';
 
 @Resolver(Planet)
 export default class PlanetResolver {
-	private planetService: PlanetService;
-
-	public constructor() {
-		this.planetService = new PlanetService();
-	}
-
 	@Query(() => Planet, {
 		description: 'Gets details on a Star Wars planet, using the name of that planet'
 	})
 	public getPlanet(@Args() args: PlanetArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Planet>): Planet {
-		const planetData = this.planetService.getByPlanetName(args);
+		const planetData = PlanetService.getByPlanetName(args);
 
 		if (!planetData) {
 			throw new Error(`No planet found for ${args.planet}`);
 		}
 
-		const graphqlObject = this.planetService.mapPlanetDataToPlanetGraphQL(planetData, requestedFields);
+		const graphqlObject = PlanetService.mapPlanetDataToPlanetGraphQL(planetData, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for planet: ${args.planet}`);
@@ -41,24 +35,24 @@ export default class PlanetResolver {
 		].join('\n')
 	})
 	public getFuzzyPlanet(@Args() args: FuzzyPlanetArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Planet>): Planet[] {
-		let data = this.planetService.getByPlanetName(args);
+		let data = PlanetService.getByPlanetName(args);
 
 		if (!data) {
-			const fuzzyEntry = this.planetService.findByFuzzy(args);
+			const fuzzyEntry = PlanetService.findByFuzzy(args);
 
 			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
 				throw new Error(`Failed to get data for planet: ${args.planet}`);
 			}
 
 			// TODO: Actually return multiple results by looping over this
-			data = this.planetService.getByPlanetName({ planet: fuzzyEntry[0].item.name });
+			data = PlanetService.getByPlanetName({ planet: fuzzyEntry[0].item.name });
 
 			if (!data) {
 				throw new Error(`No planet found for: ${args.planet}`);
 			}
 		}
 
-		const graphqlObject = this.planetService.mapPlanetDataToPlanetGraphQL(data, requestedFields);
+		const graphqlObject = PlanetService.mapPlanetDataToPlanetGraphQL(data, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for planet: ${args.planet}`);

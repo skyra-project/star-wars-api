@@ -15,19 +15,15 @@ import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
 export default class VehicleService {
-	private filmService: FilmService;
-	private personService: PersonService;
-
-	public constructor() {
-		this.filmService = new FilmService();
-		this.personService = new PersonService();
-	}
-
-	public getByVehicleName(@Args(() => VehicleArgs) { vehicle }: VehicleArgs): StarWarsApi.Vehicle | undefined {
+	public static getByVehicleName(@Args(() => VehicleArgs) { vehicle }: VehicleArgs): StarWarsApi.Vehicle | undefined {
 		return vehicles.get(vehicle);
 	}
 
-	public mapVehicleDataToVehicleGraphQL(data: StarWarsApi.Vehicle, requestedFields: GraphQLSet<keyof Vehicle>, isReferencedCall = false): Vehicle {
+	public static mapVehicleDataToVehicleGraphQL(
+		data: StarWarsApi.Vehicle,
+		requestedFields: GraphQLSet<keyof Vehicle>,
+		isReferencedCall = false
+	): Vehicle {
 		const vehicle = new Vehicle();
 
 		const pilots: Person[] = [];
@@ -38,8 +34,8 @@ export default class VehicleService {
 				const filmFields = requestedFields.filterStartsWith<GraphQLSet<keyof Film>>('films.');
 
 				for (const film of data.films) {
-					const filmData = this.filmService.getByEpisodeNumber({ film })!;
-					films.push(this.filmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+					const filmData = FilmService.getByEpisodeNumber({ film })!;
+					films.push(FilmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
 				}
 			}
 
@@ -47,8 +43,8 @@ export default class VehicleService {
 				const characterFields = requestedFields.filterStartsWith<GraphQLSet<keyof Person>>('pilots.');
 
 				for (const character of data.pilots) {
-					const personData = this.personService.getByPersonName({ person: character })!;
-					pilots.push(this.personService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					const personData = PersonService.getByPersonName({ person: character })!;
+					pilots.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
 				}
 			}
 		}
@@ -70,7 +66,9 @@ export default class VehicleService {
 		return vehicle;
 	}
 
-	public findByFuzzy(@Args(() => FuzzyVehicleArgs) { vehicle, offset, reverse, take }: FuzzyVehicleArgs): Fuse.FuseResult<StarWarsApi.Vehicle>[] {
+	public static findByFuzzy(
+		@Args(() => FuzzyVehicleArgs) { vehicle, offset, reverse, take }: FuzzyVehicleArgs
+	): Fuse.FuseResult<StarWarsApi.Vehicle>[] {
 		vehicle = Util.preParseInput(vehicle);
 
 		const fuzzyResult = new FuzzySearch(vehicles, ['name', 'model'], { threshold: 0.3 }).runFuzzy(vehicle);

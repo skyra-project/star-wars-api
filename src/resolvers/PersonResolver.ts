@@ -8,23 +8,17 @@ import { Args, Query, Resolver } from 'type-graphql';
 
 @Resolver(Person)
 export default class PersonResolver {
-	private personService: PersonService;
-
-	public constructor() {
-		this.personService = new PersonService();
-	}
-
 	@Query(() => Person, {
 		description: 'Gets details on a Star Wars person, using the name of that person'
 	})
 	public getPerson(@Args() args: PersonArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Person>): Person {
-		const personData = this.personService.getByPersonName(args);
+		const personData = PersonService.getByPersonName(args);
 
 		if (!personData) {
 			throw new Error(`No person found for ${args.person}`);
 		}
 
-		const graphqlObject = this.personService.mapPersonDataToPersonGraphQL(personData, requestedFields);
+		const graphqlObject = PersonService.mapPersonDataToPersonGraphQL(personData, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for person: ${args.person}`);
@@ -41,24 +35,24 @@ export default class PersonResolver {
 		].join('\n')
 	})
 	public getFuzzyPerson(@Args() args: FuzzyPersonArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Person>): Person[] {
-		let data = this.personService.getByPersonName(args);
+		let data = PersonService.getByPersonName(args);
 
 		if (!data) {
-			const fuzzyEntry = this.personService.findByFuzzy(args);
+			const fuzzyEntry = PersonService.findByFuzzy(args);
 
 			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
 				throw new Error(`Failed to get data for person: ${args.person}`);
 			}
 
 			// TODO: Actually return multiple results by looping over this
-			data = this.personService.getByPersonName({ person: fuzzyEntry[0].item.name });
+			data = PersonService.getByPersonName({ person: fuzzyEntry[0].item.name });
 
 			if (!data) {
 				throw new Error(`No person found for: ${args.person}`);
 			}
 		}
 
-		const graphqlObject = this.personService.mapPersonDataToPersonGraphQL(data, requestedFields);
+		const graphqlObject = PersonService.mapPersonDataToPersonGraphQL(data, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for person: ${args.person}`);

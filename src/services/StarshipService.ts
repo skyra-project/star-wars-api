@@ -15,19 +15,11 @@ import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
 export default class StarshipService {
-	private filmService: FilmService;
-	private personService: PersonService;
-
-	public constructor() {
-		this.filmService = new FilmService();
-		this.personService = new PersonService();
-	}
-
-	public getByStarshipName(@Args(() => StarshipArgs) { starship }: StarshipArgs): StarWarsApi.Starship | undefined {
+	public static getByStarshipName(@Args(() => StarshipArgs) { starship }: StarshipArgs): StarWarsApi.Starship | undefined {
 		return starships.get(starship);
 	}
 
-	public mapStarshipDataToStarshipGraphQL(
+	public static mapStarshipDataToStarshipGraphQL(
 		data: StarWarsApi.Starship,
 		requestedFields: GraphQLSet<keyof Starship>,
 		isReferencedCall = false
@@ -42,8 +34,8 @@ export default class StarshipService {
 				const filmFields = requestedFields.filterStartsWith<GraphQLSet<keyof Film>>('films.');
 
 				for (const film of data.films) {
-					const filmData = this.filmService.getByEpisodeNumber({ film })!;
-					films.push(this.filmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+					const filmData = FilmService.getByEpisodeNumber({ film })!;
+					films.push(FilmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
 				}
 			}
 
@@ -51,8 +43,8 @@ export default class StarshipService {
 				const characterFields = requestedFields.filterStartsWith<GraphQLSet<keyof Person>>('pilots.');
 
 				for (const character of data.pilots) {
-					const personData = this.personService.getByPersonName({ person: character })!;
-					pilots.push(this.personService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					const personData = PersonService.getByPersonName({ person: character })!;
+					pilots.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
 				}
 			}
 		}
@@ -76,7 +68,7 @@ export default class StarshipService {
 		return starship;
 	}
 
-	public findByFuzzy(
+	public static findByFuzzy(
 		@Args(() => FuzzyStarshipArgs) { starship, offset, reverse, take }: FuzzyStarshipArgs
 	): Fuse.FuseResult<StarWarsApi.Starship>[] {
 		starship = Util.preParseInput(starship);

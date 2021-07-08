@@ -17,21 +17,15 @@ import type Fuse from 'fuse.js';
 import { Args } from 'type-graphql';
 
 export default class SpeciesService {
-	private filmService: FilmService;
-	private personService: PersonService;
-	private planetService: PlanetService;
-
-	public constructor() {
-		this.filmService = new FilmService();
-		this.personService = new PersonService();
-		this.planetService = new PlanetService();
-	}
-
-	public getBySpeciesName(@Args(() => SpeciesArgs) { species }: SpeciesArgs): StarWarsApi.Species | undefined {
+	public static getBySpeciesName(@Args(() => SpeciesArgs) { species }: SpeciesArgs): StarWarsApi.Species | undefined {
 		return speciesData.get(species);
 	}
 
-	public mapSpeciesDataToSpeciesGraphQL(data: StarWarsApi.Species, requestedFields: GraphQLSet<keyof Species>, isReferencedCall = false): Species {
+	public static mapSpeciesDataToSpeciesGraphQL(
+		data: StarWarsApi.Species,
+		requestedFields: GraphQLSet<keyof Species>,
+		isReferencedCall = false
+	): Species {
 		const species = new Species();
 
 		const people: Person[] = [];
@@ -42,8 +36,8 @@ export default class SpeciesService {
 				const filmFields = requestedFields.filterStartsWith<GraphQLSet<keyof Film>>('films.');
 
 				for (const film of data.films) {
-					const filmData = this.filmService.getByEpisodeNumber({ film })!;
-					films.push(this.filmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
+					const filmData = FilmService.getByEpisodeNumber({ film })!;
+					films.push(FilmService.mapFilmDataToFilmGraphQL(filmData, filmFields, true));
 				}
 			}
 
@@ -51,8 +45,8 @@ export default class SpeciesService {
 				const characterFields = requestedFields.filterStartsWith<GraphQLSet<keyof Person>>('people.');
 
 				for (const character of data.people) {
-					const personData = this.personService.getByPersonName({ person: character })!;
-					people.push(this.personService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
+					const personData = PersonService.getByPersonName({ person: character })!;
+					people.push(PersonService.mapPersonDataToPersonGraphQL(personData, characterFields, true));
 				}
 			}
 
@@ -60,11 +54,11 @@ export default class SpeciesService {
 				const homeworldFields = requestedFields.filterStartsWith<GraphQLSet<keyof Planet>>('homeworld.');
 
 				if (data.homeworld) {
-					const homeworldData = this.planetService.getByPlanetName({ planet: data.homeworld })!;
+					const homeworldData = PlanetService.getByPlanetName({ planet: data.homeworld })!;
 					addPropertyToClass(
 						species,
 						'homeworld',
-						this.planetService.mapPlanetDataToPlanetGraphQL(homeworldData, homeworldFields, true),
+						PlanetService.mapPlanetDataToPlanetGraphQL(homeworldData, homeworldFields, true),
 						requestedFields
 					);
 				}
@@ -86,7 +80,9 @@ export default class SpeciesService {
 		return species;
 	}
 
-	public findByFuzzy(@Args(() => FuzzySpeciesArgs) { species, offset, reverse, take }: FuzzySpeciesArgs): Fuse.FuseResult<StarWarsApi.Species>[] {
+	public static findByFuzzy(
+		@Args(() => FuzzySpeciesArgs) { species, offset, reverse, take }: FuzzySpeciesArgs
+	): Fuse.FuseResult<StarWarsApi.Species>[] {
 		species = Util.preParseInput(species);
 
 		const fuzzyResult = new FuzzySearch(speciesData, ['name'], { threshold: 0.3 }).runFuzzy(species);

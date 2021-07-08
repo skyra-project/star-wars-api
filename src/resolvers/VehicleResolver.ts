@@ -8,23 +8,17 @@ import { Args, Query, Resolver } from 'type-graphql';
 
 @Resolver(Vehicle)
 export default class VehicleResolver {
-	private vehicleService: VehicleService;
-
-	public constructor() {
-		this.vehicleService = new VehicleService();
-	}
-
 	@Query(() => Vehicle, {
 		description: 'Gets details on a Star Wars vehicle, using the name of that vehicle'
 	})
 	public getVehicle(@Args() args: VehicleArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Vehicle>): Vehicle {
-		const vehicleData = this.vehicleService.getByVehicleName(args);
+		const vehicleData = VehicleService.getByVehicleName(args);
 
 		if (!vehicleData) {
 			throw new Error(`No vehicle found for ${args.vehicle}`);
 		}
 
-		const graphqlObject = this.vehicleService.mapVehicleDataToVehicleGraphQL(vehicleData, requestedFields);
+		const graphqlObject = VehicleService.mapVehicleDataToVehicleGraphQL(vehicleData, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for vehicle: ${args.vehicle}`);
@@ -41,24 +35,24 @@ export default class VehicleResolver {
 		].join('\n')
 	})
 	public getFuzzyVehicle(@Args() args: FuzzyVehicleArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Vehicle>): Vehicle[] {
-		let data = this.vehicleService.getByVehicleName(args);
+		let data = VehicleService.getByVehicleName(args);
 
 		if (!data) {
-			const fuzzyEntry = this.vehicleService.findByFuzzy(args);
+			const fuzzyEntry = VehicleService.findByFuzzy(args);
 
 			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
 				throw new Error(`Failed to get data for vehicle: ${args.vehicle}`);
 			}
 
 			// TODO: Actually return multiple results by looping over this
-			data = this.vehicleService.getByVehicleName({ vehicle: fuzzyEntry[0].item.name });
+			data = VehicleService.getByVehicleName({ vehicle: fuzzyEntry[0].item.name });
 
 			if (!data) {
 				throw new Error(`No vehicle found for: ${args.vehicle}`);
 			}
 		}
 
-		const graphqlObject = this.vehicleService.mapVehicleDataToVehicleGraphQL(data, requestedFields);
+		const graphqlObject = VehicleService.mapVehicleDataToVehicleGraphQL(data, requestedFields);
 
 		if (!graphqlObject) {
 			throw new Error(`Failed to get data for vehicle: ${args.vehicle}`);
