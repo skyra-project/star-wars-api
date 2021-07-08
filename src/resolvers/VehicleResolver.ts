@@ -38,33 +38,20 @@ export default class VehicleResolver {
 		].join('\n')
 	})
 	public getFuzzyVehicle(@Args() args: FuzzyVehicleArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Vehicle>): Vehicle[] {
-		let data = VehicleService.getByVehicleName(args);
+		const fuzzyEntry = VehicleService.findByFuzzy(args);
 
-		if (!data) {
-			const fuzzyEntry = VehicleService.findByFuzzy(args);
-
-			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
-				throw new Error(`Failed to get data for vehicle: ${args.vehicle}`);
-			}
-
-			// TODO: Actually return multiple results by looping over this
-			data = VehicleService.getByVehicleName({ vehicle: fuzzyEntry[0].item.name });
-
-			if (!data) {
-				throw new Error(`No vehicle found for: ${args.vehicle}`);
-			}
+		if (!fuzzyEntry) {
+			throw new Error(`No vehicles found for: ${args.vehicle}`);
 		}
 
-		const graphqlObject = VehicleService.mapVehicleDataToVehicleGraphQL({
-			data,
-			requestedFields
-		});
+		const graphqlObjects = fuzzyEntry.map((vehicleData) =>
+			VehicleService.mapVehicleDataToVehicleGraphQL({ data: vehicleData.item, requestedFields })
+		);
 
-		if (!graphqlObject) {
-			throw new Error(`Failed to get data for vehicle: ${args.vehicle}`);
+		if (!graphqlObjects.length) {
+			throw new Error(`Failed to get data for vehicles: ${args.vehicle}`);
 		}
 
-		// TODO: Actually return multiple results by looping over this
-		return [graphqlObject];
+		return graphqlObjects;
 	}
 }

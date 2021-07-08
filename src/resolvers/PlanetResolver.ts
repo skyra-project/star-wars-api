@@ -38,33 +38,18 @@ export default class PlanetResolver {
 		].join('\n')
 	})
 	public getFuzzyPlanet(@Args() args: FuzzyPlanetArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Planet>): Planet[] {
-		let data = PlanetService.getByPlanetName(args);
+		const fuzzyEntry = PlanetService.findByFuzzy(args);
 
-		if (!data) {
-			const fuzzyEntry = PlanetService.findByFuzzy(args);
-
-			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
-				throw new Error(`Failed to get data for planet: ${args.planet}`);
-			}
-
-			// TODO: Actually return multiple results by looping over this
-			data = PlanetService.getByPlanetName({ planet: fuzzyEntry[0].item.name });
-
-			if (!data) {
-				throw new Error(`No planet found for: ${args.planet}`);
-			}
+		if (!fuzzyEntry.length) {
+			throw new Error(`No planets found for: ${args.planet}`);
 		}
 
-		const graphqlObject = PlanetService.mapPlanetDataToPlanetGraphQL({
-			data,
-			requestedFields
-		});
+		const graphqlObjects = fuzzyEntry.map((planetData) => PlanetService.mapPlanetDataToPlanetGraphQL({ data: planetData.item, requestedFields }));
 
-		if (!graphqlObject) {
-			throw new Error(`Failed to get data for planet: ${args.planet}`);
+		if (!graphqlObjects.length) {
+			throw new Error(`Failed to get data for planets: ${args.planet}`);
 		}
 
-		// TODO: Actually return multiple results by looping over this
-		return [graphqlObject];
+		return graphqlObjects;
 	}
 }

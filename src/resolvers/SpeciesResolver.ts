@@ -38,33 +38,20 @@ export default class SpeciesResolver {
 		].join('\n')
 	})
 	public getFuzzySpecies(@Args() args: FuzzySpeciesArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Species>): Species[] {
-		let data = SpeciesService.getBySpeciesName(args);
+		const fuzzyEntry = SpeciesService.findByFuzzy(args);
 
-		if (!data) {
-			const fuzzyEntry = SpeciesService.findByFuzzy(args);
-
-			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
-				throw new Error(`Failed to get data for species: ${args.species}`);
-			}
-
-			// TODO: Actually return multiple results by looping over this
-			data = SpeciesService.getBySpeciesName({ species: fuzzyEntry[0].item.name });
-
-			if (!data) {
-				throw new Error(`No species found for: ${args.species}`);
-			}
+		if (!fuzzyEntry.length) {
+			throw new Error(`No species found for: ${args.species}`);
 		}
 
-		const graphqlObject = SpeciesService.mapSpeciesDataToSpeciesGraphQL({
-			data,
-			requestedFields
-		});
+		const graphqlObjects = fuzzyEntry.map((speciesData) =>
+			SpeciesService.mapSpeciesDataToSpeciesGraphQL({ data: speciesData.item, requestedFields })
+		);
 
-		if (!graphqlObject) {
+		if (!graphqlObjects.length) {
 			throw new Error(`Failed to get data for species: ${args.species}`);
 		}
 
-		// TODO: Actually return multiple results by looping over this
-		return [graphqlObject];
+		return graphqlObjects;
 	}
 }

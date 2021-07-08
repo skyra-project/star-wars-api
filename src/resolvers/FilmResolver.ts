@@ -38,35 +38,18 @@ export default class FilmResolver {
 		].join('\n')
 	})
 	public getFuzzyFilm(@Args() args: FuzzyFilmArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Film>): Film[] {
-		const filmEpisodeId = Number(args.film);
+		const fuzzyEntry = FilmService.findByFuzzy(args);
 
-		let data = filmEpisodeId ? FilmService.getByEpisodeNumber({ film: filmEpisodeId }) : undefined;
-
-		if (!data) {
-			const fuzzyEntry = FilmService.findByFuzzy(args);
-
-			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
-				throw new Error(`Failed to get data for film: ${args.film}`);
-			}
-
-			// TODO: Actually return multiple results by looping over this
-			data = FilmService.getByEpisodeNumber({ film: fuzzyEntry[0].item.episodeId });
-
-			if (!data) {
-				throw new Error(`No film found for: ${args.film}`);
-			}
+		if (!fuzzyEntry.length) {
+			throw new Error(`No films found for: ${args.film}`);
 		}
 
-		const graphqlObject = FilmService.mapFilmDataToFilmGraphQL({
-			data,
-			requestedFields
-		});
+		const graphqlObjects = fuzzyEntry.map((filmData) => FilmService.mapFilmDataToFilmGraphQL({ data: filmData.item, requestedFields }));
 
-		if (!graphqlObject) {
+		if (!graphqlObjects.length) {
 			throw new Error(`Failed to get data for film: ${args.film}`);
 		}
 
-		// TODO: Actually return multiple results by looping over this
-		return [graphqlObject];
+		return graphqlObjects;
 	}
 }

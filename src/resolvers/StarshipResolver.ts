@@ -38,33 +38,20 @@ export default class StarshipResolver {
 		].join('\n')
 	})
 	public getFuzzyStarship(@Args() args: FuzzyStarshipArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Starship>): Starship[] {
-		let data = StarshipService.getByStarshipName(args);
+		const fuzzyEntry = StarshipService.findByFuzzy(args);
 
-		if (!data) {
-			const fuzzyEntry = StarshipService.findByFuzzy(args);
-
-			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
-				throw new Error(`Failed to get data for starship: ${args.starship}`);
-			}
-
-			// TODO: Actually return multiple results by looping over this
-			data = StarshipService.getByStarshipName({ starship: fuzzyEntry[0].item.name });
-
-			if (!data) {
-				throw new Error(`No starship found for: ${args.starship}`);
-			}
+		if (!fuzzyEntry.length) {
+			throw new Error(`No starships found for: ${args.starship}`);
 		}
 
-		const graphqlObject = StarshipService.mapStarshipDataToStarshipGraphQL({
-			data,
-			requestedFields
-		});
+		const graphqlObjects = fuzzyEntry.map((starshipData) =>
+			StarshipService.mapStarshipDataToStarshipGraphQL({ data: starshipData.item, requestedFields })
+		);
 
-		if (!graphqlObject) {
-			throw new Error(`Failed to get data for starship: ${args.starship}`);
+		if (!graphqlObjects.length) {
+			throw new Error(`Failed to get data for starships: ${args.starship}`);
 		}
 
-		// TODO: Actually return multiple results by looping over this
-		return [graphqlObject];
+		return graphqlObjects;
 	}
 }

@@ -2,7 +2,7 @@
 	"extends": ["@sapphire"],
 	"overrides": [
 		{
-			"files": "src/services/*.ts",
+			"files": ["src/services/*.ts"],
 			"rules": {
 				"@typescript-eslint/no-extraneous-class": "off"
 			}

@@ -38,33 +38,18 @@ export default class PersonResolver {
 		].join('\n')
 	})
 	public getFuzzyPerson(@Args() args: FuzzyPersonArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Person>): Person[] {
-		let data = PersonService.getByPersonName(args);
+		const fuzzyEntry = PersonService.findByFuzzy(args);
 
-		if (!data) {
-			const fuzzyEntry = PersonService.findByFuzzy(args);
-
-			if (fuzzyEntry === undefined || !fuzzyEntry.length) {
-				throw new Error(`Failed to get data for person: ${args.person}`);
-			}
-
-			// TODO: Actually return multiple results by looping over this
-			data = PersonService.getByPersonName({ person: fuzzyEntry[0].item.name });
-
-			if (!data) {
-				throw new Error(`No person found for: ${args.person}`);
-			}
+		if (!fuzzyEntry.length) {
+			throw new Error(`No people found for: ${args.person}`);
 		}
 
-		const graphqlObject = PersonService.mapPersonDataToPersonGraphQL({
-			data,
-			requestedFields
-		});
+		const graphqlObjects = fuzzyEntry.map((personData) => PersonService.mapPersonDataToPersonGraphQL({ data: personData.item, requestedFields }));
 
-		if (!graphqlObject) {
-			throw new Error(`Failed to get data for person: ${args.person}`);
+		if (!graphqlObjects.length) {
+			throw new Error(`Failed to get data for people: ${args.person}`);
 		}
 
-		// TODO: Actually return multiple results by looping over this
-		return [graphqlObject];
+		return graphqlObjects;
 	}
 }
