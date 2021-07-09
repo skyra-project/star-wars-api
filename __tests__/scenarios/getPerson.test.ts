@@ -1,4 +1,4 @@
-import { getPersonName, getPersonWithNested } from '#test-utils/queries/person';
+import { getPersonName, getPersonWithNested } from '#test-utils/queries/people';
 import { gCall } from '#test-utils/testUtils';
 
 describe('getPerson', () => {

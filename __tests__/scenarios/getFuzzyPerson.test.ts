@@ -1,4 +1,4 @@
-import { getFuzzyPersonName, getFuzzyPersonWithNested } from '#test-utils/queries/person';
+import { getFuzzyPersonName, getFuzzyPersonWithNested } from '#test-utils/queries/people';
 import { gCall } from '#test-utils/testUtils';
 
 describe('getFuzzyPerson', () => {
