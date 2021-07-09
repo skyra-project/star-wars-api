@@ -1,3 +1,4 @@
+/* eslint-disable */ // This is a generated file so we disable linting
 import type { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 export declare type Maybe<T> = T | null;
 export declare type Exact<

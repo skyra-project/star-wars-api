@@ -5,14 +5,14 @@
 		"incremental": false,
 		"baseUrl": ".",
 		"paths": {
-			"#arguments/*": ["./arguments/*"],
-			"#assets/*": ["./assets/*"],
-			"#resolvers/*": ["./resolvers/*"],
-			"#scalars/*": ["./scalars/*"],
-			"#services/*": ["./services/*"],
-			"#structures/*": ["./structures/*"],
-			"#utils/*": ["./utils/*"],
 			"#test-utils/*": ["./testUtils/*"],
+			"#arguments/*": ["../src/arguments/*"],
+			"#assets/*": ["../src/assets/*"],
+			"#resolvers/*": ["../src/resolvers/*"],
+			"#scalars/*": ["../src/scalars/*"],
+			"#services/*": ["../src/services/*"],
+			"#structures/*": ["../src/structures/*"],
+			"#utils/*": ["../src/utils/*"],
 			"#root/*": ["../src/*"]
 		}
 	},
