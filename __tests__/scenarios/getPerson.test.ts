@@ -42,7 +42,7 @@ describe('getPerson', () => {
 	});
 
 	describe('Error Requests', () => {
-		test('GIVEN an invalid film THEN returns error', async () => {
+		test('GIVEN an invalid person THEN returns error', async () => {
 			const data = await gCall({
 				source: getPersonName,
 				variableValues: { person: 'totally_invalid_character' }
