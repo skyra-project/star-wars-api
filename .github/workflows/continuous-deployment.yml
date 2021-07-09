@@ -61,7 +61,7 @@ jobs:
       ||github.event.inputs.skip-publish == true)
     needs: Publish
     services:
-      pokedex:
+      swapi:
         image: ghcr.io/skyra-project/star-wars-api:latest
         options: >-
           --health-cmd "nc -z localhost 8293"
