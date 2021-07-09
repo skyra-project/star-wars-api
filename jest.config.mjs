@@ -21,5 +21,12 @@ export default async () => ({
 		'ts-jest': {
 			tsconfig: '<rootDir>/__tests__/tsconfig.json'
 		}
-	}
+	},
+	coveragePathIgnorePatterns: [
+		'/node_modules/',
+		'<rootDir>/__tests__',
+		'<rootDir>/src/index.ts',
+		'<rootDir>/src/server.ts',
+		'<rootDir>/src/defaultPlaygroundTabs.ts'
+	]
 });
