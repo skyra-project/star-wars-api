@@ -7,7 +7,7 @@ services:
     networks:
       - star-wars-api
     ports:
-      - '8080:8080'
+      - '8293:8293'
     restart: 'no'
 
 networks:
