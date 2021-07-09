@@ -5,9 +5,9 @@ const rootDir = new URL('../', import.meta.url);
 const tsDir = new URL('generated/ts/', rootDir);
 
 const tsconfigFile = new URL('tsconfig.generated.json', rootDir);
-const inputFile = new URL('graphql-pokemon.ts', tsDir);
-const cjsOutputFile = new URL('graphql-pokemon.cjs', tsDir);
-const mjsOutputFile = new URL('graphql-pokemon.mjs', tsDir);
+const inputFile = new URL('star-wars-api.ts', tsDir);
+const cjsOutputFile = new URL('star-wars-api.cjs', tsDir);
+const mjsOutputFile = new URL('star-wars-api.mjs', tsDir);
 
 export default {
 	input: fileURLToPath(inputFile),
