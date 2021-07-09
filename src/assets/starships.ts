@@ -379,7 +379,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 			model: 'N-1 starfighter',
 			name: 'Naboo fighter',
 			passengers: 0,
-			pilots: ['anakinskywalker', 'padm├®amidala', 'gregartypho'],
+			pilots: ['anakinskywalker', 'padmeamidala', 'gregartypho'],
 			starshipClass: 'Starfighter'
 		}
 	],
@@ -399,7 +399,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 			model: 'J-type 327 Nubian royal starship',
 			name: 'Naboo Royal Starship',
 			passengers: null,
-			pilots: ['ricoli├®'],
+			pilots: ['ricolie'],
 			starshipClass: 'yacht'
 		}
 	],
@@ -499,7 +499,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 			model: 'H-type Nubian yacht',
 			name: 'H-type Nubian yacht',
 			passengers: null,
-			pilots: ['padm├®amidala'],
+			pilots: ['padmeamidala'],
 			starshipClass: 'yacht'
 		}
 	],
@@ -619,7 +619,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 			model: 'J-type star skiff',
 			name: 'Naboo star skiff',
 			passengers: 3,
-			pilots: ['obiwankenobi', 'padm├®amidala'],
+			pilots: ['obiwankenobi', 'padmeamidala'],
 			starshipClass: 'yacht'
 		}
 	],

@@ -139,15 +139,15 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: [
 				'r2d2',
 				'palpatine',
-				'padm├®amidala',
+				'padmeamidala',
 				'jarjarbinks',
 				'roostarpals',
 				'rugornass',
-				'ricoli├®',
+				'ricolie',
 				'quarshpanaka',
 				'gregartypho',
-				'cord├®',
-				'dorm├®'
+				'corde',
+				'dorme'
 			],
 			rotationPeriod: '26',
 			surfaceWater: '12',
