@@ -3,7 +3,7 @@ name: Continuous Deployment
 on:
   push:
     branches:
-      - main
+      - main-but-this-should-not-run
     paths:
       - 'src/**'
       - '.github/workflows/continuous-deployment.yml'
