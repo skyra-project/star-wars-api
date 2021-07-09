@@ -29,16 +29,6 @@ describe('getFuzzyFilm', () => {
 				variableValues: { film: '1' }
 			});
 
-			(await import('child_process')).spawn('clip').stdin.end(
-				(await import('util')).inspect(Object.values(data.getFuzzyFilm), {
-					breakLength: Infinity,
-					compact: true,
-					depth: Infinity,
-					maxArrayLength: Infinity,
-					showHidden: false
-				})
-			);
-
 			expect(data.getFuzzyFilm).toContainAllValues([
 				{
 					title: 'The Phantom Menace',

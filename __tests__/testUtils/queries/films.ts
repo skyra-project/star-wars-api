@@ -1,32 +1,34 @@
 import { gql } from '#test-utils/testUtils';
 
-const fullDataFragment = `
-fragment fullDataFragment on Film {
-  title
-  characters {
-    name
-  }
-  planets {
-    name
-  }
-  species {
-    name
-  }
-  starships {
-    name
-  }
-  vehicles {
-    name
-  }
-}`;
+const FullDataFragment = gql`
+	fragment FullDataFragment on Film {
+		title
+		characters {
+			name
+		}
+		planets {
+			name
+		}
+		species {
+			name
+		}
+		starships {
+			name
+		}
+		vehicles {
+			name
+		}
+	}
+`;
 
-const titleOnlyFragment = `
-fragment titleOnlyFilmData on Film {
-  title
-}`;
+const TitleOnlyFragment = gql`
+	fragment titleOnlyFilmData on Film {
+		title
+	}
+`;
 
 export const getFilmTitle = gql`
-	${titleOnlyFragment}
+	${TitleOnlyFragment}
 	query ($film: Int!) {
 		getFilm(film: $film) {
 			...titleOnlyFilmData
@@ -35,18 +37,16 @@ export const getFilmTitle = gql`
 `;
 
 export const getFilmWithNested = gql`
-	${fullDataFragment}
-
+	${FullDataFragment}
 	query ($film: Int!) {
 		getFilm(film: $film) {
-			...fullDataFragment
+			...FullDataFragment
 		}
 	}
 `;
 
 export const getFuzzyFilmTitle = gql`
-	${titleOnlyFragment}
-
+	${TitleOnlyFragment}
 	query ($film: String!, $take: Int) {
 		getFuzzyFilm(film: $film, take: $take) {
 			...titleOnlyFilmData
@@ -55,11 +55,10 @@ export const getFuzzyFilmTitle = gql`
 `;
 
 export const getFuzzyFilmWithNested = gql`
-	${fullDataFragment}
-
+	${FullDataFragment}
 	query ($film: String!, $take: Int) {
 		getFuzzyFilm(film: $film, take: $take) {
-			...fullDataFragment
+			...FullDataFragment
 		}
 	}
 `;
