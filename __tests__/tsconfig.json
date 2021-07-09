@@ -5,18 +5,17 @@
 		"incremental": false,
 		"baseUrl": ".",
 		"paths": {
-			"#arguments/*": ["../src/arguments/*"],
-			"#assets/*": ["../src/assets/*"],
-			"#jsonAssets/*.json": ["../src/assets/*.json"],
-			"#dexdata/*": ["../src/assets/pokedex-data/*"],
-			"#resolvers/*": ["../src/resolvers/*"],
-			"#services/*": ["../src/services/*"],
-			"#structures/*": ["../src/structures/*"],
-			"#utils/*": ["../src/utils/*"],
+			"#arguments/*": ["./arguments/*"],
+			"#assets/*": ["./assets/*"],
+			"#resolvers/*": ["./resolvers/*"],
+			"#scalars/*": ["./scalars/*"],
+			"#services/*": ["./services/*"],
+			"#structures/*": ["./structures/*"],
+			"#utils/*": ["./utils/*"],
 			"#test-utils/*": ["./testUtils/*"],
 			"#root/*": ["../src/*"]
 		}
 	},
-	"include": [".", "../src/**/*"],
+	"include": ["."],
 	"references": [{ "path": "../src" }]
 }

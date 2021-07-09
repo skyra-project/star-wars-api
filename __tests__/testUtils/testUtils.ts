@@ -1,7 +1,6 @@
 import { buildGqlSchema } from '#root/server';
 import { graphql, GraphQLSchema } from 'graphql';
-
-type Maybe<T> = T | null;
+import type { Maybe } from 'type-graphql';
 
 interface GCallOptions {
 	source: string;

@@ -15,14 +15,12 @@
 	"imports": {
 		"#arguments/*": "./generated/api/arguments/*.js",
 		"#assets/*": "./generated/api/assets/*.js",
-		"#jsonAssets/*": "./generated/api/assets/*",
 		"#resolvers/*": "./generated/api/resolvers/*.js",
 		"#scalars/*": "./generated/api/scalars/*.js",
 		"#services/*": "./generated/api/services/*.js",
 		"#structures/*": "./generated/api/structures/*.js",
 		"#utils/*": "./generated/api/utils/*.js",
-		"#root/*": "./generated/api/*.js",
-		"#scripts/*": "./scripts/*.mjs"
+		"#root/*": "./generated/api/*.js"
 	},
 	"homepage": "https://swapi.skyra.pw/",
 	"scripts": {

@@ -7,8 +7,6 @@
 		"paths": {
 			"#arguments/*": ["./arguments/*"],
 			"#assets/*": ["./assets/*"],
-			"#jsonAssets/*.json": ["./assets/*.json"],
-			"#dexdata/*": ["./assets/pokedex-data/*"],
 			"#resolvers/*": ["./resolvers/*"],
 			"#scalars/*": ["./scalars/*"],
 			"#services/*": ["./services/*"],
@@ -18,5 +16,5 @@
 		},
 		"composite": true
 	},
-	"include": [".", "./assets/**/*.json"]
+	"include": ["."]
 }
