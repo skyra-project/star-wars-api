@@ -13,9 +13,9 @@ import tabs from '#root/defaultPlaygroundTabs';
 import { ApolloServer } from 'apollo-server-koa';
 import type { GraphQLSchema } from 'graphql';
 import Koa from 'koa';
-import { buildSchemaSync, registerEnumType } from 'type-graphql';
+import { buildSchema, registerEnumType } from 'type-graphql';
 
-export const buildGqlSchema = (): GraphQLSchema => {
+export const buildGqlSchema = async (): Promise<GraphQLSchema> => {
 	registerEnumType(people, {
 		name: 'StarWarsPeople',
 		description: 'The people in Star Wars'
@@ -41,14 +41,14 @@ export const buildGqlSchema = (): GraphQLSchema => {
 		description: 'The vehicles in Star Wars'
 	});
 
-	return buildSchemaSync({
+	return buildSchema({
 		resolvers: [FilmResolver, PersonResolver, PlanetResolver, SpeciesResolver, StarshipResolver, VehicleResolver],
 		dateScalarMode: 'isoDate'
 	});
 };
 
-const gqlServer = (): Koa<Koa.DefaultState, Koa.DefaultContext> => {
-	const schema = buildGqlSchema();
+const gqlServer = async (): Promise<Koa<Koa.DefaultState, Koa.DefaultContext>> => {
+	const schema = await buildGqlSchema();
 	const app = new Koa();
 	const apolloServer = new ApolloServer({
 		schema,
