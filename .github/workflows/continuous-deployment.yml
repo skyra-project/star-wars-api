@@ -128,7 +128,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
       - name: Bump semver
         if: "!contains(github.event.head_commit.message, '[skip bump]')"
-        run: yarn sversion --first-release
+        run: yarn sversion
       - name: Store bumped package.json
         uses: actions/upload-artifact@v2
         with:
