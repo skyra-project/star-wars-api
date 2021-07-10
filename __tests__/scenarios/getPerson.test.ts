@@ -45,12 +45,12 @@ describe('getPerson', () => {
 		test('GIVEN an invalid person THEN returns error', async () => {
 			const data = await gCall({
 				source: getPersonName,
-				variableValues: { person: 'totally_invalid_character' }
+				variableValues: { person: 'totally_invalid_person' }
 			});
 
 			expect(data.errors).toHaveLength(1);
 			expect(data.errors[0].message).toBe(
-				'Variable "$person" got invalid value "totally_invalid_character"; Value "totally_invalid_character" does not exist in "StarWarsPeople" enum.'
+				'Variable "$person" got invalid value "totally_invalid_person"; Value "totally_invalid_person" does not exist in "StarWarsPeople" enum.'
 			);
 		});
 	});
