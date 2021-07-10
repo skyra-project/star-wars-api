@@ -253,8 +253,8 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 [dockerhub]: https://hub.docker.com/r/skyrabot/star-wars-api
 [ethereum]: ethereum:0xcB5EDB76Bc9E389514F905D9680589004C00190c?amount=0.01&label=Skyra%20Discord%20Bot
 [ethereumimage]: https://cdn.skyra.pw/gh-assets/ethereum.png
-[ghcr_docker]: https://github.com/orgs/skyra-project/packages/container/package/star-wars-api
-[ghcr_npm]: https://github.com/skyra-project/star-wars-api/packages/199047
+[ghcr_docker]: https://github.com/skyra-project/star-wars-api/pkgs/container/star-wars-api
+[ghcr_npm]: https://github.com/skyra-project/star-wars-api/packages/891634
 [litecoin]: litecoin:MNVT1keYGMfGp7vWmcYjCS8ntU8LNvjnqM?amount=0.01&label=Skyra%20Discord%20Bot
 [litecoinimage]: https://cdn.skyra.pw/gh-assets/litecoin.png
 [npm]: https://www.npmjs.com/package/@skyra/star-wars-api

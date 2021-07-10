@@ -184,7 +184,7 @@ jobs:
       - name: Publish to NPM
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
   Github-Package-Registry-Node:
     name: Publishing release to Github Package Registry
