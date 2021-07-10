@@ -631,5 +631,22 @@ export default new GraphQLCollection<string, StarWarsApi.Species>([
 			people: ['tionmedon'],
 			skinColors: ['grey']
 		}
+	],
+	[
+		'umbaran',
+		{
+			averageHeight: null,
+			averageLifespan: null,
+			classification: 'mammal',
+			designation: 'sentient',
+			eyeColors: ['white', 'pale blue'],
+			films: [2, 3],
+			hairColors: ['White'],
+			homeworld: 'umbara',
+			language: 'Umbarese',
+			name: 'Umbaran',
+			people: ['slymoore'],
+			skinColors: ['pale', 'bluish']
+		}
 	]
 ]);

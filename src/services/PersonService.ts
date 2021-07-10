@@ -70,8 +70,8 @@ export default class PersonService {
 			if (requestedFields.has('species')) {
 				const speciesFields = requestedFields.filterStartsWith<GraphQLSet<keyof Species>>('species.');
 
-				for (const filmSpecies of data.species) {
-					const speciesData = SpeciesService.getBySpeciesName({ species: filmSpecies })!;
+				for (const personSpecies of data.species) {
+					const speciesData = SpeciesService.getBySpeciesName({ species: personSpecies })!;
 					species.push(
 						SpeciesService.mapSpeciesDataToSpeciesGraphQL({
 							data: speciesData,

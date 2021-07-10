@@ -16,7 +16,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 77,
 			name: 'Luke Skywalker',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['xwing', 'imperialshuttle'],
 			vehicles: ['snowspeeder', 'imperialspeederbike']
 		}
@@ -70,7 +70,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 136,
 			name: 'Darth Vader',
 			skinColors: ['white'],
-			species: [],
+			species: ['human'],
 			starships: ['tieadvancedx1'],
 			vehicles: []
 		}
@@ -88,7 +88,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 49,
 			name: 'Leia Organa',
 			skinColors: ['light'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: ['imperialspeederbike']
 		}
@@ -106,7 +106,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 120,
 			name: 'Owen Lars',
 			skinColors: ['light'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -122,9 +122,9 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			height: 165,
 			homeworld: 'tatooine',
 			mass: 75,
-			name: 'Beru Whitesun lars',
+			name: 'Beru Whitesun Lars',
 			skinColors: ['light'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -160,7 +160,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 84,
 			name: 'Biggs Darklighter',
 			skinColors: ['light'],
-			species: [],
+			species: ['human'],
 			starships: ['xwing'],
 			vehicles: []
 		}
@@ -178,7 +178,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 77,
 			name: 'Obi-Wan Kenobi',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['jedistarfighter', 'tradefederationcruiser', 'naboostarskiff', 'jediinterceptor', 'belbullab22starfighter'],
 			vehicles: ['tribubblebongo']
 		}
@@ -196,7 +196,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 84,
 			name: 'Anakin Skywalker',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['naboofighter', 'tradefederationcruiser', 'jediinterceptor'],
 			vehicles: ['zephyrgswoopbike', 'xj6airspeeder']
 		}
@@ -214,7 +214,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Wilhuff Tarkin',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -250,7 +250,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 80,
 			name: 'Han Solo',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['millenniumfalcon', 'imperialshuttle'],
 			vehicles: []
 		}
@@ -304,7 +304,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 77,
 			name: 'Wedge Antilles',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['xwing'],
 			vehicles: ['snowspeeder']
 		}
@@ -322,7 +322,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 110,
 			name: 'Jek Tono Porkins',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['xwing'],
 			vehicles: []
 		}
@@ -358,7 +358,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 75,
 			name: 'Palpatine',
 			skinColors: ['pale'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -376,7 +376,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 78.2,
 			name: 'Boba Fett',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['slave1'],
 			vehicles: []
 		}
@@ -430,7 +430,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 79,
 			name: 'Lando Calrissian',
 			skinColors: ['dark'],
-			species: [],
+			species: ['human'],
 			starships: ['millenniumfalcon'],
 			vehicles: []
 		}
@@ -448,7 +448,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 79,
 			name: 'Lobot',
 			skinColors: ['light'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -484,7 +484,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Mon Mothma',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -502,7 +502,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Arvel Crynyd',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['awing'],
 			vehicles: []
 		}
@@ -556,7 +556,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 89,
 			name: 'Qui-Gon Jinn',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: ['tribubblebongo']
 		}
@@ -592,7 +592,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Finis Valorum',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -610,7 +610,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 45,
 			name: 'Padmé Amidala',
 			skinColors: ['light'],
-			species: [],
+			species: ['human'],
 			starships: ['naboofighter', 'htypenubianyacht', 'naboostarskiff'],
 			vehicles: []
 		}
@@ -682,7 +682,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Ric Olié',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: ['nabooroyalstarship'],
 			vehicles: []
 		}
@@ -736,7 +736,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Quarsh Panaka',
 			skinColors: ['dark'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -754,7 +754,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Shmi Skywalker',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -898,7 +898,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 84,
 			name: 'Mace Windu',
 			skinColors: ['dark'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -1060,7 +1060,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 85,
 			name: 'Gregar Typho',
 			skinColors: ['dark'],
-			species: [],
+			species: ['human'],
 			starships: ['naboofighter'],
 			vehicles: []
 		}
@@ -1078,7 +1078,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Cordé',
 			skinColors: ['light'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -1096,7 +1096,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'Cliegg Lars',
 			skinColors: ['fair'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -1222,7 +1222,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 79,
 			name: 'Jango Fett',
 			skinColors: ['tan'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -1330,7 +1330,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: null,
 			name: 'R4-P17',
 			skinColors: ['silver', 'red'],
-			species: [],
+			species: ['droid'],
 			starships: [],
 			vehicles: []
 		}
@@ -1438,7 +1438,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 79,
 			name: 'Raymus Antilles',
 			skinColors: ['light'],
-			species: [],
+			species: ['human'],
 			starships: [],
 			vehicles: []
 		}
@@ -1456,7 +1456,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 48,
 			name: 'Sly Moore',
 			skinColors: ['pale'],
-			species: [],
+			species: ['umbaran'],
 			starships: [],
 			vehicles: []
 		}
