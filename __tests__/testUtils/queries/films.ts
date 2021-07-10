@@ -47,8 +47,8 @@ export const getFilmWithNested = gql`
 
 export const getFuzzyFilmTitle = gql`
 	${TitleOnlyFragment}
-	query ($film: String!, $take: Int) {
-		getFuzzyFilm(film: $film, take: $take) {
+	query ($film: String!, $take: Int, $reverse: Boolean) {
+		getFuzzyFilm(film: $film, take: $take, reverse: $reverse) {
 			...titleOnlyFilmData
 		}
 	}
@@ -56,8 +56,8 @@ export const getFuzzyFilmTitle = gql`
 
 export const getFuzzyFilmWithNested = gql`
 	${FullDataFragment}
-	query ($film: String!, $take: Int) {
-		getFuzzyFilm(film: $film, take: $take) {
+	query ($film: String!, $take: Int, $reverse: Boolean) {
+		getFuzzyFilm(film: $film, take: $take, reverse: $reverse) {
 			...FullDataFragment
 		}
 	}

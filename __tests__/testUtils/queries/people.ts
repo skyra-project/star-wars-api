@@ -54,8 +54,8 @@ export const getPersonWithNested = gql`
 
 export const getFuzzyPersonName = gql`
 	${NameOnlyFragment}
-	query ($person: String!, $take: Int) {
-		getFuzzyPerson(person: $person, take: $take) {
+	query ($person: String!, $take: Int, $reverse: Boolean) {
+		getFuzzyPerson(person: $person, take: $take, reverse: $reverse) {
 			...NameOnlyFragment
 		}
 	}
@@ -63,8 +63,8 @@ export const getFuzzyPersonName = gql`
 
 export const getFuzzyPersonWithNested = gql`
 	${FullDataFragment}
-	query ($person: String!, $take: Int) {
-		getFuzzyPerson(person: $person, take: $take) {
+	query ($person: String!, $take: Int, $reverse: Boolean) {
+		getFuzzyPerson(person: $person, take: $take, reverse: $reverse) {
 			...FullDataFragment
 		}
 	}

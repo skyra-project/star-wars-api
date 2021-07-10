@@ -46,8 +46,8 @@ export const getPlanetWithNested = gql`
 
 export const getFuzzyPlanetName = gql`
 	${NameOnlyFragment}
-	query ($planet: String!, $take: Int) {
-		getFuzzyPlanet(planet: $planet, take: $take) {
+	query ($planet: String!, $take: Int, $reverse: Boolean) {
+		getFuzzyPlanet(planet: $planet, take: $take, reverse: $reverse) {
 			...NameOnlyFragment
 		}
 	}
@@ -55,8 +55,8 @@ export const getFuzzyPlanetName = gql`
 
 export const getFuzzyPlanetWithNested = gql`
 	${FullDataFragment}
-	query ($planet: String!, $take: Int) {
-		getFuzzyPlanet(planet: $planet, take: $take) {
+	query ($planet: String!, $take: Int, $reverse: Boolean) {
+		getFuzzyPlanet(planet: $planet, take: $take, reverse: $reverse) {
 			...FullDataFragment
 		}
 	}

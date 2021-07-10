@@ -34,7 +34,7 @@ describe('getPerson', () => {
 				['mass', 77],
 				['name', 'Luke Skywalker'],
 				['skinColors', ['fair']],
-				['species', []],
+				['species', [{ name: 'Human' }]],
 				['starships', [{ name: 'X-wing' }, { name: 'Imperial shuttle' }]],
 				['vehicles', [{ name: 'Snowspeeder' }, { name: 'Imperial Speeder Bike' }]]
 			]);

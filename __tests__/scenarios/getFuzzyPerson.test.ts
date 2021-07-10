@@ -20,6 +20,15 @@ describe('getFuzzyPerson', () => {
 
 			expect(data.getFuzzyPerson).toContainAllValues([{ name: 'Lobot' }, { name: 'Luke Skywalker' }]);
 		});
+
+		test('GIVEN a valid name query AND multiple results AND reverse request THEN returns Person[]', async () => {
+			const { data } = await gCall<'getFuzzyPerson'>({
+				source: getFuzzyPersonName,
+				variableValues: { person: 'l', take: 2, reverse: true }
+			});
+
+			expect(data.getFuzzyPerson).toContainAllValues([{ name: 'Beru Whitesun Lars' }, { name: 'Jabba Desilijic Tiure' }]);
+		});
 	});
 
 	describe('Full data requests', () => {
@@ -46,7 +55,7 @@ describe('getFuzzyPerson', () => {
 					mass: 77,
 					name: 'Luke Skywalker',
 					skinColors: ['fair'],
-					species: [],
+					species: [{ name: 'Human' }],
 					starships: [{ name: 'X-wing' }, { name: 'Imperial shuttle' }],
 					vehicles: [{ name: 'Snowspeeder' }, { name: 'Imperial Speeder Bike' }]
 				}
@@ -71,7 +80,7 @@ describe('getFuzzyPerson', () => {
 					mass: 79,
 					name: 'Lobot',
 					skinColors: ['light'],
-					species: [],
+					species: [{ name: 'Human' }],
 					starships: [],
 					vehicles: []
 				},
@@ -91,7 +100,7 @@ describe('getFuzzyPerson', () => {
 					mass: 77,
 					name: 'Luke Skywalker',
 					skinColors: ['fair'],
-					species: [],
+					species: [{ name: 'Human' }],
 					starships: [{ name: 'X-wing' }, { name: 'Imperial shuttle' }],
 					vehicles: [{ name: 'Snowspeeder' }, { name: 'Imperial Speeder Bike' }]
 				}

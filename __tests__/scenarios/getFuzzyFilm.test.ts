@@ -20,13 +20,22 @@ describe('getFuzzyFilm', () => {
 
 			expect(data.getFuzzyFilm).toContainAllValues([{ title: 'A New Hope' }, { title: 'Attack of the Clones' }]);
 		});
+
+		test('GIVEN a valid title query AND multiple results AND reverse request THEN returns Film[]', async () => {
+			const { data } = await gCall<'getFuzzyFilm'>({
+				source: getFuzzyFilmTitle,
+				variableValues: { film: 'a', take: 2, reverse: true }
+			});
+
+			expect(data.getFuzzyFilm).toContainAllValues([{ title: 'The Empire Strikes Back' }, { title: 'The Phantom Menace' }]);
+		});
 	});
 
 	describe('Full data requests', () => {
 		test('GIVEN a valid episode number THEN returns Film', async () => {
 			const { data } = await gCall<'getFuzzyFilm'>({
 				source: getFuzzyFilmWithNested,
-				variableValues: { film: '1' }
+				variableValues: { film: '1', reverse: true }
 			});
 
 			expect(data.getFuzzyFilm).toContainAllValues([
@@ -127,7 +136,7 @@ describe('getFuzzyFilm', () => {
 						{ name: 'Darth Vader' },
 						{ name: 'Leia Organa' },
 						{ name: 'Owen Lars' },
-						{ name: 'Beru Whitesun lars' },
+						{ name: 'Beru Whitesun Lars' },
 						{ name: 'R5-D4' },
 						{ name: 'Biggs Darklighter' },
 						{ name: 'Obi-Wan Kenobi' },
@@ -160,7 +169,7 @@ describe('getFuzzyFilm', () => {
 						{ name: 'C-3PO' },
 						{ name: 'R2-D2' },
 						{ name: 'Owen Lars' },
-						{ name: 'Beru Whitesun lars' },
+						{ name: 'Beru Whitesun Lars' },
 						{ name: 'Obi-Wan Kenobi' },
 						{ name: 'Anakin Skywalker' },
 						{ name: 'Yoda' },

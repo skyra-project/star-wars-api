@@ -20,6 +20,15 @@ describe('getFuzzyPlanet', () => {
 
 			expect(data.getFuzzyPlanet).toContainAllValues([{ name: 'Alderaan' }, { name: 'Aleen Minor' }]);
 		});
+
+		test('GIVEN a valid name query AND multiple results AND reverse request THEN returns Planet[]', async () => {
+			const { data } = await gCall<'getFuzzyPlanet'>({
+				source: getFuzzyPlanetName,
+				variableValues: { planet: 'a', take: 2, reverse: true }
+			});
+
+			expect(data.getFuzzyPlanet).toContainAllValues([{ name: 'Concord Dawn' }, { name: 'Polis Massa' }]);
+		});
 	});
 
 	describe('Full data requests', () => {
