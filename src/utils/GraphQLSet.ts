@@ -20,30 +20,6 @@ export default class GraphQLSet<V> extends Set<V> {
 	}
 
 	/**
-	 * Identical to
-	 * [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter),
-	 * but returns a GraphQLSet instead of an Array.
-	 * @param fn The function to test with (should return boolean)
-	 * @param [thisArg] Value to use as `this` when executing function
-	 * @returns {GraphQLSet}
-	 * @example graphqlSet.filter((v) => v.startsWith('parentKey'));
-	 */
-	public filter(fn: (value: V, set: this) => boolean): this;
-	public filter<R>(fn: (value: V, set: this) => boolean): R;
-	public filter<T>(fn: (this: T, value: V, set: this) => boolean, thisArg: T): this;
-	public filter<T, R>(fn: (this: T, value: V, set: this) => boolean, thisArg: T): R;
-	public filter(fn: (value: V, set: this) => boolean, thisArg?: unknown): this {
-		if (typeof thisArg !== 'undefined') fn = fn.bind(thisArg);
-		const results = new this.constructor[Symbol.species]<V>() as this;
-
-		for (const val of this) {
-			if (fn(val, this)) results.add(val);
-		}
-
-		return results;
-	}
-
-	/**
 	 * Similar to {@link GraphQLSet.filter}, but instead of receiving a predicate callback,
 	 * this instead receives a string that will be checked through a `.startsWith` call.
 	 * If the value starts with the given {@link checkString} then that {@link checkString}
