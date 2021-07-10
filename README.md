@@ -4,7 +4,7 @@
 
 **GraphQL API similar to [swapi.dev](https://swapi.dev)**
 
-[![GitHub](https://img.shields.io/github/license/skyra-project/star-wars-api)](https://github.com/skyra-project/star-wars-api/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/github/license/skyra-project/star-wars-api)](https://github.com/skyra-project/star-wars-api/blob/main/LICENSE.md)
 [![codecov](https://codecov.io/gh/skyra-project/star-wars-api/branch/main/graph/badge.svg?token=BdT9nFzBQY)](https://codecov.io/gh/skyra-project/star-wars-api)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/@skyra/star-wars-api?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@skyra/star-wars-api)
 [![npm](https://img.shields.io/npm/v/@skyra/star-wars-api?color=crimson&label=TypeScript%20API%20Typings%20Version&logo=npm)](https://www.npmjs.com/package/@skyra/star-wars-api)
@@ -17,6 +17,8 @@
 **Table of Contents**
 
 -   [Star Wars API](#star-wars-api)
+    -   [Description](#description)
+    -   [Features](#features)
 -   [Installation](#installation)
 -   [API Documentation](#api-documentation)
 -   [Usage](#usage)
@@ -36,7 +38,7 @@ This API was inspired by [swapi.dev](https://swapi.dev), however we noticed that
 
 -   Fully generated client-side TypeScript typings published to
     -   [npm] as `@skyra/star-wars-api`
-    -   [GitHub Package Registry][ghcr_npm] as `@skyra/star-wars-api`
+    -   [GitHub Package Registry][ghcr_npm] as `@skyra-project/star-wars-api`
 -   Docker images of the API for private hosting published to
     -   [Dockerhub] as `skyrabot/star-wars-api`
     -   [GitHub Package Registry][ghcr_docker] as `ghcr.io/skyrabot/star-wars-api:latest`
