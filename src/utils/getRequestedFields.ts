@@ -1,8 +1,8 @@
 import GraphQLSet from '#utils/GraphQLSet';
-import { FieldsByTypeName, parseResolveInfo, ResolveTree } from 'graphql-parse-resolve-info';
+import { FieldsByTypeName, parse, ResolveTree } from 'graphql-parse-resolve-info';
 import { createParamDecorator } from 'type-graphql';
 
-function infoIsResolveTree(info: ResolveTree | FieldsByTypeName): info is ResolveTree {
+export function infoIsResolveTree(info: ResolveTree | FieldsByTypeName): info is ResolveTree {
 	return (info as ResolveTree).fieldsByTypeName !== undefined;
 }
 
@@ -24,7 +24,7 @@ function collectRequestedFields(
 
 export function getRequestedFields(): ParameterDecorator {
 	return createParamDecorator(({ info }) => {
-		const resolvedInfo = parseResolveInfo(info, { deep: true });
+		const resolvedInfo = parse(info, { deep: true });
 
 		if (resolvedInfo !== undefined && resolvedInfo !== null && infoIsResolveTree(resolvedInfo)) {
 			return collectRequestedFields(Object.values(resolvedInfo.fieldsByTypeName)[0]);
