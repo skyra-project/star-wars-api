@@ -40,7 +40,7 @@ export default class VehicleResolver {
 	public getFuzzyVehicle(@Args() args: FuzzyVehicleArgs, @getRequestedFields() requestedFields: GraphQLSet<keyof Vehicle>): Vehicle[] {
 		const fuzzyEntry = VehicleService.findByFuzzy(args);
 
-		if (!fuzzyEntry) {
+		if (!fuzzyEntry.length) {
 			throw new Error(`No vehicles found for: ${args.vehicle}`);
 		}
 
