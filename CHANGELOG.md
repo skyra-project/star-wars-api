@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/skyra-project/star-wars-api/compare/v1.0.0...v1.0.1) (2021-07-10)
+
+
+### Bug Fixes
+
+* mark package as side effect free ([cd253a3](https://github.com/skyra-project/star-wars-api/commit/cd253a341f33baf8e6e83f6e875fa948c1d0ac14))
+* **readme:** update ghcr npm url ([a46c71f](https://github.com/skyra-project/star-wars-api/commit/a46c71fd2a742d6c2c50d2607f116b2f3cfc0872))
+
 ## 1.0.0 (2021-07-10)
 
 ### Features
