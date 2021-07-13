@@ -3,7 +3,7 @@ import Planet from '#structures/Planet';
 import Species from '#structures/Species';
 import Starship from '#structures/Starship';
 import Vehicle from '#structures/Vehicle';
-import { Field, Int, ObjectType } from 'type-graphql';
+import { Field, Float, Int, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'A character that appeared in Star Wars' })
 export default class Person {
@@ -28,7 +28,7 @@ export default class Person {
 	@Field(() => Planet, { nullable: true, description: 'The planet that this person was born on' })
 	public homeworld?: Planet | null;
 
-	@Field(() => Int, { nullable: true, description: 'The mass of this person in kilograms when applying standard gravity' })
+	@Field(() => Float, { nullable: true, description: 'The mass of this person in kilograms when applying standard gravity' })
 	public mass?: number | null;
 
 	@Field(() => String, { description: 'The name of this person' })

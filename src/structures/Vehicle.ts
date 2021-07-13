@@ -4,7 +4,10 @@ import { Field, Float, Int, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'A vehicle that appeared in Star Wars' })
 export default class Vehicle {
-	@Field(() => Int, { description: 'The maximum cargo capacity of this vehicle in kilograms' })
+	@Field(() => Int, {
+		nullable: true,
+		description: 'The maximum cargo capacity of this vehicle in kilograms'
+	})
 	public cargoCapacity!: number;
 
 	@Field(() => String, {

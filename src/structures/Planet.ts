@@ -47,7 +47,7 @@ export default class Planet {
 	})
 	public rotationPeriod?: number | null;
 
-	@Field(() => Int, {
+	@Field(() => Float, {
 		nullable: true,
 		description: 'The percentage of the planet that is naturally occurring water or bodies of water. Null if this is unknown for this planet.'
 	})
