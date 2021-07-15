@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/skyra-project/star-wars-api/compare/v1.0.2...v1.0.3) (2021-07-15)
+
+
+### Bug Fixes
+
+* add data for Aleen Minor ([b6d5eda](https://github.com/skyra-project/star-wars-api/commit/b6d5eda8c6cbca6317347278761896f1a5bd4d5b))
+* fixed homeworlds for some species ([f139159](https://github.com/skyra-project/star-wars-api/commit/f1391596b11b9cdd826da1dda64e0b5d3ed03ca7))
+* fixed spelling of wookiee ([f939fc9](https://github.com/skyra-project/star-wars-api/commit/f939fc98490ebb5e019f29935464a2b0eb80bc3e))
+* set birthYaer to `null` for when it is unknown ([df977fd](https://github.com/skyra-project/star-wars-api/commit/df977fdde419b44451a86095c3ead4a693b4f8d4))
+
 ### [1.0.2](https://github.com/skyra-project/star-wars-api/compare/v1.0.1...v1.0.2) (2021-07-15)
 
 
