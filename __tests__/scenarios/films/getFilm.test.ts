@@ -4,12 +4,12 @@ import { gCall } from '#test-utils/testUtils';
 describe('getFilm', () => {
 	describe('Title only requests', () => {
 		test('GIVEN a valid episode number THEN returns Film', async () => {
-			const data = await gCall<'getFilm'>({
+			const { data } = await gCall<'getFilm'>({
 				source: getFilmTitle,
 				variableValues: { film: 1 }
 			});
 
-			expect(data.data.getFilm).toContainAllEntries([['title', 'The Phantom Menace']]);
+			expect(data.getFilm).toContainAllEntries([['title', 'The Phantom Menace']]);
 		});
 	});
 
