@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/skyra-project/star-wars-api/compare/v1.0.1...v1.0.2) (2021-07-15)
+
+
+### Bug Fixes
+
+* fixes parsing errors ([#7](https://github.com/skyra-project/star-wars-api/issues/7)) ([f741bf4](https://github.com/skyra-project/star-wars-api/commit/f741bf43d33442365439fc69e204192bdffb2382)), closes [#6](https://github.com/skyra-project/star-wars-api/issues/6)
+
 ### [1.0.1](https://github.com/skyra-project/star-wars-api/compare/v1.0.0...v1.0.1) (2021-07-10)
 
 
