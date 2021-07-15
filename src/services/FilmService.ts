@@ -127,7 +127,7 @@ export default class FilmService {
 	}
 
 	public static findByFuzzy(@Args(() => FuzzyFilmArgs) { film, offset, reverse, take }: FuzzyFilmArgs): Fuse.FuseResult<StarWarsApi.Film>[] {
-		if (!Number(film)) {
+		if (!parseFloat(film)) {
 			film = preParseInput(film);
 		}
 

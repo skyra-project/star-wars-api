@@ -122,7 +122,7 @@ describe('getFilm', () => {
 
 			expect(data.errors).toHaveLength(1);
 			expect(data.errors[0].message).toBe(
-				'Variable "$film" got invalid value "totally_invalid_film"; Int cannot represent non-integer value: "totally_invalid_film"'
+				'Variable "$film" got invalid value "totally_invalid_film"; Float cannot represent non numeric value: "totally_invalid_film"'
 			);
 		});
 	});
