@@ -132,7 +132,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'r5d4',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['red'],
 			films: [4],
 			gender: null,
@@ -312,7 +312,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'jektonoporkins',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['blue'],
 			films: [4],
 			gender: 'male',
@@ -492,7 +492,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'arvelcrynyd',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['brown'],
 			films: [6],
 			gender: 'male',
@@ -528,7 +528,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'niennunb',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['black'],
 			films: [6],
 			gender: 'male',
@@ -564,7 +564,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'nutegunray',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['red'],
 			films: [1, 2, 3],
 			gender: 'male',
@@ -636,7 +636,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'roostarpals',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['orange'],
 			films: [1],
 			gender: 'male',
@@ -654,7 +654,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'rugornass',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['orange'],
 			films: [1],
 			gender: 'male',
@@ -672,7 +672,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'ricolie',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['blue'],
 			films: [1],
 			gender: 'male',
@@ -690,7 +690,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'watto',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['yellow'],
 			films: [1, 2],
 			gender: 'male',
@@ -708,7 +708,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'sebulba',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['orange'],
 			films: [1],
 			gender: 'male',
@@ -780,7 +780,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'bibfortuna',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['pink'],
 			films: [6],
 			gender: 'male',
@@ -816,7 +816,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'rattstyerel',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: null,
 			films: [1],
 			gender: 'male',
@@ -834,7 +834,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'dudbolt',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['yellow'],
 			films: [1],
 			gender: 'male',
@@ -852,7 +852,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'gasgano',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['black'],
 			films: [1],
 			gender: 'male',
@@ -870,7 +870,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'benquadinaros',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['orange'],
 			films: [1],
 			gender: 'male',
@@ -924,7 +924,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'kitfisto',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['black'],
 			films: [1, 2, 3],
 			gender: 'male',
@@ -942,7 +942,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'eethkoth',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['brown'],
 			films: [1, 3],
 			gender: 'male',
@@ -960,7 +960,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'adigallia',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['blue'],
 			films: [1, 3],
 			gender: 'female',
@@ -978,7 +978,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'saeseetiin',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['orange'],
 			films: [1, 3],
 			gender: 'male',
@@ -996,7 +996,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'yaraelpoof',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['yellow'],
 			films: [1],
 			gender: 'male',
@@ -1032,7 +1032,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'masamedda',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['blue'],
 			films: [1, 2],
 			gender: 'male',
@@ -1050,7 +1050,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'gregartypho',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['brown'],
 			films: [2],
 			gender: 'male',
@@ -1068,7 +1068,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'corde',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['brown'],
 			films: [2],
 			gender: 'female',
@@ -1104,7 +1104,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'pogglethelesser',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['yellow'],
 			films: [2, 3],
 			gender: 'male',
@@ -1158,7 +1158,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'dorme',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['brown'],
 			films: [2],
 			gender: 'female',
@@ -1230,7 +1230,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'zamwesell',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['yellow'],
 			films: [2],
 			gender: 'female',
@@ -1248,7 +1248,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'dexterjettster',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['yellow'],
 			films: [2],
 			gender: 'male',
@@ -1266,7 +1266,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'lamasu',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['black'],
 			films: [2],
 			gender: 'male',
@@ -1284,7 +1284,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'taunwe',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['black'],
 			films: [2],
 			gender: 'female',
@@ -1302,7 +1302,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'jocastanu',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['blue'],
 			films: [2],
 			gender: 'female',
@@ -1320,7 +1320,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'r4p17',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['red', 'blue'],
 			films: [2, 3],
 			gender: 'female',
@@ -1338,7 +1338,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'wattambor',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: null,
 			films: [2],
 			gender: 'male',
@@ -1356,7 +1356,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'sanhill',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['gold'],
 			films: [2],
 			gender: 'male',
@@ -1374,7 +1374,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'shaakti',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['black'],
 			films: [2, 3],
 			gender: 'female',
@@ -1392,7 +1392,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'grievous',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['green', 'yellow'],
 			films: [3],
 			gender: 'male',
@@ -1410,7 +1410,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'tarfful',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['blue'],
 			films: [3],
 			gender: 'male',
@@ -1428,7 +1428,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'raymusantilles',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['brown'],
 			films: [4, 3],
 			gender: 'male',
@@ -1446,7 +1446,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'slymoore',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['white'],
 			films: [2, 3],
 			gender: 'female',
@@ -1464,7 +1464,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 	[
 		'tionmedon',
 		{
-			birthYear: 'unknown',
+			birthYear: null,
 			eyeColors: ['black'],
 			films: [3],
 			gender: 'male',
