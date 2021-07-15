@@ -1,50 +1,66 @@
 {
-	"projectName": "star-wars-api",
-	"projectOwner": "skyra-project",
-	"repoType": "github",
-	"repoHost": "https://github.com",
-	"files": ["README.md"],
-	"imageSize": 100,
-	"commit": true,
-	"commitConvention": "angular",
-	"contributors": [
-		{
-			"login": "Favna",
-			"name": "Jeroen Claassens",
-			"avatar_url": "https://avatars3.githubusercontent.com/u/4019718?v=4",
-			"profile": "https://favware.tech/",
-			"contributions": [
-				"bug",
-				"code",
-				"design",
-				"example",
-				"ideas",
-				"infra",
-				"maintenance",
-				"platform",
-				"projectManagement",
-				"review",
-				"question",
-				"security",
-				"test",
-				"userTesting"
-			]
-		},
-		{
-			"login": "dependabot[bot]",
-			"name": "dependabot[bot]",
-			"avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4",
-			"profile": "https://github.com/apps/dependabot",
-			"contributions": ["maintenance"]
-		},
-		{
-			"login": "github-actions[bot]",
-			"name": "github-actions[bot]",
-			"avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
-			"profile": "https://github.com/apps/github-actions",
-			"contributions": ["maintenance"]
-		}
-	],
-	"contributorsPerLine": 7,
-	"skipCi": true
+  "projectName": "star-wars-api",
+  "projectOwner": "skyra-project",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "Favna",
+      "name": "Jeroen Claassens",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4019718?v=4",
+      "profile": "https://favware.tech/",
+      "contributions": [
+        "bug",
+        "code",
+        "design",
+        "example",
+        "ideas",
+        "infra",
+        "maintenance",
+        "platform",
+        "projectManagement",
+        "review",
+        "question",
+        "security",
+        "test",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4",
+      "profile": "https://github.com/apps/dependabot",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "github-actions[bot]",
+      "name": "github-actions[bot]",
+      "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "profile": "https://github.com/apps/github-actions",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "thehairy",
+      "name": "thehairy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71461991?v=4",
+      "profile": "https://github.com/thehairy",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
