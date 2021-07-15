@@ -232,7 +232,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 112,
 			name: 'Chewbacca',
 			skinColors: null,
-			species: ['wookie'],
+			species: ['wookiee'],
 			starships: ['millenniumfalcon', 'imperialshuttle'],
 			vehicles: ['atst']
 		}
@@ -1420,7 +1420,7 @@ export default new GraphQLCollection<string, StarWarsApi.Person>([
 			mass: 136,
 			name: 'Tarfful',
 			skinColors: ['brown'],
-			species: ['wookie'],
+			species: ['wookiee'],
 			starships: [],
 			vehicles: []
 		}

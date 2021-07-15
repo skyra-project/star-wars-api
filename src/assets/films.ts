@@ -53,7 +53,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 			planets: ['tatooine', 'alderaan', 'yaviniv'],
 			producers: ['Gary Kurtz', 'Rick McCallum'],
 			releaseDate: '1977-05-25T00:00:00.000Z',
-			species: ['human', 'droid', 'wookie', 'rodian', 'hutt'],
+			species: ['human', 'droid', 'wookiee', 'rodian', 'hutt'],
 			starships: [
 				'cr90corvette',
 				'stardestroyer',
@@ -115,7 +115,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 			planets: ['hoth', 'dagobah', 'bespin', 'ordmantell'],
 			producers: ['Gary Kurtz', 'Rick McCallum'],
 			releaseDate: '1980-05-17T00:00:00.000Z',
-			species: ['human', 'droid', 'wookie', 'yodasspecies', 'trandoshan'],
+			species: ['human', 'droid', 'wookiee', 'yodasspecies', 'trandoshan'],
 			starships: [
 				'stardestroyer',
 				'millenniumfalcon',
@@ -181,7 +181,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 			planets: ['tatooine', 'dagobah', 'endor', 'naboo', 'coruscant'],
 			producers: ['Howard G. Kazanjian', 'George Lucas', 'Rick McCallum'],
 			releaseDate: '1983-05-25T00:00:00.000Z',
-			species: ['human', 'droid', 'wookie', 'hutt', 'yodasspecies', 'moncalamari', 'ewok', 'sullustan', 'twilek'],
+			species: ['human', 'droid', 'wookiee', 'hutt', 'yodasspecies', 'moncalamari', 'ewok', 'sullustan', 'twilek'],
 			starships: [
 				'cr90corvette',
 				'stardestroyer',
@@ -494,7 +494,7 @@ export default new GraphQLCollection<number, StarWarsApi.Film>([
 			species: [
 				'human',
 				'droid',
-				'wookie',
+				'wookiee',
 				'yodasspecies',
 				'twilek',
 				'toong',

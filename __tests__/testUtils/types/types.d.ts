@@ -400,7 +400,7 @@ export declare const enum StarWarsPlanets {
 export declare const enum StarWarsSpecies {
 	Human = 'human',
 	Droid = 'droid',
-	Wookie = 'wookie',
+	Wookiee = 'wookiee',
 	Rodian = 'rodian',
 	Hutt = 'hutt',
 	Yodasspecies = 'yodasspecies',

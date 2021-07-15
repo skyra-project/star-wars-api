@@ -150,7 +150,7 @@ describe('getFuzzyFilm', () => {
 						{ name: 'Raymus Antilles' }
 					],
 					planets: [{ name: 'Tatooine' }, { name: 'Alderaan' }, { name: 'Yavin IV' }],
-					species: [{ name: 'Human' }, { name: 'Droid' }, { name: 'Wookie' }, { name: 'Rodian' }, { name: 'Hutt' }],
+					species: [{ name: 'Human' }, { name: 'Droid' }, { name: 'Wookiee' }, { name: 'Rodian' }, { name: 'Hutt' }],
 					starships: [
 						{ name: 'CR90 corvette' },
 						{ name: 'Star Destroyer' },

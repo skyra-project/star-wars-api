@@ -38,7 +38,7 @@ export default new GraphQLCollection<string, StarWarsApi.Species>([
 		}
 	],
 	[
-		'wookie',
+		'wookiee',
 		{
 			averageHeight: 210,
 			averageLifespan: 400,
@@ -49,7 +49,7 @@ export default new GraphQLCollection<string, StarWarsApi.Species>([
 			hairColors: ['black', 'brown'],
 			homeworld: 'kashyyyk',
 			language: 'Shyriiwook',
-			name: 'Wookie',
+			name: 'Wookiee',
 			people: ['chewbacca', 'tarfful'],
 			skinColors: ['gray']
 		}
