@@ -1,4 +1,5 @@
 import { people } from '#arguments/PersonArgs';
+import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import { planets } from '#arguments/PlanetArgs';
 import { species } from '#arguments/SpeciesArgs';
 import { starships } from '#arguments/StarshipArgs';
@@ -53,16 +54,19 @@ const gqlServer = async (): Promise<Koa<Koa.DefaultState, Koa.DefaultContext>> =
 	const apolloServer = new ApolloServer({
 		schema,
 		introspection: true,
-		playground: {
-			endpoint: '/api',
-			settings: {
-				'editor.theme': 'dark',
-				'editor.fontFamily': '"Fira Code", "MesloLGS NF", "Menlo", Consolas, Courier New, monospace',
-				'editor.reuseHeaders': true
-			},
-			tabs
-		}
+		plugins: [
+			ApolloServerPluginLandingPageGraphQLPlayground({
+				settings: {
+					'editor.theme': 'dark',
+					'editor.fontFamily': '"Fira Code", "MesloLGS NF", "Menlo", Consolas, Courier New, monospace',
+					'editor.reuseHeaders': true
+				},
+				tabs
+			})
+		]
 	});
+
+	await apolloServer.start();
 
 	apolloServer.applyMiddleware({ app, path: '/', cors: true });
 

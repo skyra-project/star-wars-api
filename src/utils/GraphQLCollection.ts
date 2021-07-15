@@ -1,4 +1,4 @@
-import Collection from '@discordjs/collection';
+import { Collection } from '@discordjs/collection';
 
 export default class GraphQLCollection<K extends string | number, V> extends Collection<K, V> {
 	private cachedEnumObj!: Record<K, K> | null;
