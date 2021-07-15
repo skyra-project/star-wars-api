@@ -605,7 +605,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 	[
 		'aleenminor',
 		{
-			climate: null,
+			climate: ['harsh'],
 			diameter: null,
 			films: [],
 			gravity: null,
@@ -615,7 +615,7 @@ export default new GraphQLCollection<string, StarWarsApi.Planet>([
 			residents: ['rattstyerel'],
 			rotationPeriod: null,
 			surfaceWater: null,
-			terrains: null
+			terrains: ['lush']
 		}
 	],
 	[
