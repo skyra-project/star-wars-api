@@ -8,7 +8,7 @@ export default class Vehicle {
 		nullable: true,
 		description: 'The maximum cargo capacity of this vehicle in kilograms'
 	})
-	public cargoCapacity!: number;
+	public cargoCapacity?: number | null;
 
 	@Field(() => String, {
 		nullable: true,

@@ -29,7 +29,7 @@ const TitleOnlyFragment = gql`
 
 export const getFilmTitle = gql`
 	${TitleOnlyFragment}
-	query ($film: Int!) {
+	query ($film: Float!) {
 		getFilm(film: $film) {
 			...titleOnlyFilmData
 		}
@@ -38,7 +38,7 @@ export const getFilmTitle = gql`
 
 export const getFilmWithNested = gql`
 	${FullDataFragment}
-	query ($film: Int!) {
+	query ($film: Float!) {
 		getFilm(film: $film) {
 			...FullDataFragment
 		}

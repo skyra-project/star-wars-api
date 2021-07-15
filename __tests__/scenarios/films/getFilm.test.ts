@@ -4,12 +4,12 @@ import { gCall } from '#test-utils/testUtils';
 describe('getFilm', () => {
 	describe('Title only requests', () => {
 		test('GIVEN a valid episode number THEN returns Film', async () => {
-			const { data } = await gCall<'getFilm'>({
+			const data = await gCall<'getFilm'>({
 				source: getFilmTitle,
 				variableValues: { film: 1 }
 			});
 
-			expect(data.getFilm).toContainAllEntries([['title', 'The Phantom Menace']]);
+			expect(data.data.getFilm).toContainAllEntries([['title', 'The Phantom Menace']]);
 		});
 	});
 
@@ -122,7 +122,7 @@ describe('getFilm', () => {
 
 			expect(data.errors).toHaveLength(1);
 			expect(data.errors[0].message).toBe(
-				'Variable "$film" got invalid value "totally_invalid_film"; Int cannot represent non-integer value: "totally_invalid_film"'
+				'Variable "$film" got invalid value "totally_invalid_film"; Float cannot represent non numeric value: "totally_invalid_film"'
 			);
 		});
 	});

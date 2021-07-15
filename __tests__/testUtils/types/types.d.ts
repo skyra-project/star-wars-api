@@ -42,7 +42,7 @@ export declare type Film = {
 	/** The director of this film */
 	readonly director: Scalars['String'];
 	/** The episode number of this film */
-	readonly episodeId: Scalars['Int'];
+	readonly episodeId: Scalars['Float'];
 	/** The opening crawl text for this film */
 	readonly openingCrawl: Scalars['String'];
 	/** The planets that appeared in this film */
@@ -78,7 +78,7 @@ export declare type Person = {
 	/** The planet that this person was born on */
 	readonly homeworld?: Maybe<Planet>;
 	/** The mass of this person in kilograms when applying standard gravity */
-	readonly mass?: Maybe<Scalars['Int']>;
+	readonly mass?: Maybe<Scalars['Float']>;
 	/** The name of this person */
 	readonly name: Scalars['String'];
 	/** The colours of the skin of this person */
@@ -112,7 +112,7 @@ export declare type Planet = {
 	/** The number of standard hours this planet takes to rotate around its own axis. Nullable if the rotation period is unknown for this planet */
 	readonly rotationPeriod?: Maybe<Scalars['Int']>;
 	/** The percentage of the planet that is naturally occurring water or bodies of water. Null if this is unknown for this planet. */
-	readonly surfaceWater?: Maybe<Scalars['Int']>;
+	readonly surfaceWater?: Maybe<Scalars['Float']>;
 	/** The types of terrain of this planet */
 	readonly terrains?: Maybe<ReadonlyArray<Scalars['String']>>;
 };
