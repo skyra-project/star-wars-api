@@ -76,7 +76,7 @@ describe('getFuzzyPlanet', () => {
 					terrains: ['grasslands', 'mountains']
 				},
 				{
-					climates: null,
+					climates: ['harsh'],
 					diameter: null,
 					films: [],
 					gravity: null,
@@ -86,7 +86,7 @@ describe('getFuzzyPlanet', () => {
 					residents: [{ name: 'Ratts Tyerel' }],
 					rotationPeriod: null,
 					surfaceWater: null,
-					terrains: null
+					terrains: ['lush']
 				}
 			]);
 		});
