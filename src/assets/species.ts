@@ -157,6 +157,23 @@ export default new GraphQLCollection<string, StarWarsApi.Species>([
 		}
 	],
 	[
+		'sarlacc',
+		{
+			averageHeight: 100,
+			averageLifespan: 50000,
+			classification: null,
+			designation: 'sentient',
+			eyeColors: null,
+			films: [6],
+			hairColors: null,
+			homeworld: 'tatooine',
+			language: null,
+			name: 'Sarlacc',
+			people: [],
+			skinColors: ['tan']
+		}
+	],
+	[
 		'sullustan',
 		{
 			averageHeight: 180,
