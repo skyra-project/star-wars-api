@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/skyra-project/star-wars-api/compare/v1.0.3...v1.0.4) (2021-07-23)
+
+
+### Bug Fixes
+
+* **species:** add sarlacc species ([7a5e9f9](https://github.com/skyra-project/star-wars-api/commit/7a5e9f97f8894cc2ba36148f45cb92791c348125))
+* **species:** make droids lifespan null as Infinity doesn't parse ([012df40](https://github.com/skyra-project/star-wars-api/commit/012df402d893b24dc14ebfe142a20226d5cefaa1))
+* **types:** specify scalar type for Long and DateTime ([d1d1df9](https://github.com/skyra-project/star-wars-api/commit/d1d1df9c0347ea576b4162503c429735353c7d3c))
+
 ### [1.0.3](https://github.com/skyra-project/star-wars-api/compare/v1.0.2...v1.0.3) (2021-07-15)
 
 
