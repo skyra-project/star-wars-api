@@ -24,7 +24,7 @@ export default new GraphQLCollection<string, StarWarsApi.Species>([
 		'droid',
 		{
 			averageHeight: null,
-			averageLifespan: Infinity,
+			averageLifespan: null,
 			classification: 'artificial',
 			designation: 'sentient',
 			eyeColors: null,

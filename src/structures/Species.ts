@@ -1,4 +1,3 @@
-import GraphQLLong from '#scalars/GraphQLLong';
 import Film from '#structures/Film';
 import Person from '#structures/Person';
 import Planet from '#structures/Planet';
@@ -9,7 +8,7 @@ export default class Species {
 	@Field(() => Int, { nullable: true, description: 'The average heigh of this species, if specified' })
 	public averageHeight?: number | null;
 
-	@Field(() => GraphQLLong, { nullable: true, description: 'The average lifespan of this species, if specified' })
+	@Field(() => Int, { nullable: true, description: 'The average lifespan of this species, if specified' })
 	public averageLifespan?: number | null;
 
 	@Field(() => String, { nullable: true, description: 'The classification of this species, such as "mammal" or "reptile"' })
