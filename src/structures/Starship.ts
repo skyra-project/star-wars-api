@@ -8,11 +8,12 @@ export default class Starship {
 	@Field(() => GraphQLLong, { nullable: true, description: 'The maximum cargo capacity of this starship in kilograms' })
 	public cargoCapacity?: number | null;
 
-	@Field(() => String, {
+	@Field(() => Float, {
 		nullable: true,
-		description: 'The maximum length of time that this starship can provide consumables for its entire crew without having to resupply'
+		description:
+			'The maximum length of time that this starship can provide consumables for its entire crew without having to resupply. Provided in amount of milliseconds.'
 	})
-	public consumables?: string | null;
+	public consumables?: number | null;
 
 	@Field(() => GraphQLLong, { nullable: true, description: 'The cost of this starship, new, in galactic credits' })
 	public costInCredits?: number | null;

@@ -60,7 +60,7 @@ declare namespace StarWarsApi {
 
 	export interface Starship {
 		cargoCapacity: number | null;
-		consumables: string | null;
+		consumables: number | null;
 		costInCredits: number | null;
 		crew: number | null;
 		films: number[];
@@ -78,7 +78,7 @@ declare namespace StarWarsApi {
 
 	export interface Vehicle {
 		cargoCapacity: number | null;
-		consumables: string | null;
+		consumables: number | null;
 		costInCredits: number | null;
 		crew: number;
 		films: number[];

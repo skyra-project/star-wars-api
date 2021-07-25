@@ -7,7 +7,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'cr90corvette',
 		{
 			cargoCapacity: 3000000,
-			consumables: '1 year',
+			consumables: 31557600000,
 			costInCredits: 3500000,
 			crew: 165,
 			films: [4, 6, 3],
@@ -27,7 +27,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'stardestroyer',
 		{
 			cargoCapacity: 36000000,
-			consumables: '2 years',
+			consumables: 63115200000,
 			costInCredits: 150000000,
 			crew: 47060,
 			films: [4, 5, 6],
@@ -47,7 +47,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'sentinelclasslandingcraft',
 		{
 			cargoCapacity: 180000,
-			consumables: '1 month',
+			consumables: 2629799998,
 			costInCredits: 240000,
 			crew: 5,
 			films: [4],
@@ -67,7 +67,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'deathstar',
 		{
 			cargoCapacity: 1000000000000,
-			consumables: '3 years',
+			consumables: 94672800000,
 			costInCredits: 1000000000000,
 			crew: 342953,
 			films: [4],
@@ -87,7 +87,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'millenniumfalcon',
 		{
 			cargoCapacity: 100000,
-			consumables: '2 months',
+			consumables: 5259600001,
 			costInCredits: 100000,
 			crew: 4,
 			films: [4, 5, 6],
@@ -107,7 +107,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'ywing',
 		{
 			cargoCapacity: 110,
-			consumables: '1 week',
+			consumables: 604800000,
 			costInCredits: 134999,
 			crew: 2,
 			films: [4, 5, 6],
@@ -127,7 +127,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'xwing',
 		{
 			cargoCapacity: 110,
-			consumables: '1 week',
+			consumables: 604800000,
 			costInCredits: 149999,
 			crew: 1,
 			films: [4, 5, 6],
@@ -147,7 +147,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'tieadvancedx1',
 		{
 			cargoCapacity: 150,
-			consumables: '5 days',
+			consumables: 432000000,
 			costInCredits: null,
 			crew: 1,
 			films: [4],
@@ -167,7 +167,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'executor',
 		{
 			cargoCapacity: 250000000,
-			consumables: '6 years',
+			consumables: 189345600000,
 			costInCredits: 1143350000,
 			crew: 279144,
 			films: [5, 6],
@@ -187,7 +187,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'rebeltransport',
 		{
 			cargoCapacity: 19000000,
-			consumables: '6 months',
+			consumables: 15778800000,
 			costInCredits: null,
 			crew: 6,
 			films: [5, 6],
@@ -207,7 +207,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'slave1',
 		{
 			cargoCapacity: 70000,
-			consumables: '1 month',
+			consumables: 2629799998,
 			costInCredits: null,
 			crew: 1,
 			films: [5, 2],
@@ -227,7 +227,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'imperialshuttle',
 		{
 			cargoCapacity: 80000,
-			consumables: '2 months',
+			consumables: 5259600001,
 			costInCredits: 240000,
 			crew: 6,
 			films: [5, 6],
@@ -247,7 +247,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'ef76nebulonbescortfrigate',
 		{
 			cargoCapacity: 6000000,
-			consumables: '2 years',
+			consumables: 63115200000,
 			costInCredits: 8500000,
 			crew: 854,
 			films: [5, 6],
@@ -267,7 +267,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'calamaricruiser',
 		{
 			cargoCapacity: null,
-			consumables: '2 years',
+			consumables: 63115200000,
 			costInCredits: 104000000,
 			crew: 5400,
 			films: [6],
@@ -287,7 +287,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'awing',
 		{
 			cargoCapacity: 40,
-			consumables: '1 week',
+			consumables: 604800000,
 			costInCredits: 175000,
 			crew: 1,
 			films: [6],
@@ -307,7 +307,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'bwing',
 		{
 			cargoCapacity: 45,
-			consumables: '1 week',
+			consumables: 604800000,
 			costInCredits: 220000,
 			crew: 1,
 			films: [6],
@@ -347,7 +347,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'droidcontrolship',
 		{
 			cargoCapacity: 4000000000,
-			consumables: '500 days',
+			consumables: 43200000000,
 			costInCredits: null,
 			crew: 175,
 			films: [1, 2, 3],
@@ -367,7 +367,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'naboofighter',
 		{
 			cargoCapacity: 65,
-			consumables: '7 days',
+			consumables: 604800000,
 			costInCredits: 200000,
 			crew: 1,
 			films: [1, 2],
@@ -407,7 +407,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'scimitar',
 		{
 			cargoCapacity: 2500000,
-			consumables: '30 days',
+			consumables: 2592000000,
 			costInCredits: 55000000,
 			crew: 1,
 			films: [1],
@@ -427,7 +427,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'jtypediplomaticbarge',
 		{
 			cargoCapacity: null,
-			consumables: '1 year',
+			consumables: 31557600000,
 			costInCredits: 2000000,
 			crew: 5,
 			films: [2],
@@ -467,7 +467,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'jedistarfighter',
 		{
 			cargoCapacity: 60,
-			consumables: '7 days',
+			consumables: 604800000,
 			costInCredits: 180000,
 			crew: 1,
 			films: [2, 3],
@@ -507,7 +507,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'republicassaultship',
 		{
 			cargoCapacity: 11250000,
-			consumables: '2 years',
+			consumables: 63115200000,
 			costInCredits: null,
 			crew: 700,
 			films: [2],
@@ -527,7 +527,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'solarsailer',
 		{
 			cargoCapacity: 240,
-			consumables: '7 days',
+			consumables: 604800000,
 			costInCredits: 35700,
 			crew: 3,
 			films: [2],
@@ -547,7 +547,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'tradefederationcruiser',
 		{
 			cargoCapacity: 50000000,
-			consumables: '4 years',
+			consumables: 126230400000,
 			costInCredits: 125000000,
 			crew: 600,
 			films: [3],
@@ -567,7 +567,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'thetaclasst2cshuttle',
 		{
 			cargoCapacity: 50000,
-			consumables: '56 days',
+			consumables: 4838400000,
 			costInCredits: 1000000,
 			crew: 5,
 			films: [3],
@@ -587,7 +587,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'republicattackcruiser',
 		{
 			cargoCapacity: 20000000,
-			consumables: '2 years',
+			consumables: 63115200000,
 			costInCredits: 59000000,
 			crew: 7400,
 			films: [3],
@@ -627,7 +627,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'jediinterceptor',
 		{
 			cargoCapacity: 60,
-			consumables: '2 days',
+			consumables: 172800000,
 			costInCredits: 320000,
 			crew: 1,
 			films: [3],
@@ -647,7 +647,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'arc170',
 		{
 			cargoCapacity: 110,
-			consumables: '5 days',
+			consumables: 432000000,
 			costInCredits: 155000,
 			crew: 3,
 			films: [3],
@@ -667,7 +667,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'bankingclanfrigte',
 		{
 			cargoCapacity: 40000000,
-			consumables: '2 years',
+			consumables: 63115200000,
 			costInCredits: 57000000,
 			crew: 200,
 			films: [3],
@@ -687,7 +687,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'belbullab22starfighter',
 		{
 			cargoCapacity: 140,
-			consumables: '7 days',
+			consumables: 604800000,
 			costInCredits: 168000,
 			crew: 1,
 			films: [3],
@@ -707,7 +707,7 @@ export default new GraphQLCollection<string, StarWarsApi.Starship>([
 		'vwing',
 		{
 			cargoCapacity: 60,
-			consumables: '15 hours',
+			consumables: 54000000,
 			costInCredits: 102500,
 			crew: 1,
 			films: [3],

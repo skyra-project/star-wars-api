@@ -10,12 +10,12 @@ export default class Vehicle {
 	})
 	public cargoCapacity?: number | null;
 
-	@Field(() => String, {
+	@Field(() => Float, {
 		nullable: true,
 		description:
-			'The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply. Null if unknown or unspecified.'
+			'The maximum length of time that this starship can provide consumables for its entire crew without having to resupply. Provided in amount of milliseconds.'
 	})
-	public consumables?: string | null;
+	public consumables?: number | null;
 
 	@Field(() => Int, { nullable: true, description: 'The cost of this vehicle, new, in galactic credits' })
 	public costInCredits?: number | null;

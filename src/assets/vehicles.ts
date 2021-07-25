@@ -7,7 +7,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'sandcrawler',
 		{
 			cargoCapacity: 50000,
-			consumables: '2 months',
+			consumables: 5259600001,
 			costInCredits: 150000,
 			crew: 46,
 			films: [4, 2],
@@ -25,7 +25,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		't16skyhopper',
 		{
 			cargoCapacity: 50,
-			consumables: '0',
+			consumables: null,
 			costInCredits: 14500,
 			crew: 1,
 			films: [4],
@@ -61,7 +61,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'tielnstarfighter',
 		{
 			cargoCapacity: 65,
-			consumables: '2 days',
+			consumables: 172800000,
 			costInCredits: null,
 			crew: 1,
 			films: [4, 5, 6],
@@ -97,7 +97,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'tiebomber',
 		{
 			cargoCapacity: null,
-			consumables: '2 days',
+			consumables: 172800000,
 			costInCredits: null,
 			crew: 1,
 			films: [5, 6],
@@ -151,7 +151,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'stormivtwinpodcloudcar',
 		{
 			cargoCapacity: 10,
-			consumables: '1 day',
+			consumables: 86400000,
 			costInCredits: 75000,
 			crew: 2,
 			films: [5],
@@ -169,7 +169,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'sailbarge',
 		{
 			cargoCapacity: 2000000,
-			consumables: 'Live food tanks',
+			consumables: null,
 			costInCredits: 285000,
 			crew: 26,
 			films: [6],
@@ -187,7 +187,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'banthaiicargoskiff',
 		{
 			cargoCapacity: 135000,
-			consumables: '1 day',
+			consumables: 86400000,
 			costInCredits: 8000,
 			crew: 5,
 			films: [6],
@@ -205,7 +205,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'tieininterceptor',
 		{
 			cargoCapacity: 75,
-			consumables: '2 days',
+			consumables: 172800000,
 			costInCredits: null,
 			crew: 1,
 			films: [6],
@@ -223,7 +223,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'imperialspeederbike',
 		{
 			cargoCapacity: 4,
-			consumables: '1 day',
+			consumables: 86400000,
 			costInCredits: 8000,
 			crew: 1,
 			films: [6],
@@ -313,7 +313,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'c9979landingcraft',
 		{
 			cargoCapacity: 1800000,
-			consumables: '1 day',
+			consumables: 86400000,
 			costInCredits: 200000,
 			crew: 140,
 			films: [1],
@@ -457,7 +457,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'atte',
 		{
 			cargoCapacity: 10000,
-			consumables: '21 days',
+			consumables: 1814400000,
 			costInCredits: null,
 			crew: 6,
 			films: [2, 3],
@@ -475,7 +475,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'spha',
 		{
 			cargoCapacity: 500,
-			consumables: '7 days',
+			consumables: 604800000,
 			costInCredits: null,
 			crew: 25,
 			films: [2],
@@ -511,7 +511,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'neimoidianshuttle',
 		{
 			cargoCapacity: 1000,
-			consumables: '7 days',
+			consumables: 604800000,
 			costInCredits: null,
 			crew: 2,
 			films: [2, 3],
@@ -601,7 +601,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'oevvaorjetcatamaran',
 		{
 			cargoCapacity: 50,
-			consumables: '3 days',
+			consumables: 259200000,
 			costInCredits: 12125,
 			crew: 2,
 			films: [3],
@@ -637,7 +637,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'cloneturbotank',
 		{
 			cargoCapacity: 30000,
-			consumables: '20 days',
+			consumables: 1728000000,
 			costInCredits: 350000,
 			crew: 20,
 			films: [3],
@@ -691,7 +691,7 @@ export default new GraphQLCollection<string, StarWarsApi.Vehicle>([
 		'atrt',
 		{
 			cargoCapacity: 20,
-			consumables: '1 day',
+			consumables: 86400000,
 			costInCredits: 40000,
 			crew: 1,
 			films: [3],
