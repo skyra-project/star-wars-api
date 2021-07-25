@@ -42,7 +42,7 @@ describe('getFuzzyStarship', () => {
 				{
 					MGLT: 10,
 					cargoCapacity: 1000000000000,
-					consumables: '3 years',
+					consumables: 94672800000,
 					costInCredits: 1000000000000,
 					crew: 342953,
 					films: [{ title: 'A New Hope' }],
@@ -69,7 +69,7 @@ describe('getFuzzyStarship', () => {
 				{
 					MGLT: 10,
 					cargoCapacity: 1000000000000,
-					consumables: '3 years',
+					consumables: 94672800000,
 					costInCredits: 1000000000000,
 					crew: 342953,
 					films: [{ title: 'A New Hope' }],
@@ -86,7 +86,7 @@ describe('getFuzzyStarship', () => {
 				{
 					MGLT: null,
 					cargoCapacity: 60,
-					consumables: '7 days',
+					consumables: 604800000,
 					costInCredits: 180000,
 					crew: 1,
 					films: [{ title: 'Attack of the Clones' }, { title: 'Revenge of the Sith' }],

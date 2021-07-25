@@ -41,7 +41,7 @@ describe('getFuzzyVehicle', () => {
 			expect(data.getFuzzyVehicle).toContainAllValues([
 				{
 					cargoCapacity: 50000,
-					consumables: '2 months',
+					consumables: 5259600001,
 					costInCredits: 150000,
 					crew: 46,
 					films: [{ title: 'A New Hope' }, { title: 'Attack of the Clones' }],
@@ -66,7 +66,7 @@ describe('getFuzzyVehicle', () => {
 			expect(data.getFuzzyVehicle).toContainAllValues([
 				{
 					cargoCapacity: 50000,
-					consumables: '2 months',
+					consumables: 5259600001,
 					costInCredits: 150000,
 					crew: 46,
 					films: [{ title: 'A New Hope' }, { title: 'Attack of the Clones' }],

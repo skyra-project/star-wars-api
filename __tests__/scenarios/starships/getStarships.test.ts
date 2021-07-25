@@ -22,7 +22,7 @@ describe('getStarship', () => {
 
 			expect(data.getStarship).toContainAllEntries([
 				['cargoCapacity', 3000000],
-				['consumables', '1 year'],
+				['consumables', 31557600000],
 				['costInCredits', 3500000],
 				['crew', 165],
 				['films', [{ title: 'A New Hope' }, { title: 'Return of the Jedi' }, { title: 'Revenge of the Sith' }]],
