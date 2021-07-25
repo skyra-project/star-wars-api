@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/skyra-project/star-wars-api/compare/v1.0.4...v2.0.0) (2021-07-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **starships,vehicles:** `starship.consumables` and `vehicle.consumes` are now numbers instead of strings.
+You can use something like DurationFormatter from @sapphire/time-utilities to format it back to a
+string.
+
+### Features
+
+* **starships,vehicles:** change "consumables" from string to number (milliseconds) ([37ee5d0](https://github.com/skyra-project/star-wars-api/commit/37ee5d0bd02f7e066bc8395da32266c112a6e53e))
+
 ### [1.0.4](https://github.com/skyra-project/star-wars-api/compare/v1.0.3...v1.0.4) (2021-07-23)
 
 
