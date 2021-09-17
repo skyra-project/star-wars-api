@@ -20,13 +20,15 @@ export default class GraphQLSet<V> extends Set<V> {
 	}
 
 	/**
-	 * Similar to {@link GraphQLSet.filter}, but instead of receiving a predicate callback,
-	 * this instead receives a string that will be checked through a `.startsWith` call.
+	 * Similar to
+	 * [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter),
+	 * but returns a GraphQLSet instead of an Array.
+	 * Also instead of receiving a callback predicate this will use {@link String.startsWith}.
+	 *
 	 * If the value starts with the given {@link checkString} then that {@link checkString}
 	 * is removed from the start of the value and the remaining value is added to the result.
 	 *
 	 * @param checkString The string that will be used in the `.startsWith` check
-	 * @returns {GraphQLSet}
 	 * @example graphqlSet.filter('parentKey.');
 	 */
 	public filterStartsWith<R extends GraphQLSet<unknown>>(checkString: string): R {
