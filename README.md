@@ -8,7 +8,6 @@
 [![codecov](https://codecov.io/gh/skyra-project/star-wars-api/branch/main/graph/badge.svg?token=BdT9nFzBQY)](https://codecov.io/gh/skyra-project/star-wars-api)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/@skyra/star-wars-api?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@skyra/star-wars-api)
 [![npm](https://img.shields.io/npm/v/@skyra/star-wars-api?color=crimson&label=TypeScript%20API%20Typings%20Version&logo=npm)](https://www.npmjs.com/package/@skyra/star-wars-api)
-[![Depfu](https://badges.depfu.com/badges/58540f387571d686051a47bd868b7e3e/count.svg)](https://depfu.com/github/skyra-project/star-wars-api?project_id=28350)
 
 [![Support Server](https://discord.com/api/guilds/254360814063058944/embed.png?style=banner2)](https://join.skyra.pw)
 
