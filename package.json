@@ -47,7 +47,7 @@
 		"prepare": "husky install .github/husky"
 	},
 	"dependencies": {
-		"graphql": "^15.5.3"
+		"graphql": "^15.6.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^12.1.4",
