@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.5](https://github.com/skyra-project/star-wars-api/compare/v2.0.4...v2.0.5) (2021-10-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency graphql to ^15.6.0 ([#34](https://github.com/skyra-project/star-wars-api/issues/34)) ([10bfceb](https://github.com/skyra-project/star-wars-api/commit/10bfcebaac19b7e1e7437a1f12e193b42e012b76))
+
 ### [2.0.4](https://github.com/skyra-project/star-wars-api/compare/v2.0.3...v2.0.4) (2021-09-27)
 
 ### [2.0.3](https://github.com/skyra-project/star-wars-api/compare/v2.0.2...v2.0.3) (2021-09-27)
