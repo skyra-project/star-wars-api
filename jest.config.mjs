@@ -4,10 +4,10 @@ export default async () => ({
 	preset: 'ts-jest',
 	testEnvironment: 'node',
 	testRunner: 'jest-circus/runner',
-	testMatch: ['<rootDir>/__tests__/**/*.test.ts'],
-	setupFilesAfterEnv: ['jest-extended/all', '<rootDir>/tests/jest.setup.ts'],
+	testMatch: ['<rootDir>/tests/**/*.test.ts'],
+	setupFilesAfterEnv: ['jest-extended/all', '<rootDir>/tests/testUtils/jest.setup.ts'],
 	moduleNameMapper: {
-		'^#test-utils/(.*)$': '<rootDir>/__tests__/testUtils/$1',
+		'^#test-utils/(.*)$': '<rootDir>/tests/testUtils/$1',
 		'^#arguments/(.*)$': '<rootDir>/src/arguments/$1',
 		'^#assets/(.*)$': '<rootDir>/src/assets/$1',
 		'^#resolvers/(.*)$': '<rootDir>/src/resolvers/$1',
@@ -19,12 +19,12 @@ export default async () => ({
 	},
 	globals: {
 		'ts-jest': {
-			tsconfig: '<rootDir>/__tests__/tsconfig.json'
+			tsconfig: '<rootDir>/tests/tsconfig.json'
 		}
 	},
 	coveragePathIgnorePatterns: [
 		'/node_modules/',
-		'<rootDir>/__tests__',
+		'<rootDir>/tests',
 		'<rootDir>/src/index.ts',
 		'<rootDir>/src/server.ts',
 		'<rootDir>/src/defaultPlaygroundTabs.ts'

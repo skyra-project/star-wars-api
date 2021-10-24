@@ -25,7 +25,7 @@
 	},
 	"homepage": "https://swapi.skyra.pw/",
 	"scripts": {
-		"lint": "eslint src scripts __tests__ --ext ts,mjs --fix",
+		"lint": "eslint src scripts tests --ext ts,mjs --fix",
 		"format": "prettier --write --loglevel=warn {src,scripts}/**/*.{ts,json}",
 		"test": "jest",
 		"start": "node generated/api/index.js",
