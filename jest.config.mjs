@@ -5,7 +5,7 @@ export default async () => ({
 	testEnvironment: 'node',
 	testRunner: 'jest-circus/runner',
 	testMatch: ['<rootDir>/__tests__/**/*.test.ts'],
-	setupFilesAfterEnv: ['<rootDir>/__tests__/testUtils/jest.setup.ts'],
+	setupFilesAfterEnv: ['jest-extended/all', '<rootDir>/tests/jest.setup.ts'],
 	moduleNameMapper: {
 		'^#test-utils/(.*)$': '<rootDir>/__tests__/testUtils/$1',
 		'^#arguments/(.*)$': '<rootDir>/src/arguments/$1',
