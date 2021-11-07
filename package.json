@@ -54,8 +54,8 @@
 		"@commitlint/config-conventional": "^13.2.0",
 		"@discordjs/collection": "^0.3.2",
 		"@graphql-codegen/cli": "^2.2.2",
-		"@graphql-codegen/schema-ast": "^2.3.0",
-		"@graphql-codegen/typescript": "^2.3.0",
+		"@graphql-codegen/schema-ast": "^2.4.0",
+		"@graphql-codegen/typescript": "^2.3.1",
 		"@graphql-codegen/typescript-resolvers": "^2.4.0",
 		"@sapphire/eslint-config": "4.0.3",
 		"@sapphire/prettier-config": "1.2.4",
@@ -64,7 +64,7 @@
 		"@types/jest": "^27.0.2",
 		"@types/koa": "^2.13.4",
 		"@types/node": "^16.11.6",
-		"apollo-server-koa": "^3.4.0",
+		"apollo-server-koa": "^3.5.0",
 		"class-validator": "^0.13.1",
 		"cz-conventional-changelog": "^3.3.0",
 		"fuse.js": "^6.4.6",
@@ -80,7 +80,7 @@
 		"pretty-quick": "^3.1.1",
 		"reflect-metadata": "^0.1.13",
 		"replace-in-file": "^6.3.2",
-		"rollup": "^2.58.3",
+		"rollup": "^2.59.0",
 		"rollup-plugin-typescript2": "^0.30.0",
 		"standard-version": "^9.3.2",
 		"ts-jest": "^27.0.7",
@@ -131,7 +131,7 @@
 	},
 	"resolutions": {
 		"acorn": "^8.5.0",
-		"node-fetch": "^2.6.5"
+		"node-fetch": "^2.6.6"
 	},
 	"prettier": "@sapphire/prettier-config"
 }
