@@ -131,7 +131,7 @@
 		"access": "public"
 	},
 	"resolutions": {
-		"acorn": "^8.5.0",
+		"acorn": "^8.6.0",
 		"node-fetch": "^2.6.6"
 	},
 	"prettier": "@sapphire/prettier-config"
