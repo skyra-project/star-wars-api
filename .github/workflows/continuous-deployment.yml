@@ -80,14 +80,8 @@ jobs:
         uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2
         with:
           node-version: 16
-      - name: Restore CI Cache
-        uses: actions/cache@937d24475381cd9c75ae6db12cb4e79714b926ed # renovate: tag=v2.1.7
-        id: cache-restore
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Dependencies if Cache Miss
-        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+          cache: yarn
+      - name: Install Dependencies
         run: yarn --frozen-lockfile
       - name: Generate GraphQL Schema code
         run: yarn codegen
@@ -113,14 +107,8 @@ jobs:
         uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2
         with:
           node-version: 16
-      - name: Restore CI Cache
-        uses: actions/cache@937d24475381cd9c75ae6db12cb4e79714b926ed # renovate: tag=v2.1.7
-        id: cache-restore
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Dependencies if Cache Miss
-        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+          cache: yarn
+      - name: Install Dependencies
         run: yarn --frozen-lockfile
       - name: Configure Git
         run: |
@@ -159,6 +147,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
+          cache: yarn
       - name: Download generated typings artifact
         uses: actions/download-artifact@3be87be14a055c47b01d3bd88f8fe02320a9bb60 # renovate: tag=v2
         with:
@@ -172,14 +161,7 @@ jobs:
         uses: actions/download-artifact@3be87be14a055c47b01d3bd88f8fe02320a9bb60 # renovate: tag=v2
         with:
           name: changelog_bundle
-      - name: Restore CI Cache
-        uses: actions/cache@937d24475381cd9c75ae6db12cb4e79714b926ed # renovate: tag=v2.1.7
-        id: cache-restore
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Dependencies if Cache Miss
-        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+      - name: Install Dependencies
         run: yarn --frozen-lockfile
       - name: Publish to NPM
         run: npm publish
@@ -200,6 +182,7 @@ jobs:
         with:
           node-version: 16
           registry-url: 'https://npm.pkg.github.com'
+          cache: yarn
           scope: '@skyra-project'
       - name: Download generated typings artifact
         uses: actions/download-artifact@3be87be14a055c47b01d3bd88f8fe02320a9bb60 # renovate: tag=v2
@@ -214,14 +197,7 @@ jobs:
         uses: actions/download-artifact@3be87be14a055c47b01d3bd88f8fe02320a9bb60 # renovate: tag=v2
         with:
           name: changelog_bundle
-      - name: Restore CI Cache
-        uses: actions/cache@937d24475381cd9c75ae6db12cb4e79714b926ed # renovate: tag=v2.1.7
-        id: cache-restore
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Dependencies if Cache Miss
-        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+      - name: Install Dependencies
         run: yarn --frozen-lockfile
       - name: Set correct author in package.json
         run: npx replace-in-file /@skyra/g "@skyra-project" package.json --isRegex
