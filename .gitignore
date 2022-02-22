@@ -36,3 +36,7 @@ gh
 
 ## API and TS Bundle
 generated/
+
+# Yarn files
+.yarn/install-state.gz
+.yarn/build-state.yml

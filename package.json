@@ -26,21 +26,17 @@
 	"homepage": "https://swapi.skyra.pw/",
 	"scripts": {
 		"lint": "eslint src scripts tests --ext ts,mjs --fix",
-		"format": "prettier --write --loglevel=warn {src,scripts}/**/*.{ts,json}",
+		"format": "prettier --write --loglevel=warn \"{src,scripts}/**/*.{ts,json}\"",
 		"test": "jest",
 		"start": "node generated/api/index.js",
 		"build": "tsc -b src",
 		"watch": "tsc -b src -w",
 		"clean": "node scripts/clean.mjs",
 		"dev": "yarn build && yarn start",
-		"commit": "git-cz",
-		"cz": "git-cz",
 		"update": "yarn upgrade-interactive --latest",
 		"sversion": "standard-version",
-		"precodegen": "node scripts/clean-generated.mjs",
-		"codegen": "graphql-codegen",
-		"postcodegen": "run-s typescript:*",
-		"typescript:replace-invalid-code": "replace-in-file /}\\;/g } generated/ts/star-wars-api.ts --isRegex",
+		"codegen": "node scripts/clean-generated.mjs && graphql-codegen && npm-run-all -s \"typescript:*\"",
+		"typescript:replace-invalid-code": "replace-in-file /\\}\\;/g \"}\" generated/ts/star-wars-api.ts --isRegex",
 		"typescript:use-type-import": "replace-in-file /import/g \"import type\" generated/ts/star-wars-api.ts --isRegex",
 		"typescript:compile": "rollup -c scripts/rollup.config.mjs",
 		"typescript:cleanup": "node scripts/postcodegen.mjs",
@@ -131,8 +127,8 @@
 		"access": "public"
 	},
 	"resolutions": {
-		"acorn": "^8.7.0",
 		"node-fetch": "^2.6.7"
 	},
-	"prettier": "@sapphire/prettier-config"
+	"prettier": "@sapphire/prettier-config",
+	"packageManager": "yarn@3.2.0"
 }
