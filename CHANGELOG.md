@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.17](https://github.com/skyra-project/star-wars-api/compare/v2.0.16...v2.0.17) (2022-02-27)
+
 ### [2.0.16](https://github.com/skyra-project/star-wars-api/compare/v2.0.15...v2.0.16) (2022-02-20)
 
 ### [2.0.15](https://github.com/skyra-project/star-wars-api/compare/v2.0.14...v2.0.15) (2022-02-06)
