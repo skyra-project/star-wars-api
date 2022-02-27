@@ -82,7 +82,7 @@ jobs:
           node-version: 16
           cache: yarn
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
       - name: Generate GraphQL Schema code
         run: yarn codegen
       - name: Upload typescript bundle to artifacts
@@ -109,7 +109,7 @@ jobs:
           node-version: 16
           cache: yarn
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
       - name: Configure Git
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -162,7 +162,7 @@ jobs:
         with:
           name: changelog_bundle
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
       - name: Publish to NPM
         run: npm publish
         env:
@@ -198,7 +198,7 @@ jobs:
         with:
           name: changelog_bundle
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
       - name: Set correct author in package.json
         run: npx replace-in-file /@skyra/g "@skyra-project" package.json --isRegex
       - name: Publish to Github
