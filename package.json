@@ -132,6 +132,8 @@
 		"access": "public"
 	},
 	"resolutions": {
+		"ansi-regex": "^5.0.1",
+		"minimist": "^1.2.6",
 		"node-fetch": "^2.6.7"
 	},
 	"prettier": "@sapphire/prettier-config",
