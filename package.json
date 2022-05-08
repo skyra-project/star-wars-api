@@ -1,6 +1,6 @@
 {
 	"name": "@skyra/star-wars-api",
-	"version": "2.0.27",
+	"version": "2.0.28",
 	"description": "Star Wars GraphQL API",
 	"author": "@skyra",
 	"license": "MIT",
