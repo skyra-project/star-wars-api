@@ -2,8 +2,6 @@
 export default async () => ({
 	coverageProvider: 'v8',
 	preset: 'ts-jest',
-	testEnvironment: 'node',
-	testRunner: 'jest-circus/runner',
 	testMatch: ['<rootDir>/tests/**/*.test.ts'],
 	setupFilesAfterEnv: ['jest-extended/all', '<rootDir>/tests/testUtils/jest.setup.ts'],
 	moduleNameMapper: {
@@ -28,5 +26,6 @@ export default async () => ({
 		'<rootDir>/src/index.ts',
 		'<rootDir>/src/server.ts',
 		'<rootDir>/src/defaultPlaygroundTabs.ts'
-	]
+	],
+	reporters: ['default', 'github-actions']
 });
